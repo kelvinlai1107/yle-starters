@@ -1,0 +1,3257 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YLE Starters 英語練習樂園</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff8ec;--ink:#2b2d42;--soft:#6b6f80;--card:#fff;--pri:#ff7a59;--pri2:#ffb347;--blue:#4cc9f0;--green:#2ec4b6;--red:#ef476f;--yellow:#ffd166;--purple:#9b5de5;--line:#f0e3cc}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Baloo 2","Noto Sans TC",system-ui,sans-serif;font-size:18px;-webkit-tap-highlight-color:transparent}
+button{font-family:inherit;cursor:pointer;border:none}
+header{position:sticky;top:0;z-index:5;background:linear-gradient(90deg,#ff7a59,#ffb347);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 3px 0 rgba(0,0,0,.08)}
+header h1{font-size:22px;margin:0;flex:1;cursor:pointer;font-weight:800;letter-spacing:.3px}
+.pill{background:rgba(255,255,255,.25);border-radius:999px;padding:4px 12px;font-weight:700;font-size:16px;color:#fff}
+button.pill{background:rgba(255,255,255,.25)}
+main{max-width:920px;margin:0 auto;padding:18px 14px 60px}
+.zh{font-family:"Noto Sans TC",sans-serif}
+.sub{color:var(--soft);font-size:15px}
+.grid{display:grid;gap:14px}
+.home{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.hcard{background:var(--card);border-radius:22px;padding:20px;text-align:left;box-shadow:0 5px 0 var(--line);border:3px solid var(--line);transition:transform .12s}
+.hcard:active{transform:translateY(3px);box-shadow:0 2px 0 var(--line)}
+.hcard .ic{font-size:46px}
+.hcard h3{margin:6px 0 2px;font-size:24px}
+.hcard p{margin:0;color:var(--soft);font-size:15px;font-family:"Noto Sans TC"}
+.welcome{background:#fff;border-radius:22px;padding:16px 18px;margin-bottom:16px;border:3px dashed #ffd9a8;display:flex;gap:14px;align-items:center}
+.welcome .big{font-size:54px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 16px}
+.chip{background:#fff;border:3px solid var(--line);border-radius:999px;padding:6px 14px;font-size:17px;font-weight:700;color:var(--ink)}
+.chip.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.vgrid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.vcard{background:#fff;border-radius:18px;border:3px solid var(--line);padding:10px 6px;text-align:center;box-shadow:0 4px 0 var(--line)}
+.vcard .e{font-size:54px;line-height:1.2;height:70px;display:flex;align-items:center;justify-content:center}
+.vcard .w{font-size:22px;font-weight:800}
+.vcard .z{font-size:14px;color:var(--soft);font-family:"Noto Sans TC"}
+.bounce{animation:bn .4s}
+@keyframes bn{30%{transform:scale(1.12)}60%{transform:scale(.95)}}
+.sw{display:inline-block;width:52px;height:52px;border-radius:50%;border:3px solid rgba(0,0,0,.12)}
+.num{font-size:46px;font-weight:800;color:var(--purple)}
+.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.primary{background:var(--pri);color:#fff;font-size:21px;font-weight:800;border-radius:16px;padding:12px 26px;box-shadow:0 5px 0 #d95c3e}
+.primary:active{transform:translateY(3px);box-shadow:0 2px 0 #d95c3e}
+.ghost{background:#fff;color:var(--ink);font-size:17px;font-weight:700;border-radius:14px;padding:8px 16px;border:3px solid var(--line)}
+.blue{background:var(--blue);color:#fff;box-shadow:0 5px 0 #2a9fc4}
+.green{background:var(--green);box-shadow:0 5px 0 #1f9a8f}
+.purple{background:var(--purple);box-shadow:0 5px 0 #7440b8}
+.pmenu{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.pbtn{background:#fff;border-radius:18px;border:3px solid var(--line);padding:14px 16px;text-align:left;box-shadow:0 4px 0 var(--line);display:flex;gap:12px;align-items:center}
+.pbtn .ic{font-size:36px}
+.pbtn b{font-size:19px;display:block}
+.pbtn span{font-size:14px;color:var(--soft);font-family:"Noto Sans TC"}
+.qbox{background:#fff;border-radius:24px;border:3px solid var(--line);padding:18px;box-shadow:0 5px 0 var(--line)}
+.part{background:var(--purple);color:#fff;border-radius:14px;padding:8px 14px;font-weight:700;margin-bottom:12px;font-size:17px}
+.part small{display:block;font-family:"Noto Sans TC";font-weight:400;opacity:.9;font-size:14px}
+.prog{height:12px;background:#ffe9c7;border-radius:99px;overflow:hidden;margin:6px 0 14px}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--blue));border-radius:99px;transition:width .3s}
+.qtext{font-size:24px;font-weight:700;margin:12px 0}
+.audio{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:6px}
+.play{background:var(--blue);color:#fff;font-size:20px;font-weight:800;border-radius:16px;padding:10px 20px;box-shadow:0 4px 0 #2a9fc4}
+.play.slow{background:#8ecae6;box-shadow:0 4px 0 #5fa8c8}
+.mini{background:#e8f7fd;color:#1b6f8c;font-size:16px;border-radius:12px;padding:6px 10px;font-weight:700}
+.opts{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin:14px 0}
+.opt{background:#fff;border:4px solid var(--line);border-radius:20px;min-width:120px;min-height:120px;font-size:60px;padding:8px 12px;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.opt small{font-size:16px;font-weight:700}
+.opt.sel,.yn button.sel,.tf button.sel{border-color:var(--blue);background:#e8f7fd}
+.right{border-color:var(--green)!important;background:#dcfaf6!important}
+.wrong{border-color:var(--red)!important;background:#ffe3ea!important}
+.bigE{font-size:110px;text-align:center;line-height:1.1}
+.sentence{font-size:28px;text-align:center;font-weight:700;margin:6px 0 10px}
+.tf{display:flex;gap:18px;justify-content:center}
+.tf button{font-size:44px;width:110px;height:90px;border-radius:20px;background:#fff;border:4px solid var(--line)}
+.scene{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;background:linear-gradient(#d9f2ff,#e9ffe0);border-radius:20px;padding:16px;margin-bottom:12px;border:3px solid #cdebd0}
+.scene span{font-size:48px;background:rgba(255,255,255,.6);border-radius:14px;padding:2px 8px}
+.yn{display:flex;align-items:center;gap:10px;padding:8px 4px;border-bottom:2px dashed var(--line);flex-wrap:wrap}
+.yn .s{flex:1;font-size:21px;font-weight:600;min-width:200px}
+.yn button{font-size:18px;font-weight:800;border-radius:12px;padding:6px 16px;background:#fff;border:3px solid var(--line)}
+.slots{display:flex;gap:8px;justify-content:center;margin:12px 0;flex-wrap:wrap}
+.slot{width:54px;height:62px;border-radius:12px;border:3px dashed #c9b28a;font-size:34px;font-weight:800;display:flex;align-items:center;justify-content:center;background:#fffdf7}
+.slot.f{border-style:solid;border-color:var(--blue);background:#e8f7fd}
+.tiles{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.tile{width:54px;height:58px;border-radius:12px;background:var(--yellow);font-size:30px;font-weight:800;box-shadow:0 4px 0 #e0a92c;color:var(--ink)}
+.tile:disabled{opacity:.25}
+.story{font-size:22px;line-height:2.2;background:#fffdf5;border-radius:16px;padding:14px 16px;border:2px solid var(--line)}
+.gap{display:inline-block;min-width:110px;border-bottom:3px solid var(--pri);padding:0 8px;margin:0 4px;font-weight:800;color:var(--pri);background:#fff3ee;border-radius:8px 8px 0 0;line-height:1.5;text-align:center;font-size:21px}
+.gap.act{background:#ffd8c9;outline:3px solid var(--pri)}
+.bank{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;justify-content:center}
+.bank button{background:#fff;border:3px solid var(--line);border-radius:14px;padding:6px 12px;font-size:19px;font-weight:700;display:flex;flex-direction:column;align-items:center;min-width:90px}
+.bank button .e{font-size:34px}
+.bank button.used{opacity:.4}
+.people{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px;margin:12px 0}
+.person{background:linear-gradient(#e6f6ff,#f1ffe9);border:4px solid #cde6d0;border-radius:18px;padding:8px;font-size:50px;text-align:center;position:relative;min-height:110px}
+.person .tag{display:block;font-size:17px;font-weight:800;color:#fff;background:var(--purple);border-radius:10px;margin-top:4px;min-height:24px}
+.person .tag:empty{background:transparent}
+.names{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.name{background:#fff;border:3px solid var(--line);border-radius:14px;padding:6px 12px;font-size:20px;font-weight:800;display:flex;align-items:center;gap:6px}
+.name.sel{border-color:var(--purple);background:#f1e8ff}
+.name.done{opacity:.55}
+.objs{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:12px;margin:12px 0}
+.obj{border-radius:50%;aspect-ratio:1;height:110px;border:5px dashed #cfc2aa;background:#fff;font-size:56px;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:background .2s}
+.obj small{font-size:14px;font-weight:700;background:rgba(255,255,255,.8);border-radius:8px;padding:0 6px;margin-top:-4px}
+.obj.painted{border-style:solid;border-color:rgba(0,0,0,.15)}
+.palette{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;background:#fff;border-radius:16px;padding:10px;border:3px solid var(--line)}
+.crayon{border-radius:12px;padding:6px 10px;color:#fff;font-weight:800;font-size:16px;border:4px solid transparent;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.crayon.sel{border-color:var(--ink);transform:scale(1.08)}
+.inst{display:flex;flex-direction:column;gap:6px;margin:10px 0}
+input.ans{font-family:inherit;font-size:26px;font-weight:700;border:3px solid var(--line);border-radius:14px;padding:6px 12px;width:200px;text-align:center;color:var(--purple)}
+input.ans:focus{outline:none;border-color:var(--blue)}
+.fb{min-height:10px;margin:12px 0;font-size:21px;font-weight:800;text-align:center}
+.answerBox{background:#dcfaf6;border:3px solid var(--green);border-radius:16px;padding:10px 16px;margin:10px auto 0;max-width:520px;color:#14786e}.answerBox b{font-size:28px;color:#0f6a61}.ansRow{margin:2px 0}.ansQ{font-size:17px;color:var(--ink);font-weight:600}
+.fb.ok{color:var(--green)}.fb.no{color:var(--red)}
+.trans{background:#f5f0ff;border-radius:14px;padding:10px 14px;margin:8px 0;font-size:17px;color:#4a3a70}
+.trans b{font-family:"Noto Sans TC"}
+.foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px;gap:10px;flex-wrap:wrap}
+.result{text-align:center}
+.result .score{font-size:72px;font-weight:800;color:var(--pri);line-height:1}
+.result .face{font-size:90px}
+.bars{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:12px 0}
+.bars div{background:#fff;border-radius:16px;border:3px solid var(--line);padding:10px 18px;font-weight:700}
+table.rev{width:100%;border-collapse:collapse;margin-top:14px;background:#fff;border-radius:16px;overflow:hidden;font-size:16px}
+table.rev td,table.rev th{padding:8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+table.rev th{background:#fff1dc;font-family:"Noto Sans TC"}
+table.rev tr.x td{background:#fff5f7}
+.toast{position:fixed;left:50%;top:40%;transform:translate(-50%,-50%) scale(.6);font-size:54px;font-weight:800;color:#fff;background:var(--green);padding:14px 30px;border-radius:30px;opacity:0;pointer-events:none;transition:all .25s;z-index:20;box-shadow:0 8px 0 rgba(0,0,0,.12);text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.toast.bad{background:var(--pri2)}
+.hist{margin-top:14px;font-size:15px;color:var(--soft);font-family:"Noto Sans TC"}
+.vbox{margin-top:16px;background:#fff;border-radius:16px;border:2px solid var(--line);padding:10px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.vsel{font-size:16px;padding:6px 8px;border-radius:10px;border:2px solid var(--line);max-width:100%;font-family:inherit}
+.timer{margin:-4px 0 12px;border-radius:14px;padding:10px 14px;font-weight:800;font-size:20px;text-align:center;font-family:"Baloo 2","Noto Sans TC"}
+.timer.play{background:#e3f6fd;color:#16708f}.timer.wait{background:#fff4d6;color:#8a5a00}.timer.hurry{background:#ffe0e6;color:#c2184b}
+.timed .audio,.timed .lp{display:none!important}
+.kids{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-top:14px}
+.kid{background:#fff;border:4px solid var(--line);border-radius:22px;padding:16px 10px;text-align:center;cursor:pointer;position:relative;box-shadow:0 5px 0 var(--line)}
+.kid.cur{border-color:var(--blue)}
+.kav{font-size:64px;line-height:1.1}.kname{font-size:24px;font-weight:800}
+.kdel{position:absolute;top:6px;right:6px;background:transparent;font-size:16px;border-radius:10px;padding:2px 6px;font-family:"Noto Sans TC"}
+.kdel.arm{background:var(--red);color:#fff;font-weight:700}
+.avs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.avb{font-size:34px;background:#fff;border:3px solid var(--line);border-radius:14px;width:58px;height:58px}
+.avb.on{border-color:var(--pri);background:#fff1ea}
+.note{background:#fff;border-radius:16px;padding:12px 16px;border:2px solid var(--line);font-family:"Noto Sans TC";font-size:15px;color:var(--soft);margin-top:18px;line-height:1.7}
+h2{margin:4px 0 6px;font-size:28px}
+.opts>*,.tf>*,.chips>*,.toolbar>*,.audio>*,.names>*,.bank>*,.tiles>*,.slots>*,.palette>*,.avs>*,.scene>*,.foot>*,.bars>*,.yn>*{margin:3px}
+@media (max-width:520px){.obj{height:90px}.opt{min-width:92px;min-height:92px;font-size:46px}.bigE{font-size:90px}.sentence{font-size:24px}.qtext{font-size:21px}.person{font-size:40px}.obj{font-size:44px}header h1{font-size:18px}}
+</style>
+</head>
+<body>
+<header>
+  <h1 id="homeBtn">🦁 YLE Starters 英語樂園</h1>
+  <button class="pill" id="kidBtn" title="切換小孩">👤</button>
+  <button class="pill" id="speedBtn" title="語速">🐢 慢速</button>
+  <span class="pill" id="stars">⭐ 0</span>
+  <span class="pill" id="cloudState" style="padding:4px 8px">💾</span>
+</header>
+<main id="app"></main>
+<div class="toast" id="toast"></div>
+
+<script>
+if(!Array.prototype.flat)Array.prototype.flat=function(d){d=d===undefined?1:d;return this.reduce(function(a,v){return a.concat(Array.isArray(v)&&d>0?v.flat(d-1):v)},[])};
+if(!Array.prototype.flatMap)Array.prototype.flatMap=function(f,t){return this.map(f,t).flat(1)};
+if(!Object.entries)Object.entries=function(o){return Object.keys(o).map(function(k){return[k,o[k]]})};
+if(!Object.values)Object.values=function(o){return Object.keys(o).map(function(k){return o[k]})};
+if(!Object.fromEntries)Object.fromEntries=function(a){var o={};a.forEach(function(p){o[p[0]]=p[1]});return o};
+if(!Array.prototype.includes)Array.prototype.includes=function(x){return this.indexOf(x)>=0};
+if(!String.prototype.startsWith)String.prototype.startsWith=function(s){return this.indexOf(s)===0};
+if(!Array.prototype.find)Array.prototype.find=function(f){for(var i=0;i<this.length;i++)if(f(this[i],i,this))return this[i]};
+if(!Array.prototype.findIndex)Array.prototype.findIndex=function(f){for(var i=0;i<this.length;i++)if(f(this[i],i,this))return i;return -1};
+if(!Array.prototype.fill)Array.prototype.fill=function(v){for(var i=0;i<this.length;i++)this[i]=v;return this};
+(function(P){['append'].forEach(function(n){if(!P[n])P[n]=function(){var s=this;Array.prototype.forEach.call(arguments,function(c){s.appendChild(c instanceof Node?c:document.createTextNode(String(c)))})}});
+if(!P.replaceWith)P.replaceWith=function(n){this.parentNode&&this.parentNode.replaceChild(n,this)};})(Element.prototype);
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var runtime = (function (exports) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; };
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function define(obj, key, value) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+    return obj[key];
+  }
+  try {
+    // IE 8 has a broken Object.defineProperty that only works on DOM objects.
+    define({}, "");
+  } catch (err) {
+    define = function(obj, key, value) {
+      return obj[key] = value;
+    };
+  }
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) });
+
+    return generator;
+  }
+  exports.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  define(IteratorPrototype, iteratorSymbol, function () {
+    return this;
+  });
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = GeneratorFunctionPrototype;
+  defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: true });
+  defineProperty(
+    GeneratorFunctionPrototype,
+    "constructor",
+    { value: GeneratorFunction, configurable: true }
+  );
+  GeneratorFunction.displayName = define(
+    GeneratorFunctionPrototype,
+    toStringTagSymbol,
+    "GeneratorFunction"
+  );
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      define(prototype, method, function(arg) {
+        return this._invoke(method, arg);
+      });
+    });
+  }
+
+  exports.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  exports.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      define(genFun, toStringTagSymbol, "GeneratorFunction");
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  exports.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator, PromiseImpl) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return PromiseImpl.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return PromiseImpl.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new PromiseImpl(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    defineProperty(this, "_invoke", { value: enqueue });
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  define(AsyncIterator.prototype, asyncIteratorSymbol, function () {
+    return this;
+  });
+  exports.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  exports.async = function(innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+    if (PromiseImpl === void 0) PromiseImpl = Promise;
+
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList),
+      PromiseImpl
+    );
+
+    return exports.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per GeneratorResume behavior specified since ES2015:
+        // ES2015 spec, step 3: https://262.ecma-international.org/6.0/#sec-generatorresume
+        // Latest spec, step 2: https://tc39.es/ecma262/#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var methodName = context.method;
+    var method = delegate.iterator[methodName];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method, or a missing .next method, always terminate the
+      // yield* loop.
+      context.delegate = null;
+
+      // Note: ["return"] must be used for ES3 parsing compatibility.
+      if (methodName === "throw" && delegate.iterator["return"]) {
+        // If the delegate iterator has a return method, give it a
+        // chance to clean up.
+        context.method = "return";
+        context.arg = undefined;
+        maybeInvokeDelegate(delegate, context);
+
+        if (context.method === "throw") {
+          // If maybeInvokeDelegate(context) changed context.method from
+          // "return" to "throw", let that override the TypeError below.
+          return ContinueSentinel;
+        }
+      }
+      if (methodName !== "return") {
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a '" + methodName + "' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  define(Gp, toStringTagSymbol, "Generator");
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  define(Gp, iteratorSymbol, function() {
+    return this;
+  });
+
+  define(Gp, "toString", function() {
+    return "[object Generator]";
+  });
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function(val) {
+    var object = Object(val);
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable != null) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    throw new TypeError(typeof iterable + " is not iterable");
+  }
+  exports.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+
+  // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+  return exports;
+
+}(
+  // If this script is executing as a CommonJS module, use module.exports
+  // as the regeneratorRuntime namespace. Otherwise create a new empty
+  // object. Either way, the resulting object will be used to initialize
+  // the regeneratorRuntime variable at the top of this file.
+  typeof module === "object" ? module.exports : {}
+));
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, in modern engines
+  // we can explicitly access globalThis. In older engines we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  if (typeof globalThis === "object") {
+    globalThis.regeneratorRuntime = runtime;
+  } else {
+    Function("r", "regeneratorRuntime = r")(runtime);
+  }
+}
+
+</script>
+<script>function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(r) { for (var t = 1; t < arguments.length; t++) { var o = null != arguments[t] ? arguments[t] : {}; t % 2 ? ownKeys(Object(o), !0).forEach(function (t) { _defineProperty(r, t, o[t]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(r, Object.getOwnPropertyDescriptors(o)) : ownKeys(Object(o)).forEach(function (e) { Object.defineProperty(r, e, Object.getOwnPropertyDescriptor(o, e)); }); } return r; }
+function _defineProperty(r, t, o) { return (t = _toPropertyKey(t)) in r ? Object.defineProperty(r, t, { value: o, enumerable: !0, configurable: !0, writable: !0 }) : r[t] = o, r; }
+function _toPropertyKey(r) { var o = _toPrimitive(r, "string"); return "symbol" == typeof o ? o : o + ""; }
+function _toPrimitive(t, e) { if ("object" != typeof t || !t) return t; var r; if ("undefined" != typeof Symbol && void 0 !== (r = t[Symbol.toPrimitive])) { var i = r.call(t, e || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === e ? String : Number)(t); }
+function _toConsumableArray(a) { return _arrayWithoutHoles(a) || _iterableToArray(a) || _unsupportedIterableToArray(a) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { var e = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (Array.isArray(r) && (null == e || e === ("undefined" != typeof Symbol && [][Symbol.iterator]) || e === []["@@iterator"])) return r; if (null != e) { for (var t, o = [], a = e.call(r); !(t = a.next()).done;) o.push(t.value); return o; } }
+function _arrayWithoutHoles(a) { if (Array.isArray(a)) return _arrayLikeToArray(a); }
+function _slicedToArray(e, i) { return _iterableToArrayLimit(e, i) || _unsupportedIterableToArray(e, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArrayLimit(r, t) { var e = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (Array.isArray(r) && (null == e || e === ("undefined" != typeof Symbol && [][Symbol.iterator]) || e === []["@@iterator"])) return r; if (null != e) { var l, n, i, a, u = [], o = !0, f = !1; try { if (i = (e = e.call(r)).next, 0 === t) { if (Object(e) !== e) return; o = !1; } else for (; !(o = (l = i.call(e)).done) && (u.push(l.value), u.length !== t); o = !0); } catch (r) { f = !0, n = r; } finally { try { if (!o && null != e.return && (a = e.return(), Object(a) !== a)) return; } finally { if (f) throw n; } } return u; } }
+function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var r, e, o = "function" == typeof Symbol ? Symbol : {}, n = o.iterator || "@@iterator", a = o.toStringTag || "@@toStringTag"; function i(o, n, a, i) { var u = n && n.prototype instanceof Generator ? n : Generator, f = Object.create(u.prototype); return _regeneratorDefine2(f, "_invoke", function (t, o, n) { var a, i, u, f = 0, p = n || [], y = !1, G = { p: 0, n: 0, v: r, a: l, f: l.bind(r, 4), d: function d(t, e) { return a = t, i = 0, u = r, G.n = e, c; } }; function l(t, o) { for (i = t, u = o, e = 0; !y && f && !n && e < p.length; e++) { var n, a = p[e], l = G.p, F = a[2]; t > 3 ? (n = F === o) && (u = a[(i = a[4]) ? 5 : (i = 3, 3)], a[4] = a[5] = r) : a[0] <= l && ((n = t < 2 && l < a[1]) ? (i = 0, G.v = o, G.n = a[1]) : l < F && (n = t < 3 || a[0] > o || o > F) && (a[4] = t, a[5] = o, G.n = F, i = 0)); } if (n || t > 1) return c; throw y = !0, o; } return function (n, p, F) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && l(p, F), i = p, u = F; (e = i < 2 ? r : u) || !y;) { a || (i ? (i > 1 && (G.n = i < 3 ? -1 : u), l(i, u)) : G.v = u); try { if (f = 2, a) { if (i || (n = "next"), e = a[n]) { if (!(e = e.call(a, u))) throw TypeError("iterator result is not an object"); if (!e.done) return e; u = e.value, i < 2 && (i = 0); } else 1 === i && (e = a.return) && e.call(a), i < 2 && (u = TypeError("The iterator does not provide a '" + n + "' method"), i = 1); a = r; } else if ((e = (y = G.n < 0) ? u : t.call(o, G)) !== c) break; } catch (t) { a = r, i = 1, u = t; } finally { f = 1; } } return { value: e, done: y }; }; }(o, a, i), !0), f; } var c = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} e = Object.getPrototypeOf; var u = [][n] ? e(e([][n]())) : (_regeneratorDefine2(e = {}, n, function () { return this; }), e), f = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(u); function p(r) { return Object.setPrototypeOf ? Object.setPrototypeOf(r, GeneratorFunctionPrototype) : (r.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(r, a, "GeneratorFunction")), r.prototype = Object.create(f), r; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(f, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, a, "GeneratorFunction"), _regeneratorDefine2(f), _regeneratorDefine2(f, a, "Generator"), _regeneratorDefine2(f, n, function () { return this; }), _regeneratorDefine2(f, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: p }; })(); }
+function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function _createForOfIteratorHelper(e, t) { var _n2 = "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"]; if (!_n2) { if (Array.isArray(e) || (_n2 = _unsupportedIterableToArray(e)) || t && e && "number" == typeof e.length) { _n2 && (e = _n2); var o = 0, F = function F() {}; return { s: F, n: function n() { return o >= e.length ? { done: !0 } : { done: !1, value: e[o++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var a, u, i = !0; return { s: function s() { _n2 = _n2.call(e); }, n: function n() { i = !0; var r = _n2.next(); return r.done ? { done: !0 } : { value: r.value, done: i = !1 }; }, e: function e(r) { a = !0, u = r; }, f: function f() { try { i || null == _n2.return || _n2.return(); } finally { if (a) throw u; } } }; }
+function _unsupportedIterableToArray(t, e) { if (t) { if ("string" == typeof t) return _arrayLikeToArray(t, e); var o = {}.toString.call(t).slice(8, -1); return "Object" === o && t.constructor && (o = t.constructor.name), "Map" === o || "Set" === o ? Array.from(t) : "Arguments" === o || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(o) ? _arrayLikeToArray(t, e) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+/* ================== helpers ================== */
+function h(tag, attrs) {
+  var el = document.createElement(tag);
+  for (var k in attrs || {}) {
+    var v = attrs[k];
+    if (v == null || v === false) continue;
+    if (k === 'class') el.className = v;else if (k === 'style') el.style.cssText = v;else if (k === 'html') el.innerHTML = v;else if (k.startsWith('on')) el.addEventListener(k.slice(2), v);else el.setAttribute(k, v === true ? '' : v);
+  }
+  for (var _len = arguments.length, kids = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+    kids[_key - 2] = arguments[_key];
+  }
+  kids.flat(Infinity).forEach(function (c) {
+    if (c == null || c === false) return;
+    el.append(c.nodeType ? c : document.createTextNode(String(c)));
+  });
+  return el;
+}
+var app = document.getElementById('app');
+function render() {
+  app.innerHTML = '';
+  for (var _len2 = arguments.length, nodes = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+    nodes[_key2] = arguments[_key2];
+  }
+  nodes.flat().forEach(function (n) {
+    return n && app.append(n);
+  });
+  window.scrollTo(0, 0);
+}
+var shuffle = function shuffle(a) {
+  a = a.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var _ref = [a[j], a[i]];
+    a[i] = _ref[0];
+    a[j] = _ref[1];
+  }
+  return a;
+};
+var sample = function sample(a, n) {
+  return shuffle(a).slice(0, n);
+};
+var norm = function norm(s) {
+  return String(s || '').toLowerCase().trim().replace(/[.!?,]/g, '').replace(/^(a|an|the|some)\s+/, '').replace(/\s+/g, ' ');
+};
+
+/* ================== storage (safe) ================== */
+var store = {
+  get(k, d) {
+    try {
+      var v = localStorage.getItem(k);
+      return v == null ? d : JSON.parse(v);
+    } catch (e) {
+      return d;
+    }
+  },
+  set(k, v) {
+    try {
+      localStorage.setItem(k, JSON.stringify(v));
+    } catch (e) {}
+  }
+};
+/* ================== profiles (每個小孩一份紀錄) + cloud sync ================== */
+var slow = true,
+  PACE = 1;
+var AVATARS = ['🦁', '🐯', '🐼', '🐰', '🦊', '🐨', '🐸', '🐵', '🦄', '🐧', '🐳', '🦖'];
+// P = { profiles:{id:{name,avatar,stars,hist,slow,pace,voice}}, order:[ids] }
+var P = store.get('yle_profiles', null);
+if (!P) {
+  // 舊版單人紀錄 → 轉成第一位小孩
+  P = {
+    profiles: {},
+    order: []
+  };
+  var oldStars = store.get('yle_stars', 0),
+    oldHist = store.get('yle_hist', []);
+  if (oldStars || oldHist.length) {
+    var id = 'k' + Date.now().toString(36);
+    P.profiles[id] = {
+      name: '小孩 1',
+      avatar: '🦁',
+      stars: oldStars,
+      hist: oldHist,
+      slow: store.get('yle_slow', true),
+      pace: store.get('yle_pace', 1),
+      voice: store.get('yle_voice', '')
+    };
+    P.order.push(id);
+    store.set('yle_cur', id);
+  }
+}
+var curId = store.get('yle_cur', null);
+if (!P.profiles[curId]) curId = P.order[0] || null;
+var prof = function prof() {
+  return P.profiles[curId] || null;
+};
+var cloud = {
+  db: null,
+  ref: null,
+  state: 'local'
+}; // state: local | loading | synced | error
+function applyProfile() {
+  var p = prof();
+  slow = p ? p.slow !== false : true;
+  PACE = p ? p.pace == null ? 1 : p.pace : 1;
+  if (typeof pickVoice === 'function') pickVoice();
+  if (typeof updSpeed === 'function') updSpeed();
+  updHeader();
+}
+function updHeader() {
+  var p = prof();
+  var st = document.getElementById('stars');
+  if (st) st.textContent = '⭐ ' + (p ? p.stars : 0);
+  var kb = document.getElementById('kidBtn');
+  if (kb) kb.textContent = p ? p.avatar + ' ' + p.name : '👤 選擇小孩';
+  var cs = document.getElementById('cloudState');
+  if (cs) {
+    cs.textContent = {
+      local: '💾',
+      loading: '⏳',
+      synced: '☁️',
+      error: '⚠️'
+    }[cloud.state];
+    cs.title = {
+      local: '只存在這台裝置',
+      loading: '同步中…',
+      synced: '已同步到雲端，換裝置登入也看得到',
+      error: '雲端暫時連不上，先存在這台裝置'
+    }[cloud.state];
+  }
+}
+var writing = false,
+  dirty = false;
+function save() {
+  return _save.apply(this, arguments);
+}
+function _save() {
+  _save = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
+    var _t2;
+    return _regenerator().w(function (_context2) {
+      while (1) switch (_context2.p = _context2.n) {
+        case 0:
+          store.set('yle_profiles', P);
+          updHeader();
+          if (cloud.ref) {
+            _context2.n = 1;
+            break;
+          }
+          return _context2.a(2);
+        case 1:
+          if (!writing) {
+            _context2.n = 2;
+            break;
+          }
+          dirty = true;
+          return _context2.a(2);
+        case 2:
+          writing = true;
+          _context2.p = 3;
+        case 4:
+          dirty = false;
+          _context2.n = 5;
+          return cloud.ref.set(JSON.parse(JSON.stringify(P)));
+        case 5:
+          if (dirty) {
+            _context2.n = 4;
+            break;
+          }
+        case 6:
+          cloud.state = 'synced';
+          _context2.n = 8;
+          break;
+        case 7:
+          _context2.p = 7;
+          _t2 = _context2.v;
+          cloud.state = 'error';
+        case 8:
+          writing = false;
+          updHeader();
+        case 9:
+          return _context2.a(2);
+      }
+    }, _callee2, null, [[3, 7]]);
+  }));
+  return _save.apply(this, arguments);
+}
+function addStars(n) {
+  var p = prof();
+  if (!p || !n) return;
+  p.stars = (p.stars || 0) + n;
+  save();
+}
+function setProfField(k, v) {
+  var p = prof();
+  if (!p) return;
+  p[k] = v;
+  save();
+}
+function selectKid(id) {
+  curId = id;
+  store.set('yle_cur', id);
+  applyProfile();
+}
+function initCloud() {
+  return _initCloud.apply(this, arguments);
+}
+function _initCloud() {
+  _initCloud = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
+    var _yield$Promise$all, _yield$Promise$all2, db, user, uid, timer, first, _t3, _t4;
+    return _regenerator().w(function (_context3) {
+      while (1) switch (_context3.p = _context3.n) {
+        case 0:
+          if (!(!window.claude || !window.claude.use)) {
+            _context3.n = 1;
+            break;
+          }
+          return _context3.a(2);
+        case 1:
+          cloud.state = 'loading';
+          updHeader();
+          _context3.p = 2;
+          _context3.n = 3;
+          return Promise.all([window.claude.use('db'), window.claude.use('user')]);
+        case 3:
+          _yield$Promise$all = _context3.v;
+          _yield$Promise$all2 = _slicedToArray(_yield$Promise$all, 2);
+          db = _yield$Promise$all2[0];
+          user = _yield$Promise$all2[1];
+          if (!user) {
+            _context3.n = 5;
+            break;
+          }
+          _context3.n = 4;
+          return user.id();
+        case 4:
+          _t3 = _context3.v;
+          _context3.n = 6;
+          break;
+        case 5:
+          _t3 = null;
+        case 6:
+          uid = _t3;
+          if (!(!db || !uid)) {
+            _context3.n = 7;
+            break;
+          }
+          cloud.state = 'local';
+          updHeader();
+          return _context3.a(2);
+        case 7:
+          cloud.db = db;
+          cloud.ref = db.doc('data/users/' + uid + '/yle');
+          timer = setTimeout(function () {
+            if (cloud.state === 'loading') {
+              cloud.state = 'error';
+              updHeader();
+            }
+          }, 10000);
+          first = true;
+          cloud.ref.onSnapshot(function (snap) {
+            if (snap.metadata.hasPendingWrites || writing) return;
+            if (snap.metadata.fromCache && !first) return;
+            if (!snap.metadata.fromCache) {
+              clearTimeout(timer);
+              cloud.state = 'synced';
+            }
+            if (snap.exists) {
+              var d = snap.data();
+              if (d && d.profiles) {
+                var wasFirst = first;
+                first = false;
+                P = JSON.parse(JSON.stringify(d));
+                P.order = P.order || Object.keys(P.profiles);
+                store.set('yle_profiles', P);
+                if (!P.profiles[curId]) curId = P.order[0] || null;
+                applyProfile();
+                if (onHomeScreen() || wasFirst && !prof()) home();
+              }
+            } else if (!snap.metadata.fromCache && first) {
+              first = false;
+              if (P.order.length) save();
+            }
+            updHeader();
+          }, function (err) {
+            clearTimeout(timer);
+            cloud.state = 'error';
+            updHeader();
+          });
+          _context3.n = 9;
+          break;
+        case 8:
+          _context3.p = 8;
+          _t4 = _context3.v;
+          cloud.state = 'error';
+          updHeader();
+        case 9:
+          return _context3.a(2);
+      }
+    }, _callee3, null, [[2, 8]]);
+  }));
+  return _initCloud.apply(this, arguments);
+}
+function onHomeScreen() {
+  return !!document.querySelector('.welcome, .kidpick');
+}
+
+/* ================== speech ================== */
+var voice = null;
+function pickVoice() {
+  if (!('speechSynthesis' in window)) return;
+  var vs = speechSynthesis.getVoices();
+  var chosen = prof() && prof().voice || '';
+  var us = vs.filter(function (v) {
+    return /en[-_]US/i.test(v.lang);
+  });
+  // 美式發音優先：挑清楚自然的女聲（各平台常見的高品質聲音）
+  var good = /Samantha|Ava|Allison|Susan|Zoe|Google US English|Microsoft (Aria|Jenny|Ava|Emma|Michelle|Zira)|Natural/i;
+  voice = chosen && vs.find(function (v) {
+    return v.name === chosen;
+  }) || us.find(function (v) {
+    return good.test(v.name) && /Natural|Enhanced|Premium|Online/i.test(v.name);
+  }) || us.find(function (v) {
+    return good.test(v.name);
+  }) || us.find(function (v) {
+    return !/Fred|Albert|Bad|Bells|Boing|Bubbles|Cellos|Wobble|Whisper|Zarvox|Trinoids|Organ|Jester|Junior|Ralph|Grandpa|Grandma|Rocko|Shelley|Sandy|Flo|Eddy|Reed/i.test(v.name);
+  }) || us[0] || vs.find(function (v) {
+    return /^en/i.test(v.lang);
+  }) || null;
+}
+function voiceSelect() {
+  if (!('speechSynthesis' in window)) return null;
+  var vs = speechSynthesis.getVoices().filter(function (v) {
+    return /^en/i.test(v.lang);
+  }).sort(function (a, b) {
+    return /en[-_]US/i.test(b.lang) - /en[-_]US/i.test(a.lang) || a.name.localeCompare(b.name);
+  });
+  if (!vs.length) return null;
+  var sel = h('select', {
+    class: 'vsel',
+    onchange: function onchange() {
+      setProfField('voice', sel.value);
+      pickVoice();
+      say('Hello! I like apples and bananas.');
+    }
+  }, vs.map(function (v) {
+    return h('option', {
+      value: v.name,
+      selected: voice && v.name === voice.name
+    }, (/en[-_]US/i.test(v.lang) ? '🇺🇸 ' : /en[-_]GB/i.test(v.lang) ? '🇬🇧 ' : '🌐 ') + v.name);
+  }));
+  return h('div', {
+    class: 'vbox'
+  }, h('b', {
+    class: 'zh'
+  }, '🗣️ 發音聲音：'), sel, h('button', {
+    class: 'mini',
+    onclick: function onclick() {
+      return say('Hello! I like apples and bananas.');
+    }
+  }, '🔊 試聽'));
+}
+if ('speechSynthesis' in window) {
+  pickVoice();
+  speechSynthesis.onvoiceschanged = function () {
+    pickVoice();
+    var vb = document.querySelector('.vbox');
+    if (vb) {
+      var n = voiceSelect();
+      if (n) vb.replaceWith(n);
+    }
+  };
+}
+function say(text, rateOverride) {
+  if (!('speechSynthesis' in window)) {
+    toast('此瀏覽器不支援語音 😢', true);
+    return;
+  }
+  try {
+    speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    if (voice) u.voice = voice;
+    u.lang = voice ? voice.lang : 'en-GB';
+    u.rate = rateOverride || (slow ? 0.72 : 0.92);
+    u.pitch = 1.05;
+    speechSynthesis.speak(u);
+  } catch (e) {}
+}
+function updSpeed() {
+  document.getElementById('speedBtn').textContent = slow ? '🐢 慢速' : '🐇 正常';
+}
+document.getElementById('speedBtn').onclick = function () {
+  slow = !slow;
+  setProfField('slow', slow);
+  updSpeed();
+  say(slow ? 'Slow' : 'Normal speed');
+};
+updSpeed();
+
+/* ================== sounds & toast ================== */
+var actx = null;
+function chime(good) {
+  try {
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    var notes = good ? [660, 880, 1320] : [300, 220];
+    notes.forEach(function (f, i) {
+      var o = actx.createOscillator(),
+        g = actx.createGain();
+      o.type = 'sine';
+      o.frequency.value = f;
+      g.gain.setValueAtTime(0.0001, actx.currentTime + i * 0.11);
+      g.gain.exponentialRampToValueAtTime(0.25, actx.currentTime + i * 0.11 + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + i * 0.11 + 0.25);
+      o.connect(g).connect(actx.destination);
+      o.start(actx.currentTime + i * 0.11);
+      o.stop(actx.currentTime + i * 0.11 + 0.3);
+    });
+  } catch (e) {}
+}
+var tt = null;
+function toast(msg, bad) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (bad ? ' bad' : '');
+  clearTimeout(tt);
+  tt = setTimeout(function () {
+    return t.className = 'toast' + (bad ? ' bad' : '');
+  }, 1100);
+}
+
+/* ================== DATA: vocabulary (Starters word list) ================== */
+var VOCAB = {
+  animals: {
+    zh: '動物',
+    icon: '🐾',
+    w: [['cat', '🐱', '貓'], ['dog', '🐶', '狗'], ['bird', '🐦', '鳥'], ['fish', '🐟', '魚'], ['horse', '🐴', '馬'], ['cow', '🐮', '牛'], ['duck', '🦆', '鴨子'], ['frog', '🐸', '青蛙'], ['goat', '🐐', '山羊'], ['sheep', '🐑', '綿羊'], ['chicken', '🐔', '雞'], ['spider', '🕷️', '蜘蛛'], ['snake', '🐍', '蛇'], ['tiger', '🐯', '老虎'], ['monkey', '🐵', '猴子'], ['elephant', '🐘', '大象'], ['giraffe', '🦒', '長頸鹿'], ['lizard', '🦎', '蜥蜴'], ['mouse', '🐭', '老鼠'], ['crocodile', '🐊', '鱷魚'], ['hippo', '🦛', '河馬'], ['zebra', '🦓', '斑馬']]
+  },
+  food: {
+    zh: '食物',
+    icon: '🍎',
+    w: [['apple', '🍎', '蘋果'], ['banana', '🍌', '香蕉'], ['orange', '🍊', '柳橙'], ['pear', '🍐', '梨子'], ['grapes', '🍇', '葡萄'], ['lemon', '🍋', '檸檬'], ['mango', '🥭', '芒果'], ['watermelon', '🍉', '西瓜'], ['pineapple', '🍍', '鳳梨'], ['coconut', '🥥', '椰子'], ['carrot', '🥕', '紅蘿蔔'], ['potato', '🥔', '馬鈴薯'], ['tomato', '🍅', '番茄'], ['onion', '🧅', '洋蔥'], ['egg', '🥚', '蛋'], ['bread', '🍞', '麵包'], ['cake', '🍰', '蛋糕'], ['ice cream', '🍦', '冰淇淋'], ['chocolate', '🍫', '巧克力'], ['burger', '🍔', '漢堡'], ['chips', '🍟', '薯條'], ['sausage', '🌭', '香腸'], ['rice', '🍚', '米飯'], ['milk', '🥛', '牛奶'], ['juice', '🧃', '果汁'], ['water', '💧', '水']]
+  },
+  colours: {
+    zh: '顏色',
+    icon: '🎨',
+    w: [['red', '', '紅色', '#e53935'], ['blue', '', '藍色', '#1e88e5'], ['green', '', '綠色', '#43a047'], ['yellow', '', '黃色', '#fdd835'], ['orange', '', '橘色', '#fb8c00'], ['pink', '', '粉紅色', '#f48fb1'], ['purple', '', '紫色', '#8e24aa'], ['brown', '', '咖啡色', '#795548'], ['grey', '', '灰色', '#9e9e9e'], ['black', '', '黑色', '#212121'], ['white', '', '白色', '#ffffff']]
+  },
+  numbers: {
+    zh: '數字',
+    icon: '🔢',
+    w: 'one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty'.split(' ').map(function (w, i) {
+      return [w, String(i + 1), String(i + 1)];
+    })
+  },
+  body: {
+    zh: '身體',
+    icon: '👃',
+    w: [['eye', '👁️', '眼睛'], ['ear', '👂', '耳朵'], ['nose', '👃', '鼻子'], ['mouth', '👄', '嘴巴'], ['hand', '✋', '手'], ['arm', '💪', '手臂'], ['leg', '🦵', '腿'], ['foot', '🦶', '腳'], ['hair', '💇', '頭髮'], ['face', '🙂', '臉'], ['head', '🗣️', '頭']]
+  },
+  clothes: {
+    zh: '衣服',
+    icon: '👕',
+    w: [['T-shirt', '👕', 'T恤'], ['shirt', '👔', '襯衫'], ['dress', '👗', '洋裝'], ['jeans', '👖', '牛仔褲'], ['jacket', '🧥', '外套'], ['shoe', '👟', '鞋子'], ['sock', '🧦', '襪子'], ['hat', '👒', '帽子'], ['cap', '🧢', '鴨舌帽'], ['glasses', '👓', '眼鏡'], ['bag', '👜', '包包'], ['watch', '⌚', '手錶']]
+  },
+  family: {
+    zh: '家人',
+    icon: '👨‍👩‍👧',
+    w: [['mum', '👩', '媽媽'], ['dad', '👨', '爸爸'], ['baby', '👶', '嬰兒'], ['brother', '👦', '哥哥/弟弟'], ['sister', '👧', '姊姊/妹妹'], ['grandmother', '👵', '奶奶/外婆'], ['grandfather', '👴', '爺爺/外公'], ['boy', '🧒', '男孩'], ['girl', '👧🏻', '女孩'], ['man', '🧔', '男人'], ['woman', '👱‍♀️', '女人'], ['teacher', '🧑‍🏫', '老師']]
+  },
+  toys: {
+    zh: '玩具運動',
+    icon: '⚽',
+    w: [['ball', '⚽', '球'], ['doll', '🪆', '娃娃'], ['kite', '🪁', '風箏'], ['robot', '🤖', '機器人'], ['train', '🚂', '火車'], ['car', '🚗', '汽車'], ['bike', '🚲', '腳踏車'], ['boat', '⛵', '船'], ['plane', '✈️', '飛機'], ['teddy bear', '🧸', '泰迪熊'], ['balloon', '🎈', '氣球'], ['guitar', '🎸', '吉他'], ['piano', '🎹', '鋼琴'], ['baseball', '⚾', '棒球'], ['basketball', '🏀', '籃球'], ['tennis', '🎾', '網球'], ['game', '🎮', '遊戲']]
+  },
+  school: {
+    zh: '學校',
+    icon: '🎒',
+    w: [['book', '📖', '書'], ['pen', '🖊️', '原子筆'], ['pencil', '✏️', '鉛筆'], ['ruler', '📏', '尺'], ['crayon', '🖍️', '蠟筆'], ['bag', '🎒', '書包'], ['paper', '📄', '紙'], ['computer', '💻', '電腦'], ['chair', '🪑', '椅子'], ['clock', '🕐', '時鐘'], ['door', '🚪', '門'], ['window', '🪟', '窗戶'], ['picture', '🖼️', '圖畫'], ['teacher', '🧑‍🏫', '老師']]
+  },
+  home: {
+    zh: '家裡和外面',
+    icon: '🏠',
+    w: [['house', '🏠', '房子'], ['bed', '🛏️', '床'], ['bath', '🛁', '浴缸'], ['sofa', '🛋️', '沙發'], ['lamp', '💡', '燈'], ['phone', '📱', '電話'], ['TV', '📺', '電視'], ['tree', '🌳', '樹'], ['flower', '🌸', '花'], ['sun', '☀️', '太陽'], ['beach', '🏖️', '海灘'], ['sea', '🌊', '海'], ['shell', '🐚', '貝殼'], ['street', '🛣️', '街道'], ['park', '🏞️', '公園']]
+  }
+};
+function pic(it, size) {
+  if (it[3]) return h('span', {
+    class: 'sw',
+    style: `background:${it[3]};${size ? `width:${size}px;height:${size}px` : ''}`
+  });
+  if (/^\d+$/.test(it[1])) return h('span', {
+    class: 'num',
+    style: size ? `font-size:${size}px` : ''
+  }, it[1]);
+  return h('span', {}, it[1]);
+}
+var COLOURS = {
+  red: '#e53935',
+  blue: '#1e88e5',
+  green: '#43a047',
+  yellow: '#fdd835',
+  orange: '#fb8c00',
+  pink: '#f48fb1',
+  purple: '#8e24aa',
+  brown: '#795548',
+  grey: '#9e9e9e',
+  black: '#212121'
+};
+
+/* ================== DATA: Listening ================== */
+// Part 1 – listen and draw lines (match names to people)
+var L1 = [{
+  title: 'In the park 在公園',
+  people: [['p1', '👧🪁'], ['p2', '👦⚽'], ['p3', '👩📖'], ['p4', '👴🐶'], ['p5', '👧🍦'], ['p6', '👦🚲']],
+  names: [['Lucy', 'p1', 'Can you see the girl with the kite? That\'s Lucy. She\'s flying her kite.'], ['Ben', 'p6', 'Look at the boy on the bike. His name is Ben.'], ['May', 'p5', 'May is eating an ice cream. She loves ice cream!'], ['Tom', 'p2', 'Tom is the boy who is kicking a ball.'], ['Pat', 'p4', 'The man with the dog is Pat. He is Lucy\'s grandfather.']]
+}, {
+  title: 'At school 在學校',
+  people: [['p1', '👦✏️'], ['p2', '👧📖'], ['p3', '🧑‍🏫'], ['p4', '👦🍎'], ['p5', '👧🎨'], ['p6', '👦💻']],
+  names: [['Sam', 'p6', 'Sam is playing a game on the computer.'], ['Jill', 'p5', 'Jill is the girl who is painting a picture.'], ['Nick', 'p4', 'Look at Nick. He is eating an apple.'], ['Kim', 'p2', 'Kim is reading a book. She likes reading.'], ['Ann', 'p3', 'Ann is the teacher. She is standing next to the board.']]
+}, {
+  title: 'At the beach 在海邊',
+  people: [['p1', '🏊‍♂️'], ['p2', '👧🐚'], ['p3', '👨🎣'], ['p4', '👩👓'], ['p5', '👦⛵'], ['p6', '👧🎈']],
+  names: [['Dan', 'p1', 'Dan is swimming in the sea.'], ['Eva', 'p6', 'Eva has got a balloon. It\'s a red balloon.'], ['Bill', 'p3', 'The man who is fishing is Bill.'], ['Alex', 'p5', 'Alex is the boy with the boat.'], ['Grace', 'p4', 'Grace is the woman with the glasses.']]
+}];
+// Part 2 – listen and write (names & numbers)
+var L2 = [{
+  q: 'The girl\'s name is',
+  audio: 'Hello! What\'s your name? My name is Kim. Kim? How do you spell that? K, I, M.',
+  ans: ['kim']
+}, {
+  q: 'How old is Tom?',
+  audio: 'How old are you, Tom? I\'m seven. Seven? Yes, I\'m seven years old.',
+  ans: ['7', 'seven']
+}, {
+  q: 'The dog\'s name is',
+  audio: 'What\'s your dog\'s name? His name is Rex. How do you spell that? R, E, X.',
+  ans: ['rex']
+}, {
+  q: 'How many books has she got?',
+  audio: 'How many books have you got? I\'ve got ten books. Ten!',
+  ans: ['10', 'ten']
+}, {
+  q: 'The teacher is Mrs',
+  audio: 'What\'s your teacher\'s name? It\'s Mrs Bird. B, I, R, D.',
+  ans: ['bird']
+}, {
+  q: 'How many cats are there?',
+  audio: 'How many cats are there in your house? There are three cats.',
+  ans: ['3', 'three']
+}, {
+  q: 'The boy\'s name is',
+  audio: 'What\'s your name? I\'m Matt. Matt? Yes. M, A, T, T.',
+  ans: ['matt']
+}, {
+  q: 'How old is the baby?',
+  audio: 'How old is your baby sister? She\'s one. Only one!',
+  ans: ['1', 'one']
+}, {
+  q: 'He lives in ______ Street',
+  audio: 'Where do you live? I live in Park Street. P, A, R, K.',
+  ans: ['park']
+}, {
+  q: 'How many apples are on the table?',
+  audio: 'How many apples are on the table? Let\'s count. There are nine apples.',
+  ans: ['9', 'nine']
+}, {
+  q: 'Her friend\'s name is',
+  audio: 'Who is your best friend? Her name is Sue. S, U, E.',
+  ans: ['sue']
+}, {
+  q: 'What number is the house?',
+  audio: 'What number is your house? It\'s number fifteen.',
+  ans: ['15', 'fifteen']
+}];
+// Part 3 – listen and tick the box (choose the picture)
+var L3 = [{
+  q: 'What is Ann eating?',
+  audio: 'Ann, what are you eating? I\'m eating a banana. I love bananas!',
+  o: ['🍎', '🍌', '🍇'],
+  a: 1
+}, {
+  q: 'Which is Ben\'s pet?',
+  audio: 'Ben, have you got a pet? Yes, I\'ve got a fish. It\'s orange.',
+  o: ['🐶', '🐱', '🐟'],
+  a: 2
+}, {
+  q: 'What is Lucy\'s favourite toy?',
+  audio: 'Lucy, what\'s your favourite toy? My robot! I play with it every day.',
+  o: ['🤖', '🧸', '🪁'],
+  a: 0
+}, {
+  q: 'What is Dad doing?',
+  audio: 'Where is Dad? Is he watching TV? No, he isn\'t. He\'s reading a book.',
+  o: ['📺', '📖', '🎸'],
+  a: 1
+}, {
+  q: 'What is in Sam\'s bag?',
+  audio: 'Sam, what\'s in your bag? Is it your lunch? No! It\'s my new ball.',
+  o: ['🍔', '⚽', '📚'],
+  a: 1
+}, {
+  q: 'What colour is May\'s dress?',
+  audio: 'May, I like your dress. Is it red? No, it isn\'t. It\'s blue.',
+  o: ['🔴', '🔵', '🟢'],
+  a: 1
+}, {
+  q: 'Which animal does Tom like best?',
+  audio: 'Tom, do you like giraffes? Yes, but my favourite animal is the elephant!',
+  o: ['🦒', '🐘', '🐵'],
+  a: 1
+}, {
+  q: 'What does Grandma want to drink?',
+  audio: 'Grandma, would you like some juice? No, thank you. I\'d like some milk, please.',
+  o: ['🧃', '🥛', '💧'],
+  a: 1
+}, {
+  q: 'How many kites can you see?',
+  audio: 'How many kites can you see? One, two, three. Three kites!',
+  o: ['🪁', '🪁🪁', '🪁🪁🪁'],
+  a: 2
+}, {
+  q: 'What does Nick play?',
+  audio: 'Nick, do you play tennis? No, I don\'t. I play basketball with my brother.',
+  o: ['🎾', '🏀', '⚽'],
+  a: 1
+}, {
+  q: 'What is Kim\'s new thing?',
+  audio: 'Kim, is that your new hat? No, it\'s my brother\'s hat. This is my new jacket!',
+  o: ['👒', '🧥', '👟'],
+  a: 1
+}, {
+  q: 'What is Mum\'s favourite fruit?',
+  audio: 'Mum, do you like oranges? Yes, but I love watermelon!',
+  o: ['🍊', '🍉', '🍐'],
+  a: 1
+}];
+// Part 4 – listen and colour
+var L4 = [{
+  title: 'My toys 我的玩具',
+  objs: [['ball', '⚽'], ['kite', '🪁'], ['car', '🚗'], ['fish', '🐟'], ['flower', '🌸'], ['cat', '🐱']],
+  inst: [['ball', 'red', 'Can you see the ball? Colour the ball red.'], ['kite', 'yellow', 'Now colour the kite yellow.'], ['car', 'blue', 'Look at the car. Colour it blue.'], ['fish', 'orange', 'There\'s a fish. Colour the fish orange.'], ['flower', 'purple', 'And the flower? Colour it purple.']]
+}, {
+  title: 'In my room 我的房間',
+  objs: [['balloon', '🎈'], ['teddy bear', '🧸'], ['bike', '🚲'], ['chair', '🪑'], ['bird', '🐦'], ['tree', '🌳']],
+  inst: [['balloon', 'green', 'Colour the balloon green.'], ['teddy bear', 'brown', 'Can you see the teddy bear? Colour it brown.'], ['bike', 'pink', 'Now the bike. Colour the bike pink.'], ['chair', 'grey', 'Colour the chair grey.'], ['bird', 'blue', 'And the bird? Make it blue.']]
+}, {
+  title: 'On the farm 在農場',
+  objs: [['duck', '🦆'], ['train', '🚂'], ['bag', '🎒'], ['cap', '🧢'], ['dog', '🐶'], ['book', '📖']],
+  inst: [['duck', 'yellow', 'Look at the duck. Colour it yellow.'], ['train', 'red', 'Colour the train red.'], ['bag', 'green', 'Can you see the bag? Colour the bag green.'], ['cap', 'black', 'Now colour the cap black.'], ['dog', 'orange', 'And the dog? Colour the dog orange.']]
+}];
+
+/* ================== DATA: Reading & Writing ================== */
+// Part 1 – look and read, tick or cross
+var RW1 = [['🐱', 'This is a cat.', 1], ['🐶', 'This is a horse.', 0], ['🍌', 'This is a banana.', 1], ['🚲', 'This is a bike.', 1], ['🪁', 'This is a ball.', 0], ['🦒', 'This is a giraffe.', 1], ['🐘', 'This is a hippo.', 0], ['🍇', 'These are grapes.', 1], ['🧦', 'These are socks.', 1], ['🐸', 'This is a lizard.', 0], ['🎸', 'This is a piano.', 0], ['🛏️', 'This is a bed.', 1], ['🕷️', 'This is a spider.', 1], ['🍦', 'This is a burger.', 0], ['👓', 'These are glasses.', 1], ['🚂', 'This is a plane.', 0], ['🐍', 'This is a snake.', 1], ['🥕', 'This is a potato.', 0], ['🐵', 'This is a monkey.', 1], ['🥚', 'This is an egg.', 1]];
+// Part 2 – look at the picture, write yes or no
+var RW2 = [{
+  scene: ['👧🪁', '👦⚽', '🐶', '🐶', '🌳', '🌳', '🌳', '🐦', '🍦'],
+  st: [['There are two dogs.', 1], ['The girl has got a kite.', 1], ['There are four trees.', 0], ['The boy has got a ball.', 1], ['There are three birds.', 0]]
+}, {
+  scene: ['🐱', '🍎', '🍎', '🍎', '🍌', '🪑', '🪑', '📺', '🧸'],
+  st: [['There are three apples.', 1], ['There is one chair.', 0], ['There is a TV.', 1], ['There are two bananas.', 0], ['There is a cat.', 1]]
+}, {
+  scene: ['⛵', '⛵', '🐟', '🐟', '🐟', '🐟', '🏊‍♂️', '🐚', '☀️', '🦆'],
+  st: [['There are four fish.', 1], ['There are three boats.', 0], ['The sun is in the picture.', 1], ['A boy is swimming.', 1], ['There are two ducks.', 0]]
+}];
+// Part 3 – look at the pictures, spell the word
+var RW3 = [['cat', '🐱'], ['dog', '🐶'], ['fish', '🐟'], ['duck', '🦆'], ['frog', '🐸'], ['bird', '🐦'], ['goat', '🐐'], ['ball', '⚽'], ['kite', '🪁'], ['bike', '🚲'], ['cake', '🍰'], ['egg', '🥚'], ['milk', '🥛'], ['hat', '👒'], ['bag', '🎒'], ['book', '📖'], ['pen', '🖊️'], ['bed', '🛏️'], ['tiger', '🐯'], ['horse', '🐴'], ['apple', '🍎'], ['lemon', '🍋'], ['doll', '🪆'], ['train', '🚂'], ['sock', '🧦'], ['nose', '👃'], ['hand', '✋'], ['chair', '🪑'], ['door', '🚪'], ['tree', '🌳'], ['snake', '🐍'], ['mouse', '🐭'], ['sheep', '🐑'], ['robot', '🤖'], ['boat', '⛵'], ['clock', '🕐']];
+// Part 4 – read the text, choose a word from the box
+var RW4 = [{
+  title: 'What am I? 猜猜我是誰？',
+  text: 'I am a small animal. I live in a house with a family. I have got four {legs} and a long {tail}. I like drinking {milk} and I love eating {fish}! In the day, I sleep on the {bed}. What am I? I am a cat!',
+  bank: [['legs', '🦵'], ['tail', '〰️'], ['milk', '🥛'], ['fish', '🐟'], ['bed', '🛏️'], ['cake', '🍰'], ['shoes', '👟'], ['trees', '🌳']]
+}, {
+  title: 'Frogs 青蛙',
+  text: 'Frogs are small animals. They are green or {brown}. They live near {water}. Frogs have got big {eyes} and long {legs}. They can jump! Frogs like eating {spiders}.',
+  bank: [['brown', '🟤'], ['water', '💧'], ['eyes', '👀'], ['legs', '🦵'], ['spiders', '🕷️'], ['hair', '💇'], ['chocolate', '🍫'], ['bikes', '🚲']]
+}, {
+  title: 'Elephants 大象',
+  text: 'Elephants are very big animals. They are {grey}. They have got two big {ears} and a very long {nose}. Elephants like eating {fruit} and they drink lots of {water}.',
+  bank: [['grey', '⚪'], ['ears', '👂'], ['nose', '👃'], ['fruit', '🍉'], ['water', '💧'], ['arms', '💪'], ['pink', '🩷'], ['sausages', '🌭']]
+}];
+// Part 5 – look at the pictures, answer the questions (one word)
+var RW5 = [{
+  scene: ['👦⚽', '🌳'],
+  q: 'What has the boy got?',
+  pre: 'a',
+  ans: ['ball', 'football']
+}, {
+  scene: ['🐦', '🐦', '🐦', '🌳'],
+  q: 'How many birds are there?',
+  pre: '',
+  ans: ['3', 'three']
+}, {
+  scene: ['👧📖'],
+  q: 'What is the girl reading?',
+  pre: 'a',
+  ans: ['book']
+}, {
+  scene: ['🐱🛏️'],
+  q: 'Where is the cat sleeping?',
+  pre: 'on the',
+  ans: ['bed']
+}, {
+  scene: ['👩🍎'],
+  q: 'What is the woman eating?',
+  pre: 'an',
+  ans: ['apple']
+}, {
+  scene: ['👦🚲'],
+  q: 'What is the boy riding?',
+  pre: 'a',
+  ans: ['bike', 'bicycle']
+}, {
+  scene: ['🐶', '🐶'],
+  q: 'How many dogs are there?',
+  pre: '',
+  ans: ['2', 'two']
+}, {
+  scene: ['👧🎈'],
+  q: 'What has the girl got?',
+  pre: 'a',
+  ans: ['balloon']
+}, {
+  scene: ['👨🎸'],
+  q: 'What is the man playing?',
+  pre: 'the',
+  ans: ['guitar']
+}, {
+  scene: ['🐟', '🐟', '🐟', '🐟', '🐟'],
+  q: 'How many fish are there?',
+  pre: '',
+  ans: ['5', 'five']
+}, {
+  scene: ['👵🍌'],
+  q: 'What is Grandma eating?',
+  pre: 'a',
+  ans: ['banana']
+}, {
+  scene: ['👦🪁', '☀️'],
+  q: 'What is the boy flying?',
+  pre: 'a',
+  ans: ['kite']
+}];
+var PARTS = {
+  L1: {
+    sec: 'L',
+    ic: '✏️',
+    en: 'Listening Part 1 – Listen and draw lines.',
+    zh: '聽力第1部分：聽聽看，把名字連到正確的人'
+  },
+  L2: {
+    sec: 'L',
+    ic: '🔤',
+    en: 'Listening Part 2 – Read the question. Listen and write a name or a number.',
+    zh: '聽力第2部分：聽完寫下名字（會拼出來）或數字'
+  },
+  L3: {
+    sec: 'L',
+    ic: '☑️',
+    en: 'Listening Part 3 – Listen and tick the box.',
+    zh: '聽力第3部分：聽完選出正確的圖'
+  },
+  L4: {
+    sec: 'L',
+    ic: '🖍️',
+    en: 'Listening Part 4 – Listen and colour.',
+    zh: '聽力第4部分：先選蠟筆，再點圖畫上色'
+  },
+  RW1: {
+    sec: 'RW',
+    ic: '✅',
+    en: 'Reading & Writing Part 1 – Look and read. Put a tick or a cross.',
+    zh: '讀寫第1部分：句子和圖一樣打 ✓，不一樣打 ✗'
+  },
+  RW2: {
+    sec: 'RW',
+    ic: '🖼️',
+    en: 'Reading & Writing Part 2 – Look and read. Write yes or no.',
+    zh: '讀寫第2部分：看圖讀句子，選 yes 或 no'
+  },
+  RW3: {
+    sec: 'RW',
+    ic: '🔠',
+    en: 'Reading & Writing Part 3 – Look at the pictures. Look at the letters. Write the words.',
+    zh: '讀寫第3部分：看圖，把字母排成正確的單字'
+  },
+  RW4: {
+    sec: 'RW',
+    ic: '📖',
+    en: 'Reading & Writing Part 4 – Read this. Choose a word from the box.',
+    zh: '讀寫第4部分：讀短文，點空格再選字填入'
+  },
+  RW5: {
+    sec: 'RW',
+    ic: '💬',
+    en: 'Reading & Writing Part 5 – Look at the pictures and read the questions. Write one-word answers.',
+    zh: '讀寫第5部分：看圖回答，只寫一個字'
+  }
+};
+
+/* ================== question renderers ================== */
+function audioBar(text, label) {
+  return h('div', {
+    class: 'audio'
+  }, h('button', {
+    class: 'play',
+    onclick: function onclick() {
+      return say(text);
+    }
+  }, '🔊 ', label || '播放'), h('button', {
+    class: 'play slow',
+    onclick: function onclick() {
+      return say(text, 0.6);
+    }
+  }, '🐢 更慢'));
+}
+/* ---------- timed listening (simulate exam pauses) ---------- */
+// 0 = 不計時（自己按）, 1 = 標準考試時間, 1.5 = 放慢一點, 2 = 慢很多
+var sleep = function sleep(ms) {
+  return new Promise(function (r) {
+    return setTimeout(r, ms);
+  });
+};
+var curUtter = null;
+function speakP(text) {
+  return new Promise(function (res) {
+    if (!('speechSynthesis' in window)) return setTimeout(res, 1500);
+    var done = false;
+    var fin = function fin() {
+      if (!done) {
+        done = true;
+        clearTimeout(t);
+        res();
+      }
+    };
+    try {
+      speechSynthesis.cancel();
+    } catch (e) {}
+    var u = new SpeechSynthesisUtterance(text);
+    if (voice) u.voice = voice;
+    u.lang = voice ? voice.lang : 'en-US';
+    u.rate = slow ? 0.72 : 0.92;
+    u.pitch = 1.05;
+    u.onend = fin;
+    u.onerror = fin;
+    curUtter = u;
+    var t = setTimeout(fin, (text.split(/\s+/).length * 0.9 / u.rate + 3) * 1000);
+    try {
+      speechSynthesis.speak(u);
+    } catch (e) {
+      fin();
+    }
+  });
+}
+function runScript(steps, statusEl, onDone) {
+  var cancelled = false;
+  var alive = function alive() {
+    return !cancelled && document.body.contains(statusEl);
+  };
+  var ctl = {
+    cancel() {
+      if (cancelled) return;
+      cancelled = true;
+      try {
+        speechSynthesis.cancel();
+      } catch (e) {}
+    }
+  };
+  _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+    var _iterator, _step, st, left, _t;
+    return _regenerator().w(function (_context) {
+      while (1) switch (_context.p = _context.n) {
+        case 0:
+          _iterator = _createForOfIteratorHelper(steps);
+          _context.p = 1;
+          _iterator.s();
+        case 2:
+          if ((_step = _iterator.n()).done) {
+            _context.n = 10;
+            break;
+          }
+          st = _step.value;
+          if (alive()) {
+            _context.n = 3;
+            break;
+          }
+          return _context.a(2);
+        case 3:
+          if (!(st.say != null)) {
+            _context.n = 5;
+            break;
+          }
+          statusEl.className = 'timer play';
+          statusEl.textContent = st.label || '🎧 播放中…';
+          _context.n = 4;
+          return speakP(st.say);
+        case 4:
+          _context.n = 9;
+          break;
+        case 5:
+          left = Math.max(1, Math.round(st.pause * PACE));
+        case 6:
+          if (!(left > 0)) {
+            _context.n = 9;
+            break;
+          }
+          if (alive()) {
+            _context.n = 7;
+            break;
+          }
+          return _context.a(2);
+        case 7:
+          statusEl.className = 'timer wait' + (left <= 3 && st.answer ? ' hurry' : '');
+          statusEl.textContent = (st.label || '✏️ 作答時間') + '　⏳ ' + left + ' 秒';
+          _context.n = 8;
+          return sleep(1000);
+        case 8:
+          left--;
+          _context.n = 6;
+          break;
+        case 9:
+          _context.n = 2;
+          break;
+        case 10:
+          _context.n = 12;
+          break;
+        case 11:
+          _context.p = 11;
+          _t = _context.v;
+          _iterator.e(_t);
+        case 12:
+          _context.p = 12;
+          _iterator.f();
+          return _context.f(12);
+        case 13:
+          if (alive()) {
+            statusEl.className = 'timer wait';
+            statusEl.textContent = '⏰ 時間到！';
+            onDone();
+          }
+        case 14:
+          return _context.a(2);
+      }
+    }, _callee, null, [[1, 11, 12, 13]]);
+  }))();
+  return ctl;
+}
+function paceSelect() {
+  var opts = [[1, '⏱️ 標準考試時間'], [1.5, '🐢 放慢一點（停頓 ×1.5）'], [2, '🐌 慢很多（停頓 ×2）'], [0, '✋ 不計時（自己按下一題）']];
+  var sel = h('select', {
+    class: 'vsel',
+    onchange: function onchange() {
+      PACE = Number(sel.value);
+      setProfField('pace', PACE);
+    }
+  }, opts.map(function (_ref3) {
+    var _ref4 = _slicedToArray(_ref3, 2),
+      v = _ref4[0],
+      t = _ref4[1];
+    return h('option', {
+      value: v,
+      selected: PACE === v
+    }, t);
+  }));
+  return h('div', {
+    class: 'vbox'
+  }, h('b', {
+    class: 'zh'
+  }, '🎧 聽力節奏：'), sel, h('span', {
+    class: 'sub zh'
+  }, '練習與模擬考都適用'));
+}
+var R = {};
+R.pick = function (d) {
+  var opts = shuffle(d.o.map(function (e, i) {
+    return {
+      e,
+      ok: i === d.a
+    };
+  }));
+  var sel = null;
+  var btns = opts.map(function (o, i) {
+    return h('button', {
+      class: 'opt',
+      onclick: function onclick() {
+        sel = i;
+        btns.forEach(function (b, j) {
+          return b.classList.toggle('sel', j === i);
+        });
+      }
+    }, o.e);
+  });
+  return {
+    el: h('div', {}, audioBar(d.audio), h('div', {
+      class: 'qtext'
+    }, d.q), h('div', {
+      class: 'opts'
+    }, btns)),
+    autoplay: d.audio,
+    transcript: d.audio,
+    script: function script() {
+      return [{
+        say: 'Listen and tick the box. ' + d.q,
+        label: '🎧 題目'
+      }, {
+        pause: 3,
+        label: '👀 先看圖'
+      }, {
+        say: d.audio,
+        label: '🎧 第一次播放'
+      }, {
+        pause: 5,
+        answer: 1
+      }, {
+        say: 'Listen again.',
+        label: '🔁 再聽一次'
+      }, {
+        say: d.audio,
+        label: '🎧 第二次播放'
+      }, {
+        pause: 5,
+        answer: 1
+      }];
+    },
+    grade(show) {
+      var ok = sel != null && opts[sel].ok;
+      if (show) btns.forEach(function (b, j) {
+        if (opts[j].ok) b.classList.add('right');else if (j === sel) b.classList.add('wrong');
+      });
+      return {
+        got: ok ? 1 : 0,
+        total: 1,
+        review: [{
+          q: d.q,
+          your: sel == null ? '（未作答）' : opts[sel].e,
+          correct: opts.find(function (o) {
+            return o.ok;
+          }).e,
+          ok
+        }]
+      };
+    }
+  };
+};
+R.write = function (d) {
+  var inp = h('input', {
+    class: 'ans',
+    autocomplete: 'off',
+    autocapitalize: 'off',
+    spellcheck: 'false',
+    placeholder: '寫這裡'
+  });
+  var el = h('div', {}, d.audio ? audioBar(d.audio) : null, d.scene ? h('div', {
+    class: 'scene'
+  }, d.scene.map(function (s) {
+    return h('span', {}, s);
+  })) : null, h('div', {
+    class: 'qtext'
+  }, d.q), h('div', {
+    style: 'text-align:center;font-size:24px;font-weight:700'
+  }, d.pre ? d.pre + ' ' : '', inp));
+  return {
+    el,
+    autoplay: d.audio,
+    transcript: d.audio,
+    script: d.audio ? function () {
+      return [{
+        say: 'Read the question. Listen and write a name or a number.',
+        label: '🎧 題目說明'
+      }, {
+        pause: 3,
+        label: '👀 先看題目'
+      }, {
+        say: d.audio,
+        label: '🎧 第一次播放'
+      }, {
+        pause: 10,
+        answer: 1
+      }, {
+        say: 'Listen again.',
+        label: '🔁 再聽一次'
+      }, {
+        say: d.audio,
+        label: '🎧 第二次播放'
+      }, {
+        pause: 5,
+        answer: 1
+      }];
+    } : null,
+    grade(show) {
+      var ok = d.ans.includes(norm(inp.value));
+      if (show) {
+        inp.classList.add(ok ? 'right' : 'wrong');
+        inp.disabled = true;
+      }
+      return {
+        got: ok ? 1 : 0,
+        total: 1,
+        review: [{
+          q: d.q,
+          your: inp.value || '（未作答）',
+          correct: d.ans[0],
+          ok
+        }]
+      };
+    }
+  };
+};
+R.tf = function (d) {
+  var sel = null;
+  var _d = _slicedToArray(d, 3),
+    e = _d[0],
+    s = _d[1],
+    a = _d[2];
+  var b1 = h('button', {
+    onclick: function onclick() {
+      sel = 1;
+      b1.classList.add('sel');
+      b0.classList.remove('sel');
+    }
+  }, '✔️');
+  var b0 = h('button', {
+    onclick: function onclick() {
+      sel = 0;
+      b0.classList.add('sel');
+      b1.classList.remove('sel');
+    }
+  }, '❌');
+  return {
+    el: h('div', {}, h('div', {
+      class: 'bigE'
+    }, e), h('div', {
+      class: 'sentence'
+    }, s, ' ', h('button', {
+      class: 'mini',
+      onclick: function onclick() {
+        return say(s);
+      }
+    }, '🔊')), h('div', {
+      class: 'tf'
+    }, b1, b0)),
+    grade(show) {
+      var ok = sel === a;
+      if (show) {
+        (a ? b1 : b0).classList.add('right');
+        if (sel != null && !ok) (sel ? b1 : b0).classList.add('wrong');
+      }
+      return {
+        got: ok ? 1 : 0,
+        total: 1,
+        review: [{
+          q: e + ' ' + s,
+          your: sel == null ? '（未作答）' : sel ? '✔' : '✘',
+          correct: a ? '✔' : '✘',
+          ok
+        }]
+      };
+    }
+  };
+};
+R.yn = function (d) {
+  var sel = d.st.map(function () {
+    return null;
+  });
+  var rows = d.st.map(function (_ref5, i) {
+    var _ref6 = _slicedToArray(_ref5, 2),
+      s = _ref6[0],
+      a = _ref6[1];
+    var y = h('button', {
+      onclick: function onclick() {
+        sel[i] = 1;
+        y.classList.add('sel');
+        n.classList.remove('sel');
+      }
+    }, 'yes');
+    var n = h('button', {
+      onclick: function onclick() {
+        sel[i] = 0;
+        n.classList.add('sel');
+        y.classList.remove('sel');
+      }
+    }, 'no');
+    return {
+      row: h('div', {
+        class: 'yn'
+      }, h('div', {
+        class: 's'
+      }, i + 1 + '. ' + s, ' ', h('button', {
+        class: 'mini',
+        onclick: function onclick() {
+          return say(s);
+        }
+      }, '🔊')), y, n),
+      y,
+      n
+    };
+  });
+  return {
+    el: h('div', {}, h('div', {
+      class: 'scene'
+    }, d.scene.map(function (s) {
+      return h('span', {}, s);
+    })), rows.map(function (r) {
+      return r.row;
+    })),
+    grade(show) {
+      var got = 0;
+      var review = [];
+      d.st.forEach(function (_ref7, i) {
+        var _ref8 = _slicedToArray(_ref7, 2),
+          s = _ref8[0],
+          a = _ref8[1];
+        var ok = sel[i] === a;
+        if (ok) got++;
+        if (show) {
+          (a ? rows[i].y : rows[i].n).classList.add('right');
+          if (sel[i] != null && !ok) (sel[i] ? rows[i].y : rows[i].n).classList.add('wrong');
+        }
+        review.push({
+          q: s,
+          your: sel[i] == null ? '（未作答）' : sel[i] ? 'yes' : 'no',
+          correct: a ? 'yes' : 'no',
+          ok
+        });
+      });
+      return {
+        got,
+        total: d.st.length,
+        review
+      };
+    }
+  };
+};
+R.spell = function (d, ctx) {
+  var _d2 = _slicedToArray(d, 2),
+    word = _d2[0],
+    e = _d2[1];
+  var letters = word.split('');
+  var mix = shuffle(letters);
+  var tries = 0;
+  while (mix.join('') === word && word.length > 1 && tries++ < 10) mix = shuffle(letters);
+  var filled = letters.map(function () {
+    return null;
+  });
+  var slots = letters.map(function (_, i) {
+    return h('div', {
+      class: 'slot',
+      onclick: function onclick() {
+        if (filled[i] != null) {
+          tiles[filled[i]].disabled = false;
+          filled[i] = null;
+          upd();
+        }
+      }
+    });
+  });
+  var tiles = mix.map(function (L, ti) {
+    return h('button', {
+      class: 'tile',
+      onclick: function onclick() {
+        var i = filled.indexOf(null);
+        if (i < 0) return;
+        filled[i] = ti;
+        tiles[ti].disabled = true;
+        upd();
+      }
+    }, L);
+  });
+  function upd() {
+    slots.forEach(function (s, i) {
+      s.textContent = filled[i] == null ? '' : mix[filled[i]];
+      s.classList.toggle('f', filled[i] != null);
+    });
+  }
+  var got = function got() {
+    return filled.map(function (t) {
+      return t == null ? '_' : mix[t];
+    }).join('');
+  };
+  return {
+    el: h('div', {}, h('div', {
+      class: 'bigE'
+    }, e), ctx.mode === 'practice' ? h('div', {
+      style: 'text-align:center'
+    }, h('button', {
+      class: 'mini',
+      onclick: function onclick() {
+        return say(word);
+      }
+    }, '🔊 提示：聽單字')) : null, h('div', {
+      class: 'slots'
+    }, slots), h('div', {
+      class: 'tiles'
+    }, tiles), h('div', {
+      style: 'text-align:center;margin-top:10px'
+    }, h('button', {
+      class: 'ghost',
+      onclick: function onclick() {
+        filled.fill(null);
+        tiles.forEach(function (t) {
+          return t.disabled = false;
+        });
+        upd();
+      }
+    }, '↺ 重來'))),
+    grade(show) {
+      var ok = got() === word;
+      if (show) slots.forEach(function (s) {
+        return s.classList.add(ok ? 'right' : 'wrong');
+      });
+      return {
+        got: ok ? 1 : 0,
+        total: 1,
+        review: [{
+          q: e + ' 拼字',
+          your: got(),
+          correct: word,
+          ok
+        }]
+      };
+    }
+  };
+};
+R.gap = function (d) {
+  var answers = [];
+  var gaps = [];
+  var act = 0;
+  var story = h('div', {
+    class: 'story'
+  });
+  d.text.split(/(\{[^}]+\})/).forEach(function (part) {
+    var m = part.match(/^\{(.+)\}$/);
+    if (m) {
+      var idx = answers.length;
+      answers.push(m[1]);
+      var g = h('span', {
+        class: 'gap',
+        onclick: function onclick() {
+          act = idx;
+          mark();
+        }
+      }, '(' + (idx + 1) + ') ____');
+      g.dataset.v = '';
+      gaps.push(g);
+      story.append(g);
+    } else story.append(part);
+  });
+  var bankBtns = shuffle(d.bank).map(function (_ref9) {
+    var _ref0 = _slicedToArray(_ref9, 2),
+      w = _ref0[0],
+      e = _ref0[1];
+    return h('button', {
+      onclick: function onclick() {
+        if (act == null) return;
+        gaps[act].dataset.v = w;
+        gaps[act].textContent = w;
+        say(w);
+        var nx = gaps.findIndex(function (g) {
+          return !g.dataset.v;
+        });
+        act = nx < 0 ? null : nx;
+        mark();
+      }
+    }, h('span', {
+      class: 'e'
+    }, e), w);
+  });
+  function mark() {
+    gaps.forEach(function (g, i) {
+      return g.classList.toggle('act', i === act);
+    });
+    var used = gaps.map(function (g) {
+      return g.dataset.v;
+    });
+    bankBtns.forEach(function (b) {
+      return b.classList.toggle('used', used.includes(b.lastChild.textContent));
+    });
+  }
+  mark();
+  var plain = d.text.replace(/\{([^}]+)\}/g, '$1');
+  return {
+    el: h('div', {}, h('div', {
+      class: 'qtext'
+    }, d.title, ' ', h('button', {
+      class: 'mini',
+      onclick: function onclick() {
+        return say(plain);
+      }
+    }, '🔊 聽全文')), story, h('div', {
+      class: 'sub zh',
+      style: 'text-align:center;margin-top:8px'
+    }, '點一個空格，再點下面的字'), h('div', {
+      class: 'bank'
+    }, bankBtns)),
+    grade(show) {
+      var got = 0;
+      var review = [];
+      gaps.forEach(function (g, i) {
+        var ok = g.dataset.v === answers[i];
+        if (ok) got++;
+        if (show) g.classList.add(ok ? 'right' : 'wrong');
+        review.push({
+          q: d.title + ' (' + (i + 1) + ')',
+          your: g.dataset.v || '（未作答）',
+          correct: answers[i],
+          ok
+        });
+      });
+      return {
+        got,
+        total: answers.length,
+        review
+      };
+    }
+  };
+};
+R.lines = function (d) {
+  var assign = {};
+  var selName = null;
+  var pEls = {};
+  var people = h('div', {
+    class: 'people'
+  }, shuffle(d.people).map(function (_ref1) {
+    var _ref10 = _slicedToArray(_ref1, 2),
+      id = _ref10[0],
+      e = _ref10[1];
+    var tag = h('span', {
+      class: 'tag'
+    });
+    var el = h('div', {
+      class: 'person',
+      onclick: function onclick() {
+        if (!selName) {
+          toast('先點名字 👇', true);
+          return;
+        }
+        for (var k in assign) if (assign[k] === id) delete assign[k];
+        assign[selName] = id;
+        selName = null;
+        upd();
+      }
+    }, e, tag);
+    pEls[id] = {
+      el,
+      tag
+    };
+    return el;
+  }));
+  var nEls = {};
+  var names = h('div', {
+    class: 'names'
+  }, d.names.map(function (_ref11) {
+    var _ref12 = _slicedToArray(_ref11, 3),
+      n = _ref12[0],
+      s = _ref12[2];
+    var el = h('div', {
+      class: 'name',
+      onclick: function onclick() {
+        selName = n;
+        upd();
+      }
+    }, h('button', {
+      class: 'mini lp',
+      onclick: function onclick(ev) {
+        ev.stopPropagation();
+        say(s);
+      }
+    }, '🔊'), n);
+    nEls[n] = el;
+    return el;
+  }));
+  function upd() {
+    for (var _id in pEls) pEls[_id].tag.textContent = '';
+    for (var n in assign) pEls[assign[n]].tag.textContent = n;
+    for (var _n in nEls) {
+      nEls[_n].classList.toggle('sel', _n === selName);
+      nEls[_n].classList.toggle('done', !!assign[_n] && _n !== selName);
+    }
+  }
+  var all = d.names.map(function (x) {
+    return x[2];
+  }).join(' ... ');
+  return {
+    el: h('div', {}, h('div', {
+      class: 'qtext'
+    }, d.title), audioBar(all, '播放全部'), h('div', {
+      class: 'sub zh'
+    }, '① 點名字（可按🔊單獨聽）　② 再點那個人'), h('div', {
+      style: 'margin-top:10px'
+    }, names), people),
+    autoplay: all,
+    transcript: all,
+    script: function script() {
+      return [{
+        say: 'Look at the picture. Listen and draw lines.',
+        label: '🎧 題目說明'
+      }, {
+        pause: 3,
+        label: '👀 先看圖'
+      }].concat(_toConsumableArray(d.names.flatMap(function (_ref13, i) {
+        var _ref14 = _slicedToArray(_ref13, 3),
+          s = _ref14[2];
+        return [{
+          say: s,
+          label: `🎧 第一次播放（${i + 1}/${d.names.length}）`
+        }, {
+          pause: 5,
+          answer: 1
+        }];
+      })), [{
+        say: 'Now listen again.',
+        label: '🔁 再聽一次'
+      }, {
+        pause: 3,
+        label: '準備'
+      }], _toConsumableArray(d.names.flatMap(function (_ref15, i) {
+        var _ref16 = _slicedToArray(_ref15, 3),
+          s = _ref16[2];
+        return [{
+          say: s,
+          label: `🎧 第二次播放（${i + 1}/${d.names.length}）`
+        }, {
+          pause: 3,
+          answer: 1
+        }];
+      })));
+    },
+    grade(show) {
+      var got = 0;
+      var review = [];
+      var pe = Object.fromEntries(d.people);
+      d.names.forEach(function (_ref17) {
+        var _ref18 = _slicedToArray(_ref17, 2),
+          n = _ref18[0],
+          id = _ref18[1];
+        var ok = assign[n] === id;
+        if (ok) got++;
+        if (show) {
+          pEls[id].el.classList.add(ok ? 'right' : 'wrong');
+        }
+        review.push({
+          q: n,
+          your: assign[n] ? pe[assign[n]] : '（未作答）',
+          correct: pe[id],
+          ok
+        });
+      });
+      if (show) d.names.forEach(function (_ref19) {
+        var _ref20 = _slicedToArray(_ref19, 2),
+          n = _ref20[0],
+          id = _ref20[1];
+        pEls[id].tag.textContent = n;
+      });
+      return {
+        got,
+        total: d.names.length,
+        review
+      };
+    }
+  };
+};
+R.colour = function (d) {
+  var crayon = null;
+  var painted = {};
+  var cr = {};
+  var pal = h('div', {
+    class: 'palette'
+  }, Object.entries(COLOURS).map(function (_ref21) {
+    var _ref22 = _slicedToArray(_ref21, 2),
+      n = _ref22[0],
+      c = _ref22[1];
+    var b = h('button', {
+      class: 'crayon',
+      style: `background:${c}`,
+      onclick: function onclick() {
+        crayon = n;
+        for (var k in cr) cr[k].classList.toggle('sel', k === n);
+        say(n);
+      }
+    }, n);
+    cr[n] = b;
+    return b;
+  }));
+  var oEls = {};
+  var objs = h('div', {
+    class: 'objs'
+  }, shuffle(d.objs).map(function (_ref23) {
+    var _ref24 = _slicedToArray(_ref23, 2),
+      n = _ref24[0],
+      e = _ref24[1];
+    var el = h('button', {
+      class: 'obj',
+      onclick: function onclick() {
+        if (!crayon) {
+          toast('先選一支蠟筆 🖍️', true);
+          return;
+        }
+        painted[n] = crayon;
+        el.style.background = COLOURS[crayon];
+        el.classList.add('painted');
+      }
+    }, e, h('small', {}, n));
+    oEls[n] = el;
+    return el;
+  }));
+  var all = d.inst.map(function (x) {
+    return x[2];
+  }).join(' ... ');
+  return {
+    el: h('div', {}, h('div', {
+      class: 'qtext'
+    }, d.title), audioBar(all, '播放全部'), h('div', {
+      class: 'inst lp'
+    }, d.inst.map(function (_ref25, i) {
+      var _ref26 = _slicedToArray(_ref25, 3),
+        s = _ref26[2];
+      return h('div', {}, h('button', {
+        class: 'mini',
+        onclick: function onclick() {
+          return say(s);
+        }
+      }, '🔊 第 ' + (i + 1) + ' 句'));
+    })), pal, objs),
+    autoplay: all,
+    transcript: all,
+    script: function script() {
+      return [{
+        say: 'Look at the picture. Listen and colour.',
+        label: '🎧 題目說明'
+      }, {
+        pause: 3,
+        label: '👀 先看圖'
+      }].concat(_toConsumableArray(d.inst.flatMap(function (_ref27, i) {
+        var _ref28 = _slicedToArray(_ref27, 3),
+          s = _ref28[2];
+        return [{
+          say: s,
+          label: `🎧 第一次播放（${i + 1}/${d.inst.length}）`
+        }, {
+          pause: 15,
+          answer: 1
+        }];
+      })), [{
+        say: 'Now listen again.',
+        label: '🔁 再聽一次'
+      }, {
+        pause: 3,
+        label: '準備'
+      }], _toConsumableArray(d.inst.flatMap(function (_ref29, i) {
+        var _ref30 = _slicedToArray(_ref29, 3),
+          s = _ref30[2];
+        return [{
+          say: s,
+          label: `🎧 第二次播放（${i + 1}/${d.inst.length}）`
+        }, {
+          pause: 10,
+          answer: 1
+        }];
+      })));
+    },
+    grade(show) {
+      var got = 0;
+      var review = [];
+      d.inst.forEach(function (_ref31) {
+        var _ref32 = _slicedToArray(_ref31, 2),
+          n = _ref32[0],
+          c = _ref32[1];
+        var ok = painted[n] === c;
+        if (ok) got++;
+        if (show) oEls[n].classList.add(ok ? 'right' : 'wrong');
+        review.push({
+          q: n,
+          your: painted[n] || '（未上色）',
+          correct: c,
+          ok
+        });
+      });
+      return {
+        got,
+        total: d.inst.length,
+        review
+      };
+    }
+  };
+};
+R.hearpick = function (d) {
+  var opts = shuffle([d.it].concat(_toConsumableArray(d.others)));
+  var sel = null;
+  var btns = opts.map(function (o, i) {
+    return h('button', {
+      class: 'opt',
+      onclick: function onclick() {
+        sel = i;
+        btns.forEach(function (b, j) {
+          return b.classList.toggle('sel', j === i);
+        });
+      }
+    }, pic(o));
+  });
+  return {
+    el: h('div', {}, audioBar(d.it[0]), h('div', {
+      class: 'qtext zh'
+    }, '聽到哪一個？點選正確的圖'), h('div', {
+      class: 'opts'
+    }, btns)),
+    autoplay: d.it[0],
+    grade(show) {
+      var ok = sel != null && opts[sel] === d.it;
+      if (show) {
+        btns.forEach(function (b, j) {
+          if (opts[j] === d.it) {
+            b.classList.add('right');
+            b.append(h('small', {}, d.it[0]));
+          } else if (j === sel) b.classList.add('wrong');
+        });
+      }
+      return {
+        got: ok ? 1 : 0,
+        total: 1,
+        review: [{
+          q: '🔊 ' + d.it[0],
+          your: sel == null ? '（未作答）' : opts[sel][0],
+          correct: d.it[0],
+          ok
+        }]
+      };
+    }
+  };
+};
+
+/* ================== builders ================== */
+function itemsFor(part, n) {
+  switch (part) {
+    case 'L1':
+      return sample(L1, n || L1.length).map(function (d) {
+        return {
+          type: 'lines',
+          d,
+          part
+        };
+      });
+    case 'L2':
+      return sample(L2, n || 8).map(function (d) {
+        return {
+          type: 'write',
+          d,
+          part
+        };
+      });
+    case 'L3':
+      return sample(L3, n || 8).map(function (d) {
+        return {
+          type: 'pick',
+          d,
+          part
+        };
+      });
+    case 'L4':
+      return sample(L4, n || L4.length).map(function (d) {
+        return {
+          type: 'colour',
+          d,
+          part
+        };
+      });
+    case 'RW1':
+      return sample(RW1, n || 10).map(function (d) {
+        return {
+          type: 'tf',
+          d,
+          part
+        };
+      });
+    case 'RW2':
+      return sample(RW2, n || RW2.length).map(function (d) {
+        return {
+          type: 'yn',
+          d,
+          part
+        };
+      });
+    case 'RW3':
+      return sample(RW3, n || 8).map(function (d) {
+        return {
+          type: 'spell',
+          d,
+          part
+        };
+      });
+    case 'RW4':
+      return sample(RW4, n || RW4.length).map(function (d) {
+        return {
+          type: 'gap',
+          d,
+          part
+        };
+      });
+    case 'RW5':
+      return sample(RW5, n || 8).map(function (d) {
+        return {
+          type: 'write',
+          d,
+          part
+        };
+      });
+  }
+}
+function vocabQuiz(catKey) {
+  var pool = catKey === 'all' ? Object.values(VOCAB).filter(function (c, i) {
+    return Object.keys(VOCAB)[i] !== 'numbers' && Object.keys(VOCAB)[i] !== 'colours';
+  }).flatMap(function (c) {
+    return c.w;
+  }) : VOCAB[catKey].w;
+  var items = sample(pool, Math.min(10, pool.length)).map(function (it) {
+    return {
+      type: 'hearpick',
+      d: {
+        it,
+        others: sample(pool.filter(function (x) {
+          return x !== it && x[1] !== it[1];
+        }), 3)
+      }
+    };
+  });
+  startSession('單字小測驗 ' + (catKey === 'all' ? '綜合' : VOCAB[catKey].zh), items, 'practice', function () {
+    return showVocab(catKey);
+  });
+}
+
+/* ================== session engine ================== */
+function startSession(title, items, mode, back) {
+  var i = 0;
+  var results = [];
+  var exit = back || home;
+  function show() {
+    if (i >= items.length) return finish();
+    var it = items[i];
+    var r = R[it.type](it.d, {
+      mode
+    });
+    var P = it.part && PARTS[it.part];
+    var fb = h('div', {
+      class: 'fb'
+    });
+    var trans = h('div');
+    var checked = false,
+      advanced = false,
+      run = null;
+    var timed = PACE > 0 && (it.part || '').startsWith('L') && r.script && r.script();
+    var statusEl = timed ? h('div', {
+      class: 'timer'
+    }, '') : null;
+    var btn = h('button', {
+      class: 'primary',
+      onclick: function onclick() {
+        if (run) {
+          run.cancel();
+          run = null;
+          if (statusEl) statusEl.style.display = 'none';
+        }
+        if (mode === 'practice') {
+          if (!checked) {
+            var g = r.grade(true);
+            results.push(_objectSpread(_objectSpread({}, g), {}, {
+              part: it.part
+            }));
+            checked = true;
+            var perfect = g.got === g.total;
+            fb.className = 'fb ' + (perfect ? 'ok' : 'no');
+            fb.textContent = perfect ? g.total > 1 ? `太棒了！全對 ${g.got}/${g.total} 🎉` : '答對了！Great job! 🎉' : g.total > 1 ? `答對 ${g.got}/${g.total}，看看下面的正確答案` : '再加油！看看下面的正確答案 💪';
+            chime(perfect);
+            toast(perfect ? '⭐ Great!' : '💪 加油', !perfect);
+            if (!perfect) {
+              var wrongs = g.review.filter(function (v) {
+                return !v.ok;
+              });
+              fb.append(h('div', {
+                class: 'answerBox'
+              }, h('div', {
+                class: 'zh',
+                style: 'font-size:16px'
+              }, '✅ 正確答案'), wrongs.map(function (v) {
+                return h('div', {
+                  class: 'ansRow'
+                }, g.total > 1 ? h('span', {
+                  class: 'ansQ'
+                }, v.q.replace(/^.* (\(\d+\))$/, '$1') + '：') : null, h('b', {}, v.correct));
+              })));
+              if (g.total === 1 && /^[a-z ]+$/i.test(wrongs[0].correct)) setTimeout(function () {
+                return say(wrongs[0].correct);
+              }, 300);
+            }
+            if (g.got) addStars(g.got);
+            if (r.transcript) trans.append(h('div', {
+              class: 'trans'
+            }, h('b', {}, '📝 聽力原文：'), h('br'), r.transcript));
+            btn.textContent = i < items.length - 1 ? '下一題 ➜' : '看成績 🏆';
+            if (perfect) {
+              btn.style.visibility = 'hidden';
+              setTimeout(function () {
+                if (!advanced && app.contains(btn)) {
+                  advanced = true;
+                  i++;
+                  show();
+                }
+              }, 1300);
+            }
+          } else if (!advanced) {
+            advanced = true;
+            i++;
+            show();
+          }
+        } else {
+          results.push(_objectSpread(_objectSpread({}, r.grade(false)), {}, {
+            part: it.part
+          }));
+          i++;
+          show();
+        }
+      }
+    }, mode === 'practice' ? '檢查答案 ✔' : i < items.length - 1 ? '下一題 ➜' : '交卷 🏁');
+    var pct = Math.round(i / items.length * 100);
+    render(h('div', {
+      class: 'toolbar'
+    }, h('button', {
+      class: 'ghost',
+      onclick: function onclick() {
+        if (mode !== 'mock' || confirmBox()) exit();
+      }
+    }, '← 離開'), h('b', {}, title), h('span', {
+      class: 'sub'
+    }, ` 第 ${i + 1} / ${items.length} 題`)), h('div', {
+      class: 'prog'
+    }, h('i', {
+      style: `width:${pct}%`
+    })), h('div', {
+      class: 'qbox'
+    }, P ? h('div', {
+      class: 'part'
+    }, P.ic + ' ' + P.en, h('small', {}, P.zh)) : null, statusEl, h('div', {
+      class: timed ? 'timed' : ''
+    }, r.el), fb, trans, h('div', {
+      class: 'foot'
+    }, h('span'), btn)));
+    if (timed) run = runScript(timed, statusEl, function () {
+      run = null;
+      if (app.contains(btn) && !checked && !advanced) btn.click();
+    });else if (r.autoplay && (it.part || '').startsWith('L') || it.type === 'hearpick') setTimeout(function () {
+      return say(r.autoplay);
+    }, 250);
+  }
+  function confirmBox() {
+    return true;
+  }
+  function finish() {
+    var got = results.reduce(function (s, r) {
+        return s + r.got;
+      }, 0),
+      total = results.reduce(function (s, r) {
+        return s + r.total;
+      }, 0);
+    var pct = total ? got / total : 0;
+    var face = pct >= 0.9 ? '🏆' : pct >= 0.7 ? '🥳' : pct >= 0.5 ? '😊' : '💪';
+    var shields = pct >= 0.9 ? 5 : pct >= 0.75 ? 4 : pct >= 0.55 ? 3 : pct >= 0.35 ? 2 : 1;
+    var secs = {};
+    results.forEach(function (r) {
+      var s = r.part ? PARTS[r.part].sec : 'V';
+      secs[s] = secs[s] || {
+        g: 0,
+        t: 0
+      };
+      secs[s].g += r.got;
+      secs[s].t += r.total;
+    });
+    if (mode === 'mock' && prof()) {
+      var p = prof();
+      p.hist = [{
+        d: new Date().toLocaleDateString('zh-TW'),
+        g: got,
+        t: total
+      }].concat(_toConsumableArray(p.hist || [])).slice(0, 20);
+      addStars(got);
+      if (!got) save();
+    }
+    var rows = results.flatMap(function (r) {
+      return r.review.map(function (v) {
+        return _objectSpread(_objectSpread({}, v), {}, {
+          part: r.part
+        });
+      });
+    });
+    say(pct >= 0.7 ? 'Well done! Fantastic!' : 'Good try! Keep practising!');
+    if (pct >= 0.7) chime(true);
+    render(h('div', {
+      class: 'qbox result'
+    }, h('div', {
+      class: 'face'
+    }, face), h('div', {
+      class: 'score'
+    }, `${got} / ${total}`), mode === 'mock' ? h('div', {
+      style: 'font-size:34px;margin:6px 0'
+    }, '🛡️'.repeat(shields), h('div', {
+      class: 'sub zh'
+    }, `盾牌 ${shields}/5（模擬劍橋成績盾牌，僅供參考）`)) : null, h('div', {
+      class: 'bars'
+    }, secs.L ? h('div', {}, '🎧 Listening ', secs.L.g + '/' + secs.L.t) : null, secs.RW ? h('div', {}, '✏️ Reading & Writing ', secs.RW.g + '/' + secs.RW.t) : null), h('div', {
+      class: 'foot',
+      style: 'justify-content:center'
+    }, h('button', {
+      class: 'primary',
+      onclick: function onclick() {
+        return startSession(title, items.map(function (x) {
+          return x;
+        }), mode, back);
+      }
+    }, '🔁 再做一次'), h('button', {
+      class: 'ghost',
+      onclick: exit
+    }, '返回')), h('h3', {
+      class: 'zh',
+      style: 'text-align:left;margin-top:22px'
+    }, '📋 答題檢討'), h('table', {
+      class: 'rev'
+    }, h('tr', {}, h('th', {}, '題目'), h('th', {}, '你的答案'), h('th', {}, '正確答案'), h('th', {}, '')), rows.map(function (v) {
+      return h('tr', {
+        class: v.ok ? '' : 'x'
+      }, h('td', {}, v.q), h('td', {}, v.your), h('td', {}, v.correct), h('td', {}, v.ok ? '✅' : '❌'));
+    }))));
+  }
+  show();
+}
+
+/* ================== screens ================== */
+function home() {
+  if ('speechSynthesis' in window) speechSynthesis.cancel();
+  if (!prof()) return kidScreen();
+  var hist = prof().hist || [];
+  render(h('div', {
+    class: 'welcome'
+  }, h('div', {
+    class: 'big'
+  }, prof().avatar), h('div', {}, h('h2', {}, 'Hello, ' + prof().name + '! Let\'s learn English!'), h('div', {
+    class: 'sub zh'
+  }, '劍橋兒童英語 YLE Starters 互動練習 — 單字、聽力、閱讀寫作、模擬考'))), h('div', {
+    class: 'grid home'
+  }, h('button', {
+    class: 'hcard',
+    onclick: function onclick() {
+      return showVocab('animals');
+    }
+  }, h('div', {
+    class: 'ic'
+  }, '📚'), h('h3', {}, 'Words 單字卡'), h('p', {}, '點圖聽發音，還有單字小測驗')), h('button', {
+    class: 'hcard',
+    onclick: function onclick() {
+      return showMenu('L');
+    }
+  }, h('div', {
+    class: 'ic'
+  }, '🎧'), h('h3', {}, 'Listening 聽力'), h('p', {}, '4 種題型：連線、寫字、選圖、塗色')), h('button', {
+    class: 'hcard',
+    onclick: function onclick() {
+      return showMenu('RW');
+    }
+  }, h('div', {
+    class: 'ic'
+  }, '✏️'), h('h3', {}, 'Reading & Writing'), h('p', {}, '閱讀與寫作 5 種題型')), h('button', {
+    class: 'hcard',
+    onclick: startMock,
+    style: 'border-color:#ffc9b5'
+  }, h('div', {
+    class: 'ic'
+  }, '📝'), h('h3', {}, 'Mock Test 模擬考'), h('p', {}, '仿正式考試：聽力 + 讀寫，共 45 題'))), hist.length ? h('div', {
+    class: 'hist'
+  }, '🗓️ ' + prof().name + ' 最近模擬考：', hist.slice(0, 8).map(function (x) {
+    return `${x.d} ${x.g}/${x.t}`;
+  }).join('、')) : null, voiceSelect(), paceSelect(), h('div', {
+    class: 'note'
+  }, h('b', {}, '👨‍👩‍👦 給家長：'), h('br'), '• 聽力用裝置內建英文語音朗讀，預設美式發音，可在上方「發音聲音」換成其他聲音（建議用 Chrome 或 Safari，並打開聲音）；右上角可切換 🐢慢速／🐇正常。', h('br'), '• 題型依 Starters 正式考試設計（聽力 4 部分、讀寫 5 部分），單字取自 Starters 官方字彙範圍；圖片以表情符號代替。', h('br'), '• 練習模式每題立即對答案並顯示聽力原文；模擬考做完才看成績與檢討。', h('br'), '• 正式考試還有「口說 Speaking」，可以和孩子用單字卡的圖互相問答：What\'s this? / What colour is it? / How many…?'));
+}
+function kidScreen() {
+  if ('speechSynthesis' in window) speechSynthesis.cancel();
+  var pickAv = AVATARS[P.order.length % AVATARS.length];
+  var delArm = null;
+  var nameInp = h('input', {
+    class: 'ans',
+    style: 'width:220px;font-size:22px',
+    placeholder: '名字',
+    maxlength: '12'
+  });
+  var avBtns = AVATARS.map(function (a) {
+    return h('button', {
+      class: 'avb' + (a === pickAv ? ' on' : ''),
+      onclick: function onclick() {
+        pickAv = a;
+        avBtns.forEach(function (b) {
+          return b.classList.toggle('on', b.textContent === a);
+        });
+      }
+    }, a);
+  });
+  var add = function add() {
+    var n = nameInp.value.trim();
+    if (!n) {
+      toast('請輸入名字', true);
+      return;
+    }
+    var id = 'k' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
+    P.profiles[id] = {
+      name: n,
+      avatar: pickAv,
+      stars: 0,
+      hist: [],
+      slow: true,
+      pace: 1,
+      voice: ''
+    };
+    P.order.push(id);
+    selectKid(id);
+    save();
+    home();
+  };
+  render(h('div', {
+    class: 'kidpick'
+  }, h('h2', {
+    style: 'text-align:center'
+  }, '👋 誰要練習英文？'), P.order.length ? h('div', {
+    class: 'kids'
+  }, P.order.map(function (id) {
+    var p = P.profiles[id];
+    if (!p) return null;
+    var del = h('button', {
+      class: 'kdel',
+      title: '刪除',
+      onclick: function onclick(e) {
+        e.stopPropagation();
+        if (delArm !== id) {
+          delArm = id;
+          del.textContent = '確定刪除？';
+          del.classList.add('arm');
+          return;
+        }
+        delete P.profiles[id];
+        P.order = P.order.filter(function (x) {
+          return x !== id;
+        });
+        if (curId === id) curId = null;
+        save();
+        kidScreen();
+      }
+    }, '🗑️');
+    return h('div', {
+      class: 'kid' + (id === curId ? ' cur' : ''),
+      onclick: function onclick() {
+        selectKid(id);
+        home();
+      }
+    }, h('div', {
+      class: 'kav'
+    }, p.avatar), h('div', {
+      class: 'kname'
+    }, p.name), h('div', {
+      class: 'sub'
+    }, '⭐ ' + (p.stars || 0) + (p.hist && p.hist.length ? '　📝 ' + p.hist.length + ' 次模擬考' : '')), del);
+  })) : null, h('div', {
+    class: 'qbox',
+    style: 'margin-top:18px;text-align:center'
+  }, h('h3', {
+    class: 'zh',
+    style: 'margin:0 0 8px'
+  }, '➕ 新增小孩'), h('div', {
+    class: 'avs'
+  }, avBtns), h('div', {
+    style: 'margin-top:10px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap'
+  }, nameInp, h('button', {
+    class: 'primary',
+    onclick: add
+  }, '新增'))), h('div', {
+    class: 'note'
+  }, cloud.ref ? '☁️ 紀錄（星星、模擬考紀錄、發音聲音、語速、聽力節奏）每個小孩分開存，並同步到你的 Claude 帳號：在別台裝置登入同一個帳號打開這個網址，就會看到一樣的紀錄。' : '💾 目前紀錄只存在這台裝置。登入 Claude 帳號後打開這個頁面，就會自動同步到雲端，換裝置也看得到。')));
+}
+function showVocab(cat) {
+  if (!VOCAB[cat]) cat = 'animals';
+  var c = VOCAB[cat];
+  render(h('div', {
+    class: 'toolbar'
+  }, h('button', {
+    class: 'ghost',
+    onclick: home
+  }, '← 首頁'), h('h2', {}, '📚 Words 單字卡')), h('div', {
+    class: 'chips'
+  }, Object.entries(VOCAB).map(function (_ref33) {
+    var _ref34 = _slicedToArray(_ref33, 2),
+      k = _ref34[0],
+      v = _ref34[1];
+    return h('button', {
+      class: 'chip' + (k === cat ? ' on' : ''),
+      onclick: function onclick() {
+        return showVocab(k);
+      }
+    }, v.icon + ' ' + v.zh);
+  })), h('div', {
+    class: 'toolbar'
+  }, h('button', {
+    class: 'primary blue',
+    onclick: function onclick() {
+      return vocabQuiz(cat);
+    }
+  }, '🎯 ' + c.zh + '小測驗'), h('button', {
+    class: 'primary green',
+    onclick: function onclick() {
+      return vocabQuiz('all');
+    }
+  }, '🌈 綜合小測驗'), h('span', {
+    class: 'sub zh'
+  }, '點卡片聽發音')), h('div', {
+    class: 'grid vgrid'
+  }, c.w.map(function (it) {
+    var el = h('button', {
+      class: 'vcard',
+      onclick: function onclick() {
+        say(it[0]);
+        el.classList.remove('bounce');
+        void el.offsetWidth;
+        el.classList.add('bounce');
+      }
+    }, h('div', {
+      class: 'e'
+    }, pic(it)), h('div', {
+      class: 'w'
+    }, it[0]), h('div', {
+      class: 'z'
+    }, it[2]));
+    return el;
+  })));
+}
+function showMenu(sec) {
+  var keys = Object.keys(PARTS).filter(function (k) {
+    return PARTS[k].sec === sec;
+  });
+  render(h('div', {
+    class: 'toolbar'
+  }, h('button', {
+    class: 'ghost',
+    onclick: home
+  }, '← 首頁'), h('h2', {}, sec === 'L' ? '🎧 Listening 聽力' : '✏️ Reading & Writing 閱讀與寫作')), sec === 'L' ? paceSelect() : null, h('div', {
+    class: 'grid pmenu',
+    style: 'margin-top:14px'
+  }, keys.map(function (k, i) {
+    return h('button', {
+      class: 'pbtn',
+      onclick: function onclick() {
+        return startSession(`Part ${i + 1}`, itemsFor(k), 'practice', function () {
+          return showMenu(sec);
+        });
+      }
+    }, h('div', {
+      class: 'ic'
+    }, PARTS[k].ic), h('div', {}, h('b', {}, 'Part ' + (i + 1)), h('span', {}, PARTS[k].zh)));
+  })), h('div', {
+    class: 'toolbar',
+    style: 'margin-top:16px'
+  }, h('button', {
+    class: 'primary purple',
+    onclick: function onclick() {
+      return startSession(sec === 'L' ? '聽力全部練習' : '讀寫全部練習', keys.flatMap(function (k) {
+        return itemsFor(k, k === 'L1' || k === 'L4' || k === 'RW2' || k === 'RW4' ? 1 : 3);
+      }), 'practice', function () {
+        return showMenu(sec);
+      });
+    }
+  }, '🎲 每個題型都練一點')));
+}
+function startMock() {
+  var items = [].concat(_toConsumableArray(itemsFor('L1', 1)), _toConsumableArray(itemsFor('L2', 5)), _toConsumableArray(itemsFor('L3', 5)), _toConsumableArray(itemsFor('L4', 1)), _toConsumableArray(itemsFor('RW1', 5)), _toConsumableArray(itemsFor('RW2', 1)), _toConsumableArray(itemsFor('RW3', 5)), _toConsumableArray(itemsFor('RW4', 1)), _toConsumableArray(itemsFor('RW5', 5)));
+  render(h('div', {
+    class: 'qbox',
+    style: 'text-align:center'
+  }, h('div', {
+    style: 'font-size:80px'
+  }, '📝'), h('h2', {}, 'Mock Test 模擬考'), h('p', {
+    class: 'zh'
+  }, '聽力 Listening 20 題 ＋ 閱讀寫作 Reading & Writing 25 題'), h('p', {
+    class: 'sub zh'
+  }, '做完全部才會看到分數和檢討。選「標準考試時間」時，聽力會像正式考試一樣：每段播 2 次、中間有作答停頓，時間到自動換下一題，不能重播。'), h('div', {
+    style: 'max-width:520px;margin:0 auto;text-align:left'
+  }, paceSelect()), h('div', {
+    class: 'foot',
+    style: 'justify-content:center'
+  }, h('button', {
+    class: 'ghost',
+    onclick: home
+  }, '← 返回'), h('button', {
+    class: 'primary',
+    onclick: function onclick() {
+      return startSession('模擬考', items, 'mock', home);
+    }
+  }, '開始！Let\'s go 🚀'))));
+}
+document.getElementById('homeBtn').onclick = home;
+document.getElementById('kidBtn').onclick = kidScreen;
+applyProfile();
+home();
+initCloud();</script>
+</body>
+</html>
