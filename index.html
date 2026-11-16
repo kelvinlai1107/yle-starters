@@ -1918,7 +1918,7 @@ function playClip(file, rate) {
     var t = setTimeout(fin, 30000);
     try {
       a.muted = false;
-      a.src = AUDIO_BASE + file;
+      a.src = window.AUDIO_PACK && window.AUDIO_PACK[file] ? 'data:audio/mpeg;base64,' + window.AUDIO_PACK[file] : AUDIO_BASE + file;
       a.playbackRate = rate;
       a.defaultPlaybackRate = rate;
       if ('preservesPitch' in a) a.preservesPitch = true;
@@ -2029,6 +2029,15 @@ function _sayP() {
 }
 function say(text, rateOverride) {
   sayP(text, rateOverride);
+}
+// claude.ai 版：音檔打包成一個 audio-pack.js 載入（GitHub 版直接讀 audio/ 資料夾）
+if (!/github\.io$/.test(location.hostname)) {
+  try {
+    var sc = document.createElement('script');
+    sc.src = 'audio-pack.js';
+    sc.async = true;
+    document.head.appendChild(sc);
+  } catch (e) {}
 }
 function unlockMedia() {
   // 第一次點畫面時「解鎖」播放器，之後程式自動播放（例如自動念題目）才不會被 iOS 擋
