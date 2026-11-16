@@ -138,6 +138,11 @@ table.rev tr.x td{background:#fff5f7}
 .avs{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
 .avb{font-size:34px;background:#fff;border:3px solid var(--line);border-radius:14px;width:58px;height:58px}
 .avb.on{border-color:var(--pri);background:#fff1ea}
+.rb{display:inline-block;font-size:13px;font-weight:700;font-family:"Noto Sans TC";background:#dcfaf6;color:#14786e;border-radius:10px;padding:2px 8px;margin-top:4px}
+.rb.full{background:#fff1c7;color:#9a6b00}.rb.new{background:#f1f1f1;color:#999}
+.rbrow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:-4px 0 12px}
+.rbline{font-size:20px;font-weight:800;color:var(--purple);margin:8px 0}
+.prog2{margin-top:8px}.prog2 .prog{margin:4px 0 2px;height:8px}
 .note{background:#fff;border-radius:16px;padding:12px 16px;border:2px solid var(--line);font-family:"Noto Sans TC";font-size:15px;color:var(--soft);margin-top:18px;line-height:1.7}
 h2{margin:4px 0 6px;font-size:28px}
 .opts>*,.tf>*,.chips>*,.toolbar>*,.audio>*,.names>*,.bank>*,.tiles>*,.slots>*,.palette>*,.avs>*,.scene>*,.foot>*,.bars>*,.yn>*{margin:3px}
@@ -1141,6 +1146,42 @@ function addStars(n) {
   if (!p || !n) return;
   p.stars = (p.stars || 0) + n;
   save();
+}
+function recordResult(key, got, total) {
+  var p = prof();
+  if (!p || !key || !total) return null;
+  p.rec = p.rec || {};
+  var old = p.rec[key];
+  var pct = got / total,
+    oldBest = old ? old.best / old.bestT : -1;
+  var r = {
+    times: (old ? old.times : 0) + 1,
+    last: got,
+    lastT: total,
+    date: new Date().toLocaleDateString('zh-TW'),
+    best: old && oldBest >= pct ? old.best : got,
+    bestT: old && oldBest >= pct ? old.bestT : total
+  };
+  p.rec[key] = r;
+  return {
+    rec: r,
+    newBest: !old || pct > oldBest,
+    first: !old
+  };
+}
+function getRec(key) {
+  var p = prof();
+  return p && p.rec ? p.rec[key] : null;
+}
+function recBadge(key, compact) {
+  var r = getRec(key);
+  if (!r) return h('span', {
+    class: 'rb new'
+  }, '🆕 還沒挑戰');
+  var full = r.best === r.bestT;
+  return h('span', {
+    class: 'rb' + (full ? ' full' : '')
+  }, (full ? '🏆 ' : '✅ ') + '已挑戰 ' + r.times + ' 次｜最高 ' + r.best + '/' + r.bestT + (compact ? '' : '｜上次 ' + r.last + '/' + r.lastT + '（' + r.date.replace(/^\d+\//, '') + '）'));
 }
 function setProfField(k, v) {
   var p = prof();
@@ -2775,11 +2816,11 @@ function vocabQuiz(catKey) {
   });
   startSession('單字小測驗 ' + (catKey === 'all' ? '綜合' : VOCAB[catKey].zh), items, 'practice', function () {
     return showVocab(catKey);
-  });
+  }, 'v:' + catKey);
 }
 
 /* ================== session engine ================== */
-function startSession(title, items, mode, back) {
+function startSession(title, items, mode, back, key) {
   var i = 0;
   var results = [];
   var exit = back || home;
@@ -2923,6 +2964,8 @@ function startSession(title, items, mode, back) {
       secs[s].g += r.got;
       secs[s].t += r.total;
     });
+    var rr = recordResult(key, got, total);
+    if (rr) save();
     if (mode === 'mock' && prof()) {
       var p = prof();
       p.hist = [{
@@ -2948,7 +2991,11 @@ function startSession(title, items, mode, back) {
       class: 'face'
     }, face), h('div', {
       class: 'score'
-    }, `${got} / ${total}`), mode === 'mock' ? h('div', {
+    }, `${got} / ${total}`), rr ? h('div', {
+      class: 'rbline'
+    }, rr.first ? '🎉 第一次挑戰完成！' : rr.newBest ? '🏅 新紀錄！打破之前的最高分' : '🏅 最高紀錄 ' + rr.rec.best + '/' + rr.rec.bestT, h('span', {
+      class: 'sub zh'
+    }, '　（這關已挑戰 ' + rr.rec.times + ' 次）')) : null, mode === 'mock' ? h('div', {
       style: 'font-size:34px;margin:6px 0'
     }, '🛡️'.repeat(shields), h('div', {
       class: 'sub zh'
@@ -2962,7 +3009,7 @@ function startSession(title, items, mode, back) {
       onclick: function onclick() {
         return startSession(title, items.map(function (x) {
           return x;
-        }), mode, back);
+        }), mode, back, key);
       }
     }, '🔁 再做一次'), h('button', {
       class: 'ghost',
@@ -2982,6 +3029,20 @@ function startSession(title, items, mode, back) {
 }
 
 /* ================== screens ================== */
+function progLine(keys, unit) {
+  var n = keys.filter(function (k) {
+    return getRec(k);
+  }).length;
+  return h('div', {
+    class: 'prog2'
+  }, h('div', {
+    class: 'prog'
+  }, h('i', {
+    style: 'width:' + Math.round(n / keys.length * 100) + '%'
+  })), h('span', {
+    class: 'sub zh'
+  }, '已挑戰 ' + n + ' / ' + keys.length + ' ' + (unit || '個題型')));
+}
 function home() {
   if ('speechSynthesis' in window) speechSynthesis.cancel();
   if (!prof()) return kidScreen();
@@ -3001,27 +3062,31 @@ function home() {
     }
   }, h('div', {
     class: 'ic'
-  }, '📚'), h('h3', {}, 'Words 單字卡'), h('p', {}, '點圖聽發音，還有單字小測驗')), h('button', {
+  }, '📚'), h('h3', {}, 'Words 單字卡'), h('p', {}, '點圖聽發音，還有單字小測驗'), progLine(Object.keys(VOCAB).map(function (k) {
+    return 'v:' + k;
+  }), '類小測驗')), h('button', {
     class: 'hcard',
     onclick: function onclick() {
       return showMenu('L');
     }
   }, h('div', {
     class: 'ic'
-  }, '🎧'), h('h3', {}, 'Listening 聽力'), h('p', {}, '4 種題型：連線、寫字、選圖、塗色')), h('button', {
+  }, '🎧'), h('h3', {}, 'Listening 聽力'), h('p', {}, '4 種題型：連線、寫字、選圖、塗色'), progLine(['L1', 'L2', 'L3', 'L4'])), h('button', {
     class: 'hcard',
     onclick: function onclick() {
       return showMenu('RW');
     }
   }, h('div', {
     class: 'ic'
-  }, '✏️'), h('h3', {}, 'Reading & Writing'), h('p', {}, '閱讀與寫作 5 種題型')), h('button', {
+  }, '✏️'), h('h3', {}, 'Reading & Writing'), h('p', {}, '閱讀與寫作 5 種題型'), progLine(['RW1', 'RW2', 'RW3', 'RW4', 'RW5'])), h('button', {
     class: 'hcard',
     onclick: startMock,
     style: 'border-color:#ffc9b5'
   }, h('div', {
     class: 'ic'
-  }, '📝'), h('h3', {}, 'Mock Test 模擬考'), h('p', {}, '仿正式考試：聽力 + 讀寫，共 45 題'))), hist.length ? h('div', {
+  }, '📝'), h('h3', {}, 'Mock Test 模擬考'), h('p', {}, '仿正式考試：聽力 + 讀寫，共 45 題'), h('div', {
+    style: 'margin-top:6px'
+  }, recBadge('mock', true)))), hist.length ? h('div', {
     class: 'hist'
   }, '🗓️ ' + prof().name + ' 最近模擬考：', hist.slice(0, 8).map(function (x) {
     return `${x.d} ${x.g}/${x.t}`;
@@ -3112,7 +3177,7 @@ function kidScreen() {
       class: 'kname'
     }, p.name), h('div', {
       class: 'sub'
-    }, '⭐ ' + (p.stars || 0) + (p.hist && p.hist.length ? '　📝 ' + p.hist.length + ' 次模擬考' : '')), del);
+    }, '⭐ ' + (p.stars || 0) + '　✅ ' + Object.keys(p.rec || {}).length + ' 關' + (p.hist && p.hist.length ? '　📝 ' + p.hist.length + ' 次模擬考' : '')), del);
   })) : null, h('div', {
     class: 'qbox',
     style: 'margin-top:18px;text-align:center'
@@ -3149,7 +3214,7 @@ function showVocab(cat) {
       onclick: function onclick() {
         return showVocab(k);
       }
-    }, v.icon + ' ' + v.zh);
+    }, (getRec('v:' + k) ? '✅ ' : v.icon + ' ') + v.zh);
   })), h('div', {
     class: 'toolbar'
   }, h('button', {
@@ -3165,6 +3230,13 @@ function showVocab(cat) {
   }, '🌈 綜合小測驗'), h('span', {
     class: 'sub zh'
   }, '點卡片聽發音')), h('div', {
+    class: 'rbrow'
+  }, h('b', {
+    class: 'zh'
+  }, c.zh + '小測驗：'), recBadge('v:' + cat), h('b', {
+    class: 'zh',
+    style: 'margin-left:10px'
+  }, '綜合：'), recBadge('v:all')), h('div', {
     class: 'grid vgrid'
   }, c.w.map(function (it) {
     var el = h('button', {
@@ -3203,11 +3275,11 @@ function showMenu(sec) {
       onclick: function onclick() {
         return startSession(`Part ${i + 1}`, itemsFor(k), 'practice', function () {
           return showMenu(sec);
-        });
+        }, k);
       }
     }, h('div', {
       class: 'ic'
-    }, PARTS[k].ic), h('div', {}, h('b', {}, 'Part ' + (i + 1)), h('span', {}, PARTS[k].zh)));
+    }, getRec(k) ? '✅' : PARTS[k].ic), h('div', {}, h('b', {}, 'Part ' + (i + 1)), h('span', {}, PARTS[k].zh), h('div', {}, recBadge(k))));
   })), h('div', {
     class: 'toolbar',
     style: 'margin-top:16px'
@@ -3218,9 +3290,9 @@ function showMenu(sec) {
         return itemsFor(k, k === 'L1' || k === 'L4' || k === 'RW2' || k === 'RW4' ? 1 : 3);
       }), 'practice', function () {
         return showMenu(sec);
-      });
+      }, 'mix' + sec);
     }
-  }, '🎲 每個題型都練一點')));
+  }, '🎲 每個題型都練一點'), recBadge('mix' + sec)));
 }
 function startMock() {
   var items = [].concat(_toConsumableArray(itemsFor('L1', 1)), _toConsumableArray(itemsFor('L2', 5)), _toConsumableArray(itemsFor('L3', 5)), _toConsumableArray(itemsFor('L4', 1)), _toConsumableArray(itemsFor('RW1', 5)), _toConsumableArray(itemsFor('RW2', 1)), _toConsumableArray(itemsFor('RW3', 5)), _toConsumableArray(itemsFor('RW4', 1)), _toConsumableArray(itemsFor('RW5', 5)));
@@ -3244,7 +3316,7 @@ function startMock() {
   }, '← 返回'), h('button', {
     class: 'primary',
     onclick: function onclick() {
-      return startSession('模擬考', items, 'mock', home);
+      return startSession('模擬考', items, 'mock', home, 'mock');
     }
   }, '開始！Let\'s go 🚀'))));
 }
