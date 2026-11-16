@@ -147,6 +147,7 @@ table.rev tr.x td{background:#fff5f7}
 h2{margin:4px 0 6px;font-size:28px}
 .opts>*,.tf>*,.chips>*,.toolbar>*,.audio>*,.names>*,.bank>*,.tiles>*,.slots>*,.palette>*,.avs>*,.scene>*,.foot>*,.bars>*,.yn>*{margin:3px}
 @media (max-width:520px){.obj{height:90px}.opt{min-width:92px;min-height:92px;font-size:46px}.bigE{font-size:90px}.sentence{font-size:24px}.qtext{font-size:21px}.person{font-size:40px}.obj{font-size:44px}header h1{font-size:18px}}
+img.emoji{height:1em;width:1em;margin:0 .05em 0 .1em;vertical-align:-0.1em}
 </style>
 </head>
 <body>
@@ -936,23 +937,25 @@ try {
   }
 }
 
+/*! Copyright Twitter Inc. and other contributors. Licensed under MIT */
+var twemoji=function(){"use strict";var twemoji={base:"https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.3/assets/",ext:".png",size:"72x72",className:"emoji",convert:{fromCodePoint:fromCodePoint,toCodePoint:toCodePoint},onerror:function onerror(){if(this.parentNode){this.parentNode.replaceChild(createText(this.alt,false),this)}},parse:parse,replace:replace,test:test},escaper={"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"},re=/(?:\ud83d\udc68\ud83c\udffb\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc68\ud83c\udffc\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc68\ud83c\udffd\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc68\ud83c\udffe\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc68\ud83c\udfff\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffb\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffb\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffc\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffc\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffd\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffd\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffe\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffe\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udfff\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udfff\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83e\uddd1\ud83c\udffb\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83e\uddd1\ud83c[\udffc-\udfff]|\ud83e\uddd1\ud83c\udffc\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83e\uddd1\ud83c[\udffb\udffd-\udfff]|\ud83e\uddd1\ud83c\udffd\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83e\uddd1\ud83c[\udffb\udffc\udffe\udfff]|\ud83e\uddd1\ud83c\udffe\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83e\uddd1\ud83c[\udffb-\udffd\udfff]|\ud83e\uddd1\ud83c\udfff\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83e\uddd1\ud83c[\udffb-\udffe]|\ud83d\udc68\ud83c\udffb\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc68\ud83c\udffb\u200d\ud83d\udc30\u200d\ud83d\udc68\ud83c[\udffc-\udfff]|\ud83d\udc68\ud83c\udffb\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffc-\udfff]|\ud83d\udc68\ud83c\udffb\u200d\ud83e\udeef\u200d\ud83d\udc68\ud83c[\udffc-\udfff]|\ud83d\udc68\ud83c\udffc\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc68\ud83c\udffc\u200d\ud83d\udc30\u200d\ud83d\udc68\ud83c[\udffb\udffd-\udfff]|\ud83d\udc68\ud83c\udffc\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffb\udffd-\udfff]|\ud83d\udc68\ud83c\udffc\u200d\ud83e\udeef\u200d\ud83d\udc68\ud83c[\udffb\udffd-\udfff]|\ud83d\udc68\ud83c\udffd\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc68\ud83c\udffd\u200d\ud83d\udc30\u200d\ud83d\udc68\ud83c[\udffb\udffc\udffe\udfff]|\ud83d\udc68\ud83c\udffd\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffb\udffc\udffe\udfff]|\ud83d\udc68\ud83c\udffd\u200d\ud83e\udeef\u200d\ud83d\udc68\ud83c[\udffb\udffc\udffe\udfff]|\ud83d\udc68\ud83c\udffe\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc68\ud83c\udffe\u200d\ud83d\udc30\u200d\ud83d\udc68\ud83c[\udffb-\udffd\udfff]|\ud83d\udc68\ud83c\udffe\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffb-\udffd\udfff]|\ud83d\udc68\ud83c\udffe\u200d\ud83e\udeef\u200d\ud83d\udc68\ud83c[\udffb-\udffd\udfff]|\ud83d\udc68\ud83c\udfff\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc68\ud83c\udfff\u200d\ud83d\udc30\u200d\ud83d\udc68\ud83c[\udffb-\udffe]|\ud83d\udc68\ud83c\udfff\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffb-\udffe]|\ud83d\udc68\ud83c\udfff\u200d\ud83e\udeef\u200d\ud83d\udc68\ud83c[\udffb-\udffe]|\ud83d\udc69\ud83c\udffb\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffb\u200d\u2764\ufe0f\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffb\u200d\ud83d\udc30\u200d\ud83d\udc69\ud83c[\udffc-\udfff]|\ud83d\udc69\ud83c\udffb\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffc-\udfff]|\ud83d\udc69\ud83c\udffb\u200d\ud83e\udd1d\u200d\ud83d\udc69\ud83c[\udffc-\udfff]|\ud83d\udc69\ud83c\udffb\u200d\ud83e\udeef\u200d\ud83d\udc69\ud83c[\udffc-\udfff]|\ud83d\udc69\ud83c\udffc\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffc\u200d\u2764\ufe0f\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffc\u200d\ud83d\udc30\u200d\ud83d\udc69\ud83c[\udffb\udffd-\udfff]|\ud83d\udc69\ud83c\udffc\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffb\udffd-\udfff]|\ud83d\udc69\ud83c\udffc\u200d\ud83e\udd1d\u200d\ud83d\udc69\ud83c[\udffb\udffd-\udfff]|\ud83d\udc69\ud83c\udffc\u200d\ud83e\udeef\u200d\ud83d\udc69\ud83c[\udffb\udffd-\udfff]|\ud83d\udc69\ud83c\udffd\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffd\u200d\u2764\ufe0f\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffd\u200d\ud83d\udc30\u200d\ud83d\udc69\ud83c[\udffb\udffc\udffe\udfff]|\ud83d\udc69\ud83c\udffd\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffb\udffc\udffe\udfff]|\ud83d\udc69\ud83c\udffd\u200d\ud83e\udd1d\u200d\ud83d\udc69\ud83c[\udffb\udffc\udffe\udfff]|\ud83d\udc69\ud83c\udffd\u200d\ud83e\udeef\u200d\ud83d\udc69\ud83c[\udffb\udffc\udffe\udfff]|\ud83d\udc69\ud83c\udffe\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffe\u200d\u2764\ufe0f\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffe\u200d\ud83d\udc30\u200d\ud83d\udc69\ud83c[\udffb-\udffd\udfff]|\ud83d\udc69\ud83c\udffe\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffb-\udffd\udfff]|\ud83d\udc69\ud83c\udffe\u200d\ud83e\udd1d\u200d\ud83d\udc69\ud83c[\udffb-\udffd\udfff]|\ud83d\udc69\ud83c\udffe\u200d\ud83e\udeef\u200d\ud83d\udc69\ud83c[\udffb-\udffd\udfff]|\ud83d\udc69\ud83c\udfff\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udfff\u200d\u2764\ufe0f\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udfff\u200d\ud83d\udc30\u200d\ud83d\udc69\ud83c[\udffb-\udffe]|\ud83d\udc69\ud83c\udfff\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffb-\udffe]|\ud83d\udc69\ud83c\udfff\u200d\ud83e\udd1d\u200d\ud83d\udc69\ud83c[\udffb-\udffe]|\ud83d\udc69\ud83c\udfff\u200d\ud83e\udeef\u200d\ud83d\udc69\ud83c[\udffb-\udffe]|\ud83e\uddd1\ud83c\udffb\u200d\u2764\ufe0f\u200d\ud83e\uddd1\ud83c[\udffc-\udfff]|\ud83e\uddd1\ud83c\udffb\u200d\ud83d\udc30\u200d\ud83e\uddd1\ud83c[\udffc-\udfff]|\ud83e\uddd1\ud83c\udffb\u200d\ud83e\udd1d\u200d\ud83e\uddd1\ud83c[\udffb-\udfff]|\ud83e\uddd1\ud83c\udffb\u200d\ud83e\udeef\u200d\ud83e\uddd1\ud83c[\udffc-\udfff]|\ud83e\uddd1\ud83c\udffc\u200d\u2764\ufe0f\u200d\ud83e\uddd1\ud83c[\udffb\udffd-\udfff]|\ud83e\uddd1\ud83c\udffc\u200d\ud83d\udc30\u200d\ud83e\uddd1\ud83c[\udffb\udffd-\udfff]|\ud83e\uddd1\ud83c\udffc\u200d\ud83e\udd1d\u200d\ud83e\uddd1\ud83c[\udffb-\udfff]|\ud83e\uddd1\ud83c\udffc\u200d\ud83e\udeef\u200d\ud83e\uddd1\ud83c[\udffb\udffd-\udfff]|\ud83e\uddd1\ud83c\udffd\u200d\u2764\ufe0f\u200d\ud83e\uddd1\ud83c[\udffb\udffc\udffe\udfff]|\ud83e\uddd1\ud83c\udffd\u200d\ud83d\udc30\u200d\ud83e\uddd1\ud83c[\udffb\udffc\udffe\udfff]|\ud83e\uddd1\ud83c\udffd\u200d\ud83e\udd1d\u200d\ud83e\uddd1\ud83c[\udffb-\udfff]|\ud83e\uddd1\ud83c\udffd\u200d\ud83e\udeef\u200d\ud83e\uddd1\ud83c[\udffb\udffc\udffe\udfff]|\ud83e\uddd1\ud83c\udffe\u200d\u2764\ufe0f\u200d\ud83e\uddd1\ud83c[\udffb-\udffd\udfff]|\ud83e\uddd1\ud83c\udffe\u200d\ud83d\udc30\u200d\ud83e\uddd1\ud83c[\udffb-\udffd\udfff]|\ud83e\uddd1\ud83c\udffe\u200d\ud83e\udd1d\u200d\ud83e\uddd1\ud83c[\udffb-\udfff]|\ud83e\uddd1\ud83c\udffe\u200d\ud83e\udeef\u200d\ud83e\uddd1\ud83c[\udffb-\udffd\udfff]|\ud83e\uddd1\ud83c\udfff\u200d\u2764\ufe0f\u200d\ud83e\uddd1\ud83c[\udffb-\udffe]|\ud83e\uddd1\ud83c\udfff\u200d\ud83d\udc30\u200d\ud83e\uddd1\ud83c[\udffb-\udffe]|\ud83e\uddd1\ud83c\udfff\u200d\ud83e\udd1d\u200d\ud83e\uddd1\ud83c[\udffb-\udfff]|\ud83e\uddd1\ud83c\udfff\u200d\ud83e\udeef\u200d\ud83e\uddd1\ud83c[\udffb-\udffe]|\ud83d\udc68\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68|\ud83d\udc69\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d[\udc68\udc69]|\ud83e\udef1\ud83c\udffb\u200d\ud83e\udef2\ud83c[\udffc-\udfff]|\ud83e\udef1\ud83c\udffc\u200d\ud83e\udef2\ud83c[\udffb\udffd-\udfff]|\ud83e\udef1\ud83c\udffd\u200d\ud83e\udef2\ud83c[\udffb\udffc\udffe\udfff]|\ud83e\udef1\ud83c\udffe\u200d\ud83e\udef2\ud83c[\udffb-\udffd\udfff]|\ud83e\udef1\ud83c\udfff\u200d\ud83e\udef2\ud83c[\udffb-\udffe]|\ud83d\udc68\u200d\u2764\ufe0f\u200d\ud83d\udc68|\ud83d\udc69\u200d\u2764\ufe0f\u200d\ud83d[\udc68\udc69]|\ud83e\uddd1\u200d\ud83e\udd1d\u200d\ud83e\uddd1|\ud83d\udc6f\ud83c\udffb\u200d\u2640\ufe0f|\ud83d\udc6f\ud83c\udffb\u200d\u2642\ufe0f|\ud83d\udc6f\ud83c\udffc\u200d\u2640\ufe0f|\ud83d\udc6f\ud83c\udffc\u200d\u2642\ufe0f|\ud83d\udc6f\ud83c\udffd\u200d\u2640\ufe0f|\ud83d\udc6f\ud83c\udffd\u200d\u2642\ufe0f|\ud83d\udc6f\ud83c\udffe\u200d\u2640\ufe0f|\ud83d\udc6f\ud83c\udffe\u200d\u2642\ufe0f|\ud83d\udc6f\ud83c\udfff\u200d\u2640\ufe0f|\ud83d\udc6f\ud83c\udfff\u200d\u2642\ufe0f|\ud83e\udd3c\ud83c\udffb\u200d\u2640\ufe0f|\ud83e\udd3c\ud83c\udffb\u200d\u2642\ufe0f|\ud83e\udd3c\ud83c\udffc\u200d\u2640\ufe0f|\ud83e\udd3c\ud83c\udffc\u200d\u2642\ufe0f|\ud83e\udd3c\ud83c\udffd\u200d\u2640\ufe0f|\ud83e\udd3c\ud83c\udffd\u200d\u2642\ufe0f|\ud83e\udd3c\ud83c\udffe\u200d\u2640\ufe0f|\ud83e\udd3c\ud83c\udffe\u200d\u2642\ufe0f|\ud83e\udd3c\ud83c\udfff\u200d\u2640\ufe0f|\ud83e\udd3c\ud83c\udfff\u200d\u2642\ufe0f|\ud83d\udc6f\u200d\u2640\ufe0f|\ud83d\udc6f\u200d\u2642\ufe0f|\ud83e\udd3c\u200d\u2640\ufe0f|\ud83e\udd3c\u200d\u2642\ufe0f|\ud83d\udc6b\ud83c[\udffb-\udfff]|\ud83d\udc6c\ud83c[\udffb-\udfff]|\ud83d\udc6d\ud83c[\udffb-\udfff]|\ud83d\udc6f\ud83c[\udffb-\udfff]|\ud83d\udc8f\ud83c[\udffb-\udfff]|\ud83d\udc91\ud83c[\udffb-\udfff]|\ud83e\udd1d\ud83c[\udffb-\udfff]|\ud83e\udd3c\ud83c[\udffb-\udfff]|\ud83d[\udc6b-\udc6d\udc6f\udc8f\udc91]|\ud83e[\udd1d\udd3c])|(?:\ud83d[\udc68\udc69]|\ud83e\uddd1)(?:\ud83c[\udffb-\udfff])?\u200d(?:\u2695\ufe0f|\u2696\ufe0f|\u2708\ufe0f|\ud83c[\udf3e\udf73\udf7c\udf84\udf93\udfa4\udfa8\udfeb\udfed]|\ud83d[\udcbb\udcbc\udd27\udd2c\ude80\ude92]|\ud83e[\uddaf-\uddb3\uddbc\uddbd\ude70])(?:\u200d\u27a1\ufe0f)?|(?:\ud83c[\udfcb\udfcc]|\ud83d[\udd74\udd75]|\u26f9)((?:\ud83c[\udffb-\udfff]|\ufe0f)\u200d[\u2640\u2642]\ufe0f(?:\u200d\u27a1\ufe0f)?)|(?:\ud83c[\udfc3\udfc4\udfca]|\ud83d[\udc6e\udc70\udc71\udc73\udc77\udc81\udc82\udc86\udc87\ude45-\ude47\ude4b\ude4d\ude4e\udea3\udeb4-\udeb6]|\ud83e[\udd26\udd35\udd37-\udd39\udd3d\udd3e\uddb8\uddb9\uddcd-\uddcf\uddd4\uddd6-\udddd])(?:\ud83c[\udffb-\udfff])?\u200d[\u2640\u2642]\ufe0f(?:\u200d\u27a1\ufe0f)?|(?:\ud83d\udc68\u200d\ud83d\udc68\u200d\ud83d\udc66\u200d\ud83d\udc66|\ud83d\udc68\u200d\ud83d\udc68\u200d\ud83d\udc67\u200d\ud83d[\udc66\udc67]|\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc66\u200d\ud83d\udc66|\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d[\udc66\udc67]|\ud83d\udc69\u200d\ud83d\udc69\u200d\ud83d\udc66\u200d\ud83d\udc66|\ud83d\udc69\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d[\udc66\udc67]|\ud83e\uddd1\u200d\ud83e\uddd1\u200d\ud83e\uddd2\u200d\ud83e\uddd2|\ud83d\udc68\u200d\ud83d\udc66\u200d\ud83d\udc66|\ud83d\udc68\u200d\ud83d\udc67\u200d\ud83d[\udc66\udc67]|\ud83d\udc68\u200d\ud83d\udc68\u200d\ud83d[\udc66\udc67]|\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d[\udc66\udc67]|\ud83d\udc69\u200d\ud83d\udc66\u200d\ud83d\udc66|\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d[\udc66\udc67]|\ud83d\udc69\u200d\ud83d\udc69\u200d\ud83d[\udc66\udc67]|\ud83e\uddd1\u200d\ud83e\uddd1\u200d\ud83e\uddd2|\ud83e\uddd1\u200d\ud83e\uddd2\u200d\ud83e\uddd2|\ud83d\udc41\ufe0f\u200d\ud83d\udde8\ufe0f|\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f|\ud83c\udff3\ufe0f\u200d\ud83c\udf08|\ud83d\ude36\u200d\ud83c\udf2b\ufe0f|\u26d3\ufe0f\u200d\ud83d\udca5|\u2764\ufe0f\u200d\ud83d\udd25|\u2764\ufe0f\u200d\ud83e\ude79|\ud83c\udf44\u200d\ud83d\udfeb|\ud83c\udf4b\u200d\ud83d\udfe9|\ud83c\udff4\u200d\u2620\ufe0f|\ud83d\udc15\u200d\ud83e\uddba|\ud83d\udc26\u200d\ud83d\udd25|\ud83d\udc3b\u200d\u2744\ufe0f|\ud83d\udc68\u200d\ud83d[\udc66\udc67]|\ud83d\udc69\u200d\ud83d[\udc66\udc67]|\ud83d\ude2e\u200d\ud83d\udca8|\ud83d\ude35\u200d\ud83d\udcab|\ud83d\ude42\u200d\u2194\ufe0f|\ud83d\ude42\u200d\u2195\ufe0f|\ud83e\uddd1\u200d\ud83e\uddd2|\ud83e\uddde\u200d\u2640\ufe0f|\ud83e\uddde\u200d\u2642\ufe0f|\ud83e\udddf\u200d\u2640\ufe0f|\ud83e\udddf\u200d\u2642\ufe0f|\ud83d\udc08\u200d\u2b1b|\ud83d\udc26\u200d\u2b1b)|[#*0-9]\ufe0f?\u20e3|(?:(?:\ud83c[\udd70\udd71\udd7e\udd7f\ude02\ude37\udf21\udf24-\udf2c\udf36\udf7d\udf96\udf97\udf99-\udf9b\udf9e\udf9f\udfcd\udfce\udfd4-\udfdf\udff3\udff5\udff7]|\ud83d[\udc3f\udc41\udcfd\udd49\udd4a\udd6f\udd70\udd73\udd76-\udd79\udd87\udd8a-\udd8d\udda5\udda8\uddb1\uddb2\uddbc\uddc2-\uddc4\uddd1-\uddd3\udddc-\uddde\udde1\udde3\udde8\uddef\uddf3\uddfa\udecb\udecd-\udecf\udee0-\udee5\udee9\udef0\udef3]|[©®\u203c\u2049\u2122\u2139\u2194-\u2199\u21a9\u21aa\u2328\u23cf\u23ed-\u23ef\u23f1\u23f2\u23f8-\u23fa\u24c2\u25aa\u25ab\u25b6\u25c0\u25fb\u25fc\u2600-\u2604\u260e\u2611\u2618\u2620\u2622\u2623\u2626\u262a\u262e\u262f\u2638-\u263a\u2640\u2642\u265f\u2660\u2663\u2665\u2666\u2668\u267b\u267e\u2692\u2694-\u2697\u2699\u269b\u269c\u26a0\u26a7\u26b0\u26b1\u26c8\u26cf\u26d1\u26d3\u26e9\u26f0\u26f1\u26f4\u26f8\u2702\u2708\u2709\u270f\u2712\u2714\u2716\u271d\u2721\u2733\u2734\u2744\u2747\u2763\u27a1\u2934\u2935\u2b05-\u2b07\u3030\u303d\u3297\u3299])\ufe0f)|(?:\ud83c[\udc04\ude1a\ude2f]|[\u231a\u231b\u25fd\u25fe\u2614\u2615\u2648-\u2653\u267f\u2693\u26a1\u26aa\u26ab\u26bd\u26be\u26c4\u26c5\u26d4\u26ea\u26f2\u26f3\u26f5\u26fa\u26fd\u2757\u2764\u2b1b\u2b1c\u2b50\u2b55])(?:\ufe0f|(?!\ufe0e))|(?:(?:\ud83e\udef0)(?:\ufe0f|(?!\ufe0e))|(?:\ud83c\udfc3|\ud83d\udeb6|\ud83e\uddce)(?:\ud83c[\udffb-\udfff])?(?:\u200d\u27a1\ufe0f)?|(?:\ud83c[\udf85\udfc2\udfc4\udfc7\udfca]|\ud83d[\udc42\udc43\udc46-\udc50\udc66-\udc69\udc6e\udc70-\udc78\udc7c\udc81-\udc83\udc85-\udc87\udcaa\udd7a\udd95\udd96\ude45-\ude47\ude4b-\ude4f\udea3\udeb4\udeb5\udec0\udecc]|\ud83e[\udd0c\udd0f\udd18-\udd1c\udd1e\udd1f\udd26\udd30-\udd39\udd3d\udd3e\udd77\uddb5\uddb6\uddb8\uddb9\uddbb\uddcd\uddcf\uddd1-\udddd\udec3-\udec5\udef1-\udef8]|[\u270a\u270b]))(?:\ud83c[\udffb-\udfff])?|(?:\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f|\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc73\udb40\udc63\udb40\udc74\udb40\udc7f|\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc77\udb40\udc6c\udb40\udc73\udb40\udc7f|\ud83c\udde6\ud83c[\udde8-\uddec\uddee\uddf1\uddf2\uddf4\uddf6-\uddfa\uddfc\uddfd\uddff]|\ud83c\udde7\ud83c[\udde6\udde7\udde9-\uddef\uddf1-\uddf4\uddf6-\uddf9\uddfb\uddfc\uddfe\uddff]|\ud83c\udde8\ud83c[\udde6\udde8\udde9\uddeb-\uddee\uddf0-\uddf7\uddfa-\uddff]|\ud83c\udde9\ud83c[\uddea\uddec\uddef\uddf0\uddf2\uddf4\uddff]|\ud83c\uddea\ud83c[\udde6\udde8\uddea\uddec\udded\uddf7-\uddfa]|\ud83c\uddeb\ud83c[\uddee-\uddf0\uddf2\uddf4\uddf7]|\ud83c\uddec\ud83c[\udde6\udde7\udde9-\uddee\uddf1-\uddf3\uddf5-\uddfa\uddfc\uddfe]|\ud83c\udded\ud83c[\uddf0\uddf2\uddf3\uddf7\uddf9\uddfa]|\ud83c\uddee\ud83c[\udde8-\uddea\uddf1-\uddf4\uddf6-\uddf9]|\ud83c\uddef\ud83c[\uddea\uddf2\uddf4\uddf5]|\ud83c\uddf0\ud83c[\uddea\uddec-\uddee\uddf2\uddf3\uddf5\uddf7\uddfc\uddfe\uddff]|\ud83c\uddf1\ud83c[\udde6-\udde8\uddee\uddf0\uddf7-\uddfb\uddfe]|\ud83c\uddf2\ud83c[\udde6\udde8-\udded\uddf0-\uddff]|\ud83c\uddf3\ud83c[\udde6\udde8\uddea-\uddec\uddee\uddf1\uddf4\uddf5\uddf7\uddfa\uddff]|\ud83c\uddf4\ud83c\uddf2|\ud83c\uddf5\ud83c[\udde6\uddea-\udded\uddf0-\uddf3\uddf7-\uddf9\uddfc\uddfe]|\ud83c\uddf6\ud83c\udde6|\ud83c\uddf7\ud83c[\uddea\uddf4\uddf8\uddfa\uddfc]|\ud83c\uddf8\ud83c[\udde6-\uddea\uddec-\uddf4\uddf7-\uddf9\uddfb\uddfd-\uddff]|\ud83c\uddf9\ud83c[\udde6\udde8\udde9\uddeb-\udded\uddef-\uddf4\uddf7\uddf9\uddfb\uddfc\uddff]|\ud83c\uddfa\ud83c[\udde6\uddec\uddf2\uddf3\uddf8\uddfe\uddff]|\ud83c\uddfb\ud83c[\udde6\udde8\uddea\uddec\uddee\uddf3\uddfa]|\ud83c\uddfc\ud83c[\uddeb\uddf8]|\ud83c\uddfd\ud83c\uddf0|\ud83c\uddfe\ud83c[\uddea\uddf9]|\ud83c\uddff\ud83c[\udde6\uddf2\uddfc]|\ud83c[\udccf\udd8e\udd91-\udd9a\udde6-\uddff\ude01\ude32-\ude36\ude38-\ude3a\ude50\ude51\udf00-\udf20\udf2d-\udf35\udf37-\udf7c\udf7e-\udf84\udf86-\udf93\udfa0-\udfc1\udfc5\udfc6\udfc8\udfc9\udfcf-\udfd3\udfe0-\udff0\udff4\udff8-\udfff]|\ud83d[\udc00-\udc3e\udc40\udc44\udc45\udc51-\udc65\udc6a\udc79-\udc7b\udc7d-\udc80\udc84\udc88-\udc8e\udc90\udc92-\udca9\udcab-\udcfc\udcff-\udd3d\udd4b-\udd4e\udd50-\udd67\udda4\uddfb-\ude44\ude48-\ude4a\ude80-\udea2\udea4-\udeb3\udeb7-\udebf\udec1-\udec5\uded0-\uded2\uded5-\uded8\udedc-\udedf\udeeb\udeec\udef4-\udefc\udfe0-\udfeb\udff0]|\ud83e[\udd0d\udd0e\udd10-\udd17\udd20-\udd25\udd27-\udd2f\udd3a\udd3f-\udd45\udd47-\udd76\udd78-\uddb4\uddb7\uddba\uddbc-\uddcc\uddd0\uddde-\uddff\ude70-\ude7c\ude80-\ude8a\ude8e-\udec2\udec6\udec8\udecd-\udedc\udedf-\udeea\udeef]|[\u23e9-\u23ec\u23f0\u23f3\u26ce\u2705\u2728\u274c\u274e\u2753-\u2755\u2795-\u2797\u27b0\u27bf\ue50a])|\ufe0f/g,UFE0Fg=/\uFE0F/g,U200D=String.fromCharCode(8205),rescaper=/[&<>'"]/g,shouldntBeParsed=/^(?:iframe|noframes|noscript|script|select|style|textarea)$/,fromCharCode=String.fromCharCode;return twemoji;function createText(text,clean){return document.createTextNode(clean?text.replace(UFE0Fg,""):text)}function escapeHTML(s){return s.replace(rescaper,replacer)}function defaultImageSrcGenerator(icon,options){return"".concat(options.base,options.size,"/",icon,options.ext)}function grabAllTextNodes(node,allText){var childNodes=node.childNodes,length=childNodes.length,subnode,nodeType;while(length--){subnode=childNodes[length];nodeType=subnode.nodeType;if(nodeType===3){allText.push(subnode)}else if(nodeType===1&&!("ownerSVGElement"in subnode)&&!shouldntBeParsed.test(subnode.nodeName.toLowerCase())){grabAllTextNodes(subnode,allText)}}return allText}function grabTheRightIcon(rawText){return toCodePoint(rawText.indexOf(U200D)<0?rawText.replace(UFE0Fg,""):rawText)}function parseNode(node,options){var allText=grabAllTextNodes(node,[]),length=allText.length,attrib,attrname,modified,fragment,subnode,text,match,i,index,img,rawText,iconId,src;while(length--){modified=false;fragment=document.createDocumentFragment();subnode=allText[length];text=subnode.nodeValue;i=0;while(match=re.exec(text)){index=match.index;if(index!==i){fragment.appendChild(createText(text.slice(i,index),true))}rawText=match[0];iconId=grabTheRightIcon(rawText);i=index+rawText.length;src=options.callback(iconId,options);if(iconId&&src){img=new Image;img.onerror=options.onerror;img.setAttribute("draggable","false");attrib=options.attributes(rawText,iconId);for(attrname in attrib){if(attrib.hasOwnProperty(attrname)&&attrname.indexOf("on")!==0&&!img.hasAttribute(attrname)){img.setAttribute(attrname,attrib[attrname])}}img.className=options.className;img.alt=rawText;img.src=src;modified=true;fragment.appendChild(img)}if(!img)fragment.appendChild(createText(rawText,false));img=null}if(modified){if(i<text.length){fragment.appendChild(createText(text.slice(i),true))}subnode.parentNode.replaceChild(fragment,subnode)}}return node}function parseString(str,options){return replace(str,function(rawText){var ret=rawText,iconId=grabTheRightIcon(rawText),src=options.callback(iconId,options),attrib,attrname;if(iconId&&src){ret="<img ".concat('class="',options.className,'" ','draggable="false" ','alt="',rawText,'"',' src="',src,'"');attrib=options.attributes(rawText,iconId);for(attrname in attrib){if(attrib.hasOwnProperty(attrname)&&attrname.indexOf("on")!==0&&ret.indexOf(" "+attrname+"=")===-1){ret=ret.concat(" ",attrname,'="',escapeHTML(attrib[attrname]),'"')}}ret=ret.concat("/>")}return ret})}function replacer(m){return escaper[m]}function returnNull(){return null}function toSizeSquaredAsset(value){return typeof value==="number"?value+"x"+value:value}function fromCodePoint(codepoint){var code=typeof codepoint==="string"?parseInt(codepoint,16):codepoint;if(code<65536){return fromCharCode(code)}code-=65536;return fromCharCode(55296+(code>>10),56320+(code&1023))}function parse(what,how){if(!how||typeof how==="function"){how={callback:how}}return(typeof what==="string"?parseString:parseNode)(what,{callback:how.callback||defaultImageSrcGenerator,attributes:typeof how.attributes==="function"?how.attributes:returnNull,base:typeof how.base==="string"?how.base:twemoji.base,ext:how.ext||twemoji.ext,size:how.folder||toSizeSquaredAsset(how.size||twemoji.size),className:how.className||twemoji.className,onerror:how.onerror||twemoji.onerror})}function replace(text,callback){return String(text).replace(re,callback)}function test(text){re.lastIndex=0;var result=re.test(text);re.lastIndex=0;return result}function toCodePoint(unicodeSurrogates,sep){var r=[],c=0,p=0,i=0;while(i<unicodeSurrogates.length){c=unicodeSurrogates.charCodeAt(i++);if(p){r.push((65536+(p-55296<<10)+(c-56320)).toString(16));p=0}else if(55296<=c&&c<=56319){p=c}else{r.push(c.toString(16))}}return r.join(sep||"-")}}();
 </script>
 <script>function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(r) { for (var t = 1; t < arguments.length; t++) { var o = null != arguments[t] ? arguments[t] : {}; t % 2 ? ownKeys(Object(o), !0).forEach(function (t) { _defineProperty(r, t, o[t]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(r, Object.getOwnPropertyDescriptors(o)) : ownKeys(Object(o)).forEach(function (e) { Object.defineProperty(r, e, Object.getOwnPropertyDescriptor(o, e)); }); } return r; }
 function _defineProperty(r, t, o) { return (t = _toPropertyKey(t)) in r ? Object.defineProperty(r, t, { value: o, enumerable: !0, configurable: !0, writable: !0 }) : r[t] = o, r; }
 function _toPropertyKey(r) { var o = _toPrimitive(r, "string"); return "symbol" == typeof o ? o : o + ""; }
 function _toPrimitive(t, e) { if ("object" != typeof t || !t) return t; var r; if ("undefined" != typeof Symbol && void 0 !== (r = t[Symbol.toPrimitive])) { var i = r.call(t, e || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === e ? String : Number)(t); }
-function _toConsumableArray(a) { return _arrayWithoutHoles(a) || _iterableToArray(a) || _unsupportedIterableToArray(a) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { var e = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (Array.isArray(r) && (null == e || e === ("undefined" != typeof Symbol && [][Symbol.iterator]) || e === []["@@iterator"])) return r; if (null != e) { for (var t, o = [], a = e.call(r); !(t = a.next()).done;) o.push(t.value); return o; } }
-function _arrayWithoutHoles(a) { if (Array.isArray(a)) return _arrayLikeToArray(a); }
 function _slicedToArray(e, i) { return _iterableToArrayLimit(e, i) || _unsupportedIterableToArray(e, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArrayLimit(r, t) { var e = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (Array.isArray(r) && (null == e || e === ("undefined" != typeof Symbol && [][Symbol.iterator]) || e === []["@@iterator"])) return r; if (null != e) { var l, n, i, a, u = [], o = !0, f = !1; try { if (i = (e = e.call(r)).next, 0 === t) { if (Object(e) !== e) return; o = !1; } else for (; !(o = (l = i.call(e)).done) && (u.push(l.value), u.length !== t); o = !0); } catch (r) { f = !0, n = r; } finally { try { if (!o && null != e.return && (a = e.return(), Object(a) !== a)) return; } finally { if (f) throw n; } } return u; } }
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var r, e, o = "function" == typeof Symbol ? Symbol : {}, n = o.iterator || "@@iterator", a = o.toStringTag || "@@toStringTag"; function i(o, n, a, i) { var u = n && n.prototype instanceof Generator ? n : Generator, f = Object.create(u.prototype); return _regeneratorDefine2(f, "_invoke", function (t, o, n) { var a, i, u, f = 0, p = n || [], y = !1, G = { p: 0, n: 0, v: r, a: l, f: l.bind(r, 4), d: function d(t, e) { return a = t, i = 0, u = r, G.n = e, c; } }; function l(t, o) { for (i = t, u = o, e = 0; !y && f && !n && e < p.length; e++) { var n, a = p[e], l = G.p, F = a[2]; t > 3 ? (n = F === o) && (u = a[(i = a[4]) ? 5 : (i = 3, 3)], a[4] = a[5] = r) : a[0] <= l && ((n = t < 2 && l < a[1]) ? (i = 0, G.v = o, G.n = a[1]) : l < F && (n = t < 3 || a[0] > o || o > F) && (a[4] = t, a[5] = o, G.n = F, i = 0)); } if (n || t > 1) return c; throw y = !0, o; } return function (n, p, F) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && l(p, F), i = p, u = F; (e = i < 2 ? r : u) || !y;) { a || (i ? (i > 1 && (G.n = i < 3 ? -1 : u), l(i, u)) : G.v = u); try { if (f = 2, a) { if (i || (n = "next"), e = a[n]) { if (!(e = e.call(a, u))) throw TypeError("iterator result is not an object"); if (!e.done) return e; u = e.value, i < 2 && (i = 0); } else 1 === i && (e = a.return) && e.call(a), i < 2 && (u = TypeError("The iterator does not provide a '" + n + "' method"), i = 1); a = r; } else if ((e = (y = G.n < 0) ? u : t.call(o, G)) !== c) break; } catch (t) { a = r, i = 1, u = t; } finally { f = 1; } } return { value: e, done: y }; }; }(o, a, i), !0), f; } var c = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} e = Object.getPrototypeOf; var u = [][n] ? e(e([][n]())) : (_regeneratorDefine2(e = {}, n, function () { return this; }), e), f = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(u); function p(r) { return Object.setPrototypeOf ? Object.setPrototypeOf(r, GeneratorFunctionPrototype) : (r.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(r, a, "GeneratorFunction")), r.prototype = Object.create(f), r; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(f, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, a, "GeneratorFunction"), _regeneratorDefine2(f), _regeneratorDefine2(f, a, "Generator"), _regeneratorDefine2(f, n, function () { return this; }), _regeneratorDefine2(f, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: p }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
 function _createForOfIteratorHelper(e, t) { var _n2 = "undefined" != typeof Symbol && e[Symbol.iterator] || e["@@iterator"]; if (!_n2) { if (Array.isArray(e) || (_n2 = _unsupportedIterableToArray(e)) || t && e && "number" == typeof e.length) { _n2 && (e = _n2); var o = 0, F = function F() {}; return { s: F, n: function n() { return o >= e.length ? { done: !0 } : { done: !1, value: e[o++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var a, u, i = !0; return { s: function s() { _n2 = _n2.call(e); }, n: function n() { i = !0; var r = _n2.next(); return r.done ? { done: !0 } : { value: r.value, done: i = !1 }; }, e: function e(r) { a = !0, u = r; }, f: function f() { try { i || null == _n2.return || _n2.return(); } finally { if (a) throw u; } } }; }
+function _toConsumableArray(a) { return _arrayWithoutHoles(a) || _iterableToArray(a) || _unsupportedIterableToArray(a) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(t, e) { if (t) { if ("string" == typeof t) return _arrayLikeToArray(t, e); var o = {}.toString.call(t).slice(8, -1); return "Object" === o && t.constructor && (o = t.constructor.name), "Map" === o || "Set" === o ? Array.from(t) : "Arguments" === o || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(o) ? _arrayLikeToArray(t, e) : void 0; } }
+function _iterableToArray(r) { var e = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (Array.isArray(r) && (null == e || e === ("undefined" != typeof Symbol && [][Symbol.iterator]) || e === []["@@iterator"])) return r; if (null != e) { for (var t, o = [], a = e.call(r); !(t = a.next()).done;) o.push(t.value); return o; } }
+function _arrayWithoutHoles(a) { if (Array.isArray(a)) return _arrayLikeToArray(a); }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
@@ -1339,7 +1342,7 @@ function voiceSelect() {
     return h('option', {
       value: v.name,
       selected: voice && v.name === voice.name
-    }, (/en[-_]US/i.test(v.lang) ? '🇺🇸 ' : /en[-_]GB/i.test(v.lang) ? '🇬🇧 ' : '🌐 ') + v.name);
+    }, (/en[-_]US/i.test(v.lang) ? '[美式] ' : /en[-_]GB/i.test(v.lang) ? '[英式] ' : '') + v.name);
   }));
   return h('div', {
     class: 'vbox'
@@ -1733,6 +1736,256 @@ var RW5 = [{
   pre: 'a',
   ans: ['kite']
 }];
+
+/* ================== EXTRA QUESTION BANK ================== */
+(function () {
+  var addW = function addW(cat, arr) {
+    var _VOCAB$cat$w;
+    return (_VOCAB$cat$w = VOCAB[cat].w).push.apply(_VOCAB$cat$w, _toConsumableArray(arr));
+  };
+  addW('animals', [['donkey', '🫏', '驢子'], ['jellyfish', '🪼', '水母'], ['polar bear', '🐻‍❄️', '北極熊']]);
+  addW('food', [['kiwi', '🥝', '奇異果'], ['meat', '🥩', '肉'], ['sweets', '🍬', '糖果'], ['fruit', '🍓', '水果']]);
+  addW('clothes', [['shorts', '🩳', '短褲']]);
+  addW('toys', [['monster', '👾', '怪獸'], ['alien', '👽', '外星人'], ['hockey', '🏑', '曲棍球'], ['badminton', '🏸', '羽毛球'], ['table tennis', '🏓', '桌球']]);
+  addW('home', [['mirror', '🪞', '鏡子'], ['garden', '🏡', '花園'], ['box', '📦', '盒子'], ['camera', '📷', '相機'], ['radio', '📻', '收音機'], ['bookcase', '📚', '書櫃']]);
+  addW('family', [['friend', '🧑‍🤝‍🧑', '朋友']]);
+  VOCAB.transport = {
+    zh: '交通',
+    icon: '🚌',
+    w: [['bus', '🚌', '公車'], ['car', '🚗', '汽車'], ['bike', '🚲', '腳踏車'], ['motorbike', '🏍️', '機車'], ['helicopter', '🚁', '直升機'], ['plane', '✈️', '飛機'], ['train', '🚂', '火車'], ['boat', '⛵', '船'], ['lorry', '🚚', '卡車']]
+  };
+  VOCAB.actions = {
+    zh: '動作',
+    icon: '🏃',
+    w: [['run', '🏃', '跑'], ['swim', '🏊', '游泳'], ['sing', '🎤', '唱歌'], ['dance', '💃', '跳舞'], ['sleep', '😴', '睡覺'], ['eat', '🍽️', '吃'], ['drink', '🥤', '喝'], ['ride', '🚴', '騎'], ['write', '✍️', '寫'], ['paint', '🎨', '畫畫'], ['read', '📖', '讀'], ['clap', '👏', '拍手'], ['smile', '😊', '微笑'], ['kick', '🦵', '踢']]
+  };
+  L1.push({
+    title: 'At home 在家',
+    people: [['p1', '👨📺'], ['p2', '👩📱'], ['p3', '👧🐱'], ['p4', '👦🎸'], ['p5', '👶🧸'], ['p6', '👵🍰']],
+    names: [['Hugo', 'p4', 'Hugo is the boy who is playing the guitar.'], ['Sue', 'p3', 'Can you see the girl with the cat? That\'s Sue.'], ['Tony', 'p1', 'Tony is the man who is watching TV.'], ['Kim', 'p6', 'The grandmother with the cake is Kim.'], ['Bill', 'p5', 'The baby with the teddy bear is Bill.']]
+  }, {
+    title: 'At the zoo 動物園',
+    people: [['p1', '👦🦒'], ['p2', '👧🐘'], ['p3', '👨🐵'], ['p4', '👩🐊'], ['p5', '👦🦓'], ['p6', '👧🐍']],
+    names: [['Matt', 'p5', 'Matt is looking at the zebra.'], ['May', 'p6', 'May likes snakes! She is next to the snake.'], ['Dan', 'p1', 'Look at the boy with the giraffe. His name is Dan.'], ['Ann', 'p4', 'The woman next to the crocodile is Ann.'], ['Pat', 'p3', 'Pat is the man who is looking at the monkey.']]
+  }, {
+    title: 'Playtime 遊戲時間',
+    people: [['p1', '👦🏀'], ['p2', '👧🎾'], ['p3', '👦🎮'], ['p4', '👧🪆'], ['p5', '👦🤖'], ['p6', '👧🎹']],
+    names: [['Alex', 'p3', 'Alex is playing a computer game.'], ['Lucy', 'p6', 'Lucy is the girl who is playing the piano.'], ['Ben', 'p5', 'Ben has got a robot. It\'s his favourite toy.'], ['Eva', 'p2', 'Eva is playing tennis.'], ['Nick', 'p1', 'Nick is the boy with the basketball.']]
+  });
+  L2.push({
+    q: 'The cat\'s name is',
+    audio: 'What\'s your cat\'s name? It\'s Tiger. How do you spell that? T, I, G, E, R.',
+    ans: ['tiger']
+  }, {
+    q: 'How many brothers has he got?',
+    audio: 'Have you got any brothers? Yes, I\'ve got two brothers.',
+    ans: ['2', 'two']
+  }, {
+    q: 'The girl\'s name is',
+    audio: 'What\'s your name? My name\'s Jill. J, I, L, L.',
+    ans: ['jill']
+  }, {
+    q: 'How old is Sam?',
+    audio: 'How old are you, Sam? I\'m six. I\'m six years old.',
+    ans: ['6', 'six']
+  }, {
+    q: 'The robot\'s name is',
+    audio: 'Look at my robot! What\'s its name? Its name is Bob. B, O, B.',
+    ans: ['bob']
+  }, {
+    q: 'How many pencils are in the bag?',
+    audio: 'How many pencils are in your bag? I\'ve got twelve pencils.',
+    ans: ['12', 'twelve']
+  }, {
+    q: 'The school is in ______ Street',
+    audio: 'Where is your school? It\'s in Hill Street. H, I, L, L.',
+    ans: ['hill']
+  }, {
+    q: 'How many ducks are on the water?',
+    audio: 'Can you see the ducks on the water? How many are there? There are four ducks.',
+    ans: ['4', 'four']
+  }, {
+    q: 'The horse\'s name is',
+    audio: 'What\'s the horse\'s name? It\'s Star. S, T, A, R.',
+    ans: ['star']
+  }, {
+    q: 'What number is the bus?',
+    audio: 'Which bus do you take to school? I take bus number eleven.',
+    ans: ['11', 'eleven']
+  }, {
+    q: 'The baby\'s name is',
+    audio: 'What\'s the baby\'s name? Her name is Lily. L, I, L, Y.',
+    ans: ['lily']
+  }, {
+    q: 'How many children are in the park?',
+    audio: 'How many children are there in the park? There are fourteen children.',
+    ans: ['14', 'fourteen']
+  }, {
+    q: 'The teacher is Mr',
+    audio: 'Who is your English teacher? It\'s Mr Green. G, R, E, E, N.',
+    ans: ['green']
+  });
+  L3.push({
+    q: 'What is Sue drawing?',
+    audio: 'Sue, what are you drawing? A house? No, I\'m drawing a flower.',
+    o: ['🏠', '🌸', '🌳'],
+    a: 1
+  }, {
+    q: 'What does Ben want for lunch?',
+    audio: 'Ben, what do you want for lunch? A burger? No, thank you. I want rice and chicken.',
+    o: ['🍔', '🍚', '🌭'],
+    a: 1
+  }, {
+    q: 'What colour is May\'s bike?',
+    audio: 'May, is your bike red? No, it isn\'t. It\'s green.',
+    o: ['🔴', '🟢', '🟡'],
+    a: 1
+  }, {
+    q: 'What has Dad got?',
+    audio: 'Look at Dad. Has he got a camera? No, he\'s got a phone.',
+    o: ['📷', '📱', '📖'],
+    a: 1
+  }, {
+    q: 'What is in the box?',
+    audio: 'What\'s in the box, Mum? Is it a cake? No, it\'s a new doll!',
+    o: ['🍰', '🪆', '🧸'],
+    a: 1
+  }, {
+    q: 'What is Grandpa doing?',
+    audio: 'Where is Grandpa? He\'s in the garden. Is he reading? No, he\'s sleeping!',
+    o: ['📖', '😴', '🏃'],
+    a: 1
+  }, {
+    q: 'How many apples has Kim got?',
+    audio: 'Kim, how many apples have you got? Two? No, I\'ve got four apples.',
+    o: ['🍎🍎', '🍎🍎🍎', '🍎🍎🍎🍎'],
+    a: 2
+  }, {
+    q: 'Which animal is under the tree?',
+    audio: 'What\'s that under the tree? Is it a dog? No, it\'s a goat!',
+    o: ['🐶', '🐐', '🐑'],
+    a: 1
+  }, {
+    q: 'What does Anna want to play?',
+    audio: 'Anna, do you want to play football? No, I want to play badminton.',
+    o: ['⚽', '🏸', '🎾'],
+    a: 1
+  }, {
+    q: 'What is on the table?',
+    audio: 'What\'s on the table? Is it a clock? No, it\'s a lamp.',
+    o: ['🕐', '💡', '📺'],
+    a: 1
+  }, {
+    q: 'What is Alex\'s favourite food?',
+    audio: 'Alex, do you like fish? Yes, but I love chips!',
+    o: ['🐟', '🍟', '🥚'],
+    a: 1
+  }, {
+    q: 'Which girl is Pat\'s sister?',
+    audio: 'Pat, where is your sister? Is she the girl with the ice cream? No, she\'s the girl with the balloon.',
+    o: ['👧🍦', '👧🎈', '👧🪁'],
+    a: 1
+  });
+  L4.push({
+    title: 'At the beach 海邊',
+    objs: [['boat', '⛵'], ['shell', '🐚'], ['fish', '🐟'], ['ball', '⚽'], ['sun', '☀️'], ['duck', '🦆']],
+    inst: [['boat', 'red', 'Can you see the boat? Colour it red.'], ['shell', 'pink', 'Now colour the shell pink.'], ['fish', 'green', 'Look at the fish. Colour the fish green.'], ['ball', 'purple', 'Colour the ball purple.'], ['duck', 'orange', 'And the duck? Colour it orange.']]
+  }, {
+    title: 'At school 學校',
+    objs: [['book', '📖'], ['pencil', '✏️'], ['ruler', '📏'], ['clock', '🕐'], ['bag', '🎒'], ['chair', '🪑']],
+    inst: [['book', 'blue', 'Colour the book blue.'], ['pencil', 'yellow', 'Can you see the pencil? Colour it yellow.'], ['clock', 'red', 'Now the clock. Colour the clock red.'], ['bag', 'brown', 'Colour the bag brown.'], ['chair', 'green', 'And colour the chair green.']]
+  }, {
+    title: 'Food time 吃東西囉',
+    objs: [['apple', '🍎'], ['cake', '🍰'], ['banana', '🍌'], ['egg', '🥚'], ['ice cream', '🍦'], ['milk', '🥛']],
+    inst: [['cake', 'pink', 'Can you see the cake? Colour it pink.'], ['egg', 'blue', 'Colour the egg blue. A blue egg! That\'s funny.'], ['ice cream', 'brown', 'Now colour the ice cream brown.'], ['apple', 'green', 'Colour the apple green.'], ['banana', 'yellow', 'And the banana? Colour it yellow.']]
+  });
+  RW1.push(['🦓', 'This is a zebra.', 1], ['🐊', 'This is a lizard.', 0], ['🍍', 'This is a pineapple.', 1], ['🥥', 'This is a coconut.', 1], ['🧢', 'This is a cap.', 1], ['👖', 'This is a dress.', 0], ['📏', 'This is a ruler.', 1], ['🖍️', 'This is a pen.', 0], ['🏀', 'This is a basketball.', 1], ['🎹', 'This is a guitar.', 0], ['🚁', 'This is a helicopter.', 1], ['🚌', 'This is a car.', 0], ['👂', 'This is an ear.', 1], ['🦶', 'This is a hand.', 0], ['🍟', 'These are chips.', 1], ['🍅', 'This is an apple.', 0], ['🐑', 'This is a sheep.', 1], ['🐭', 'This is a cat.', 0], ['🛁', 'This is a bath.', 1], ['📺', 'This is a computer.', 0]);
+  RW2.push({
+    scene: ['👦🍦', '👧🍦', '🐱', '🌸', '🌸', '🌸', '🌸', '🚲'],
+    st: [['There are four flowers.', 1], ['The children are eating ice cream.', 1], ['There is a dog.', 0], ['There is a bike in the picture.', 1], ['There are two cats.', 0]]
+  }, {
+    scene: ['🐘', '🦒', '🦒', '🐵', '🐵', '🐵', '🌳', '👨'],
+    st: [['There are three monkeys.', 1], ['There is one giraffe.', 0], ['There is an elephant.', 1], ['There are two trees.', 0], ['A man is in the picture.', 1]]
+  }, {
+    scene: ['📖', '📖', '✏️', '✏️', '✏️', '🎒', '🕐', '👧'],
+    st: [['There are two books.', 1], ['There are four pencils.', 0], ['There is a clock.', 1], ['There is a bag.', 1], ['There are two girls.', 0]]
+  });
+  RW3.push(['zebra', '🦓'], ['lizard', '🦎'], ['monkey', '🐵'], ['giraffe', '🦒'], ['hippo', '🦛'], ['spider', '🕷️'], ['pear', '🍐'], ['mango', '🥭'], ['bread', '🍞'], ['juice', '🧃'], ['water', '💧'], ['carrot', '🥕'], ['potato', '🥔'], ['onion', '🧅'], ['tomato', '🍅'], ['ruler', '📏'], ['pencil', '✏️'], ['crayon', '🖍️'], ['dress', '👗'], ['shirt', '👔'], ['jacket', '🧥'], ['ear', '👂'], ['eye', '👁️'], ['arm', '💪'], ['leg', '🦵'], ['house', '🏠'], ['bath', '🛁'], ['sofa', '🛋️'], ['lamp', '💡'], ['phone', '📱'], ['flower', '🌸'], ['plane', '✈️'], ['bus', '🚌'], ['car', '🚗'], ['guitar', '🎸'], ['piano', '🎹'], ['balloon', '🎈'], ['baby', '👶']);
+  RW4.push({
+    title: 'My bedroom 我的房間',
+    text: 'This is my bedroom. There is a big {bed} next to the window. On my bed there is a {teddy bear}. I have got a {computer} on my desk and I play games on it. My {clock} is on the wall. I like my room because it is {blue}!',
+    bank: [['bed', '🛏️'], ['teddy bear', '🧸'], ['computer', '💻'], ['clock', '🕐'], ['blue', '🔵'], ['bath', '🛁'], ['horse', '🐴'], ['banana', '🍌']]
+  }, {
+    title: 'Monkeys 猴子',
+    text: 'Monkeys are funny animals. They live in {trees}. They have got long {arms} and a long {tail}. Monkeys love eating {bananas}. They like playing with their {friends}.',
+    bank: [['trees', '🌳'], ['arms', '💪'], ['tail', '〰️'], ['bananas', '🍌'], ['friends', '🧑‍🤝‍🧑'], ['shoes', '👟'], ['cars', '🚗'], ['milk', '🥛']]
+  }, {
+    title: 'At the beach 海邊',
+    text: 'Today I am at the beach with my family. The {sea} is blue and the {sun} is hot. My sister is playing with a {ball}. I am sitting on the sand and I am eating an {ice cream}. My dad has got a big {boat}!',
+    bank: [['sea', '🌊'], ['sun', '☀️'], ['ball', '⚽'], ['ice cream', '🍦'], ['boat', '⛵'], ['bed', '🛏️'], ['tiger', '🐯'], ['pencil', '✏️']]
+  });
+  RW5.push({
+    scene: ['👧🐱'],
+    q: 'What has the girl got?',
+    pre: 'a',
+    ans: ['cat']
+  }, {
+    scene: ['🍎', '🍎', '🍎', '🍎'],
+    q: 'How many apples are there?',
+    pre: '',
+    ans: ['4', 'four']
+  }, {
+    scene: ['👦🍦'],
+    q: 'What is the boy eating?',
+    pre: 'an',
+    ans: ['ice cream', 'icecream']
+  }, {
+    scene: ['👩📱'],
+    q: 'What has the woman got?',
+    pre: 'a',
+    ans: ['phone']
+  }, {
+    scene: ['🐶🛋️'],
+    q: 'Where is the dog sitting?',
+    pre: 'on the',
+    ans: ['sofa']
+  }, {
+    scene: ['🏊‍♂️', '🌊'],
+    q: 'What is the boy doing?',
+    pre: '',
+    ans: ['swimming']
+  }, {
+    scene: ['🦆', '🦆', '🦆'],
+    q: 'How many ducks are there?',
+    pre: '',
+    ans: ['3', 'three']
+  }, {
+    scene: ['👧🎹'],
+    q: 'What is the girl playing?',
+    pre: 'the',
+    ans: ['piano']
+  }, {
+    scene: ['👨🚗'],
+    q: 'What has the man got?',
+    pre: 'a',
+    ans: ['car']
+  }, {
+    scene: ['👶🥛'],
+    q: 'What is the baby drinking?',
+    pre: '',
+    ans: ['milk']
+  }, {
+    scene: ['🐦🌳'],
+    q: 'Where is the bird?',
+    pre: 'in the',
+    ans: ['tree']
+  }, {
+    scene: ['👦😴', '🛏️'],
+    q: 'What is the boy doing?',
+    pre: '',
+    ans: ['sleeping']
+  });
+})();
 var PARTS = {
   L1: {
     sec: 'L',
@@ -1938,7 +2191,7 @@ function runScript(steps, statusEl, onDone) {
   return ctl;
 }
 function paceSelect() {
-  var opts = [[1, '⏱️ 標準考試時間'], [1.5, '🐢 放慢一點（停頓 ×1.5）'], [2, '🐌 慢很多（停頓 ×2）'], [0, '✋ 不計時（自己按下一題）']];
+  var opts = [[1, '標準考試時間'], [1.5, '放慢一點（停頓 ×1.5）'], [2, '慢很多（停頓 ×2）'], [0, '不計時（自己按下一題）']];
   var sel = h('select', {
     class: 'vsel',
     onchange: function onchange() {
@@ -2724,7 +2977,7 @@ R.hearpick = function (d) {
 function itemsFor(part, n) {
   switch (part) {
     case 'L1':
-      return sample(L1, n || L1.length).map(function (d) {
+      return sample(L1, n || 3).map(function (d) {
         return {
           type: 'lines',
           d,
@@ -2732,7 +2985,7 @@ function itemsFor(part, n) {
         };
       });
     case 'L2':
-      return sample(L2, n || 8).map(function (d) {
+      return sample(L2, n || 10).map(function (d) {
         return {
           type: 'write',
           d,
@@ -2740,7 +2993,7 @@ function itemsFor(part, n) {
         };
       });
     case 'L3':
-      return sample(L3, n || 8).map(function (d) {
+      return sample(L3, n || 10).map(function (d) {
         return {
           type: 'pick',
           d,
@@ -2748,7 +3001,7 @@ function itemsFor(part, n) {
         };
       });
     case 'L4':
-      return sample(L4, n || L4.length).map(function (d) {
+      return sample(L4, n || 3).map(function (d) {
         return {
           type: 'colour',
           d,
@@ -2756,7 +3009,7 @@ function itemsFor(part, n) {
         };
       });
     case 'RW1':
-      return sample(RW1, n || 10).map(function (d) {
+      return sample(RW1, n || 12).map(function (d) {
         return {
           type: 'tf',
           d,
@@ -2764,7 +3017,7 @@ function itemsFor(part, n) {
         };
       });
     case 'RW2':
-      return sample(RW2, n || RW2.length).map(function (d) {
+      return sample(RW2, n || 3).map(function (d) {
         return {
           type: 'yn',
           d,
@@ -2772,7 +3025,7 @@ function itemsFor(part, n) {
         };
       });
     case 'RW3':
-      return sample(RW3, n || 8).map(function (d) {
+      return sample(RW3, n || 10).map(function (d) {
         return {
           type: 'spell',
           d,
@@ -2780,7 +3033,7 @@ function itemsFor(part, n) {
         };
       });
     case 'RW4':
-      return sample(RW4, n || RW4.length).map(function (d) {
+      return sample(RW4, n || 3).map(function (d) {
         return {
           type: 'gap',
           d,
@@ -2788,7 +3041,7 @@ function itemsFor(part, n) {
         };
       });
     case 'RW5':
-      return sample(RW5, n || 8).map(function (d) {
+      return sample(RW5, n || 10).map(function (d) {
         return {
           type: 'write',
           d,
@@ -2803,7 +3056,7 @@ function vocabQuiz(catKey) {
   }).flatMap(function (c) {
     return c.w;
   }) : VOCAB[catKey].w;
-  var items = sample(pool, Math.min(10, pool.length)).map(function (it) {
+  var items = sample(pool, Math.min(15, pool.length)).map(function (it) {
     return {
       type: 'hearpick',
       d: {
@@ -3106,11 +3359,12 @@ function kidScreen() {
   });
   var avBtns = AVATARS.map(function (a) {
     return h('button', {
+      'data-a': a,
       class: 'avb' + (a === pickAv ? ' on' : ''),
       onclick: function onclick() {
         pickAv = a;
         avBtns.forEach(function (b) {
-          return b.classList.toggle('on', b.textContent === a);
+          return b.classList.toggle('on', b.dataset.a === a);
         });
       }
     }, a);
@@ -3324,6 +3578,8 @@ document.getElementById('homeBtn').onclick = home;
 document.getElementById('kidBtn').onclick = kidScreen;
 applyProfile();
 home();
-initCloud();</script>
+initCloud();
+(function(){function p(n){try{twemoji.parse(n,{folder:'72x72',ext:'.png'})}catch(e){}}
+p(document.body);new MutationObserver(function(ms){ms.forEach(function(m){Array.prototype.forEach.call(m.addedNodes,function(n){if(n.nodeType===1&&n.tagName!=='SELECT'&&n.tagName!=='OPTION')p(n);else if(n.nodeType===3&&n.parentNode&&n.parentNode.tagName!=='OPTION')p(n.parentNode)})})}).observe(document.body,{childList:true,subtree:true,characterData:true});})();</script>
 </body>
 </html>
