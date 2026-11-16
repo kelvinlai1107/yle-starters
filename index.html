@@ -143,6 +143,14 @@ table.rev tr.x td{background:#fff5f7}
 .rbrow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:-4px 0 12px}
 .rbline{font-size:20px;font-weight:800;color:var(--purple);margin:8px 0}
 .prog2{margin-top:8px}.prog2 .prog{margin:4px 0 2px;height:8px}
+.hwgrid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.hwc{background:#fff;border:3px solid var(--line);border-radius:18px;padding:10px;text-align:center;cursor:pointer;box-shadow:0 4px 0 var(--line)}
+.hwc.done{border-color:#bfeee8;background:#f4fffd}
+.hwe{font-size:44px;height:56px;display:flex;align-items:center;justify-content:center}
+.hww{font-size:22px;font-weight:800;margin:2px 0;transition:filter .2s}
+.hww.blur{filter:blur(6px);user-select:none}
+.dots{font-size:20px;letter-spacing:3px;color:#d0c4ad}.dot.on{color:var(--green)}
+.rb.due{background:#ffe0e6;color:#c2184b}
 .note{background:#fff;border-radius:16px;padding:12px 16px;border:2px solid var(--line);font-family:"Noto Sans TC";font-size:15px;color:var(--soft);margin-top:18px;line-height:1.7}
 h2{margin:4px 0 6px;font-size:28px}
 .opts>*,.tf>*,.chips>*,.toolbar>*,.audio>*,.names>*,.bank>*,.tiles>*,.slots>*,.palette>*,.avs>*,.scene>*,.foot>*,.bars>*,.yn>*{margin:3px}
@@ -171,6 +179,7 @@ if(!Array.prototype.includes)Array.prototype.includes=function(x){return this.in
 if(!String.prototype.startsWith)String.prototype.startsWith=function(s){return this.indexOf(s)===0};
 if(!Array.prototype.find)Array.prototype.find=function(f){for(var i=0;i<this.length;i++)if(f(this[i],i,this))return this[i]};
 if(!Array.prototype.findIndex)Array.prototype.findIndex=function(f){for(var i=0;i<this.length;i++)if(f(this[i],i,this))return i;return -1};
+if(!String.prototype.padStart)String.prototype.padStart=function(n,c){var s=String(this);while(s.length<n)s=(c||' ')+s;return s};
 if(!Array.prototype.fill)Array.prototype.fill=function(v){for(var i=0;i<this.length;i++)this[i]=v;return this};
 (function(P){['append'].forEach(function(n){if(!P[n])P[n]=function(){var s=this;Array.prototype.forEach.call(arguments,function(c){s.appendChild(c instanceof Node?c:document.createTextNode(String(c)))})}});
 if(!P.replaceWith)P.replaceWith=function(n){this.parentNode&&this.parentNode.replaceChild(n,this)};})(Element.prototype);
@@ -2281,7 +2290,10 @@ R.pick = function (d) {
           correct: opts.find(function (o) {
             return o.ok;
           }).e,
-          ok
+          ok,
+          hw: e2w(opts.find(function (o) {
+            return o.ok;
+          }).e)
         }]
       };
     }
@@ -2345,7 +2357,10 @@ R.write = function (d) {
           q: d.q,
           your: inp.value || '（未作答）',
           correct: d.ans[0],
-          ok
+          ok,
+          hw: d.ans.find(function (a) {
+            return isVocab(a);
+          }) || (d.scene && /^[a-z ]+$/i.test(d.ans[0]) ? d.ans[0] : null)
         }]
       };
     }
@@ -2397,7 +2412,8 @@ R.tf = function (d) {
           q: e + ' ' + s,
           your: sel == null ? '（未作答）' : sel ? '✔' : '✘',
           correct: a ? '✔' : '✘',
-          ok
+          ok,
+          hw: e2w(e)
         }]
       };
     }
@@ -2560,7 +2576,8 @@ R.spell = function (d, ctx) {
           q: e + ' 拼字',
           your: got(),
           correct: word,
-          ok
+          ok,
+          hw: word
         }]
       };
     }
@@ -2648,7 +2665,8 @@ R.gap = function (d) {
           q: d.title + ' (' + (i + 1) + ')',
           your: g.dataset.v || '（未作答）',
           correct: answers[i],
-          ok
+          ok,
+          hw: answers[i]
         });
       });
       return {
@@ -2917,7 +2935,8 @@ R.colour = function (d) {
           q: n,
           your: painted[n] || '（未上色）',
           correct: c,
-          ok
+          ok,
+          hw: c
         });
       });
       return {
@@ -2966,12 +2985,286 @@ R.hearpick = function (d) {
           q: '🔊 ' + d.it[0],
           your: sel == null ? '（未作答）' : opts[sel][0],
           correct: d.it[0],
+          ok,
+          hw: d.it[0]
+        }]
+      };
+    }
+  };
+};
+R.dictate = function (d) {
+  var info = wordInfo(d.w);
+  var inp = h('input', {
+    class: 'ans',
+    autocomplete: 'off',
+    autocapitalize: 'off',
+    autocorrect: 'off',
+    spellcheck: 'false',
+    placeholder: '拼拼看',
+    style: 'width:260px'
+  });
+  var t = hwTodo()[d.w.toLowerCase()];
+  return {
+    el: h('div', {
+      style: 'text-align:center'
+    }, h('div', {
+      class: 'audio',
+      style: 'justify-content:center'
+    }, h('button', {
+      class: 'play',
+      onclick: function onclick() {
+        return say(d.w);
+      }
+    }, '🔊 聽單字'), h('button', {
+      class: 'play slow',
+      onclick: function onclick() {
+        return say(d.w, 0.5);
+      }
+    }, '🐢 慢慢念')), h('div', {
+      class: 'bigE',
+      style: 'font-size:90px'
+    }, info && (info[1] || info[3]) ? pic(info, 80) : '❓'), h('div', {
+      class: 'sub zh'
+    }, '聽完把單字拼出來（' + d.w.replace(/[^a-z]/gi, '').length + ' 個字母' + (/ /.test(d.w) ? '，中間有空格' : '') + '）'), h('div', {
+      style: 'margin:12px 0'
+    }, inp), t ? h('div', {
+      class: 'dots'
+    }, dotsEl(t.days.length)) : null),
+    autoplay: d.w,
+    grade(show) {
+      var ok = norm(inp.value) === norm(d.w);
+      if (show) {
+        inp.classList.add(ok ? 'right' : 'wrong');
+        inp.disabled = true;
+      }
+      var note = null;
+      if (show) {
+        var r = creditHW(d.w, ok);
+        if (r) note = r;
+      }
+      return {
+        got: ok ? 1 : 0,
+        total: 1,
+        note,
+        review: [{
+          q: '🔊 ' + d.w,
+          your: inp.value || '（未作答）',
+          correct: d.w,
           ok
         }]
       };
     }
   };
 };
+function dotsEl(n) {
+  var a = [];
+  for (var i = 0; i < 5; i++) a.push(h('span', {
+    class: 'dot' + (i < n ? ' on' : '')
+  }, i < n ? '●' : '○'));
+  return a;
+}
+
+/* ================== HW: TO-REDO / REDO-OVER ================== */
+var _winfo = null,
+  _e2w = null;
+function buildMaps() {
+  _winfo = {};
+  _e2w = {};
+  Object.values(VOCAB).forEach(function (c) {
+    return c.w.forEach(function (it) {
+      var k = it[0].toLowerCase();
+      if (!_winfo[k]) _winfo[k] = it;
+      if (it[1] && !/^\d+$/.test(it[1]) && !_e2w[it[1]]) _e2w[it[1]] = it[0];
+    });
+  });
+  RW3.forEach(function (_ref33) {
+    var _ref34 = _slicedToArray(_ref33, 2),
+      w = _ref34[0],
+      e = _ref34[1];
+    if (!_winfo[w]) _winfo[w] = [w, e, ''];
+    if (!_e2w[e]) _e2w[e] = w;
+  });
+  RW4.forEach(function (t) {
+    return t.bank.forEach(function (_ref35) {
+      var _ref36 = _slicedToArray(_ref35, 2),
+        w = _ref36[0],
+        e = _ref36[1];
+      if (!_winfo[w]) _winfo[w] = [w, e, ''];
+    });
+  });
+  Object.assign(_e2w, {
+    '🔴': 'red',
+    '🔵': 'blue',
+    '🟢': 'green',
+    '🟡': 'yellow'
+  });
+}
+function wordInfo(w) {
+  if (!_winfo) buildMaps();
+  return _winfo[String(w).toLowerCase()] || null;
+}
+function e2w(e) {
+  if (!_e2w) buildMaps();
+  return _e2w[e] || null;
+}
+function isVocab(w) {
+  return !!wordInfo(w);
+}
+function todayStr() {
+  var d = new Date();
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+}
+function hwObj() {
+  var p = prof();
+  if (!p) return null;
+  p.hw = p.hw || {
+    todo: {},
+    done: {}
+  };
+  p.hw.todo = p.hw.todo || {};
+  p.hw.done = p.hw.done || {};
+  return p.hw;
+}
+function hwTodo() {
+  var o = hwObj();
+  return o ? o.todo : {};
+}
+function collectHW(review) {
+  var o = hwObj();
+  if (!o) return 0;
+  var n = 0;
+  var today = todayStr();
+  review.forEach(function (v) {
+    if (v.ok || !v.hw) return;
+    var disp = (wordInfo(v.hw) || [v.hw])[0];
+    var k = disp.toLowerCase();
+    if (!/^[a-z][a-z \-]*$/i.test(disp)) return;
+    if (o.done[k]) {
+      delete o.done[k];
+    }
+    if (o.todo[k]) {
+      o.todo[k].wrong = (o.todo[k].wrong || 1) + 1;
+    } else {
+      o.todo[k] = {
+        w: disp,
+        days: [],
+        added: today,
+        wrong: 1
+      };
+      n++;
+    }
+  });
+  return n;
+}
+function creditHW(w, ok) {
+  var o = hwObj();
+  if (!o) return null;
+  var k = w.toLowerCase();
+  var t = o.todo[k];
+  if (!t) return null;
+  if (!ok) return '這次不算，下次再挑戰！（目前 ' + t.days.length + '/5 天）';
+  var today = todayStr();
+  if (!t.days.includes(today)) t.days.push(today);
+  if (t.days.length >= 5) {
+    o.done[k] = {
+      w: t.w,
+      added: t.added,
+      doneDate: today
+    };
+    delete o.todo[k];
+    save();
+    return '🎉 訂正完成！「' + t.w + '」移到 REDO-OVER 區';
+  }
+  save();
+  return '✅ 今天這個字完成了（' + t.days.length + '/5 天）';
+}
+function hwScreen(tab) {
+  if ('speechSynthesis' in window) speechSynthesis.cancel();
+  var p = prof();
+  if (!p) return kidScreen();
+  var o = hwObj();
+  var today = todayStr();
+  var todo = Object.values(o.todo).sort(function (a, b) {
+    return a.added < b.added ? -1 : 1;
+  });
+  var done = Object.values(o.done).sort(function (a, b) {
+    return a.doneDate < b.doneDate ? 1 : -1;
+  });
+  var due = todo.filter(function (t) {
+    return !t.days.includes(today);
+  });
+  tab = tab || 'todo';
+  var card = function card(t, isDone) {
+    var info = wordInfo(t.w) || [t.w, '', ''];
+    var wEl = h('div', {
+      class: 'hww' + (isDone ? '' : ' blur')
+    }, t.w);
+    return h('div', {
+      class: 'hwc' + (isDone ? ' done' : ''),
+      onclick: function onclick() {
+        say(t.w);
+        wEl.classList.toggle('blur', false);
+      }
+    }, h('div', {
+      class: 'hwe'
+    }, info[1] || info[3] ? pic(info, 44) : '🔤'), wEl, isDone ? h('div', {
+      class: 'sub zh'
+    }, '✅ ' + t.doneDate.slice(5).replace('-', '/') + ' 完成') : h('div', {}, h('div', {
+      class: 'dots'
+    }, dotsEl(t.days.length)), h('div', {
+      class: 'sub zh'
+    }, t.days.includes(today) ? '今天 ✓' : '今天還沒訂正')));
+  };
+  render(h('div', {
+    class: 'toolbar'
+  }, h('button', {
+    class: 'ghost',
+    onclick: home
+  }, '← 首頁'), h('h2', {}, '📝 ' + p.name + ' 的 HW')), h('div', {
+    class: 'bars'
+  }, h('div', {}, '📌 TO-REDO ', h('b', {}, todo.length)), h('div', {}, '⏰ 今天要訂正 ', h('b', {}, due.length)), h('div', {}, '🏆 REDO-OVER ', h('b', {}, done.length))), h('div', {
+    style: 'text-align:center;margin:8px 0 14px'
+  }, due.length ? h('button', {
+    class: 'primary',
+    onclick: function onclick() {
+      return startSession('HW 訂正', shuffle(due).map(function (t) {
+        return {
+          type: 'dictate',
+          d: {
+            w: t.w
+          }
+        };
+      }), 'practice', function () {
+        return hwScreen();
+      }, 'hw');
+    }
+  }, '✏️ 開始今天的訂正（' + due.length + ' 個）') : h('div', {
+    class: 'zh',
+    style: 'font-size:20px;font-weight:700;color:var(--green)'
+  }, todo.length ? '👍 今天的訂正都完成了，明天再來！' : '🎉 目前沒有要訂正的單字')), h('div', {
+    class: 'note zh',
+    style: 'margin:0 0 12px'
+  }, '所有挑戰（單字、聽力、讀寫、模擬考）答錯的單字會自動放進 TO-REDO。訂正方式：系統念英文，小孩自己拼。每個字要在 5 個不同的日子拼對，才會移到 REDO-OVER。點卡片可以聽發音、看拼法。'), h('div', {
+    class: 'chips'
+  }, h('button', {
+    class: 'chip' + (tab === 'todo' ? ' on' : ''),
+    onclick: function onclick() {
+      return hwScreen('todo');
+    }
+  }, '📌 TO-REDO（' + todo.length + '）'), h('button', {
+    class: 'chip' + (tab === 'done' ? ' on' : ''),
+    onclick: function onclick() {
+      return hwScreen('done');
+    }
+  }, '🏆 REDO-OVER（' + done.length + '）')), h('div', {
+    class: 'grid hwgrid'
+  }, (tab === 'todo' ? todo : done).map(function (t) {
+    return card(t, tab === 'done');
+  })), (tab === 'todo' ? todo : done).length ? null : h('div', {
+    class: 'sub zh',
+    style: 'text-align:center;margin:20px'
+  }, tab === 'todo' ? '還沒有答錯的單字' : '還沒有訂正完成的單字'));
+}
 
 /* ================== builders ================== */
 function itemsFor(part, n) {
@@ -3110,6 +3403,7 @@ function startSession(title, items, mode, back, key) {
               part: it.part
             }));
             checked = true;
+            if (key !== 'hw' && collectHW(g.review)) save();
             var perfect = g.got === g.total;
             fb.className = 'fb ' + (perfect ? 'ok' : 'no');
             fb.textContent = perfect ? g.total > 1 ? `太棒了！全對 ${g.got}/${g.total} 🎉` : '答對了！Great job! 🎉' : g.total > 1 ? `答對 ${g.got}/${g.total}，看看下面的正確答案` : '再加油！看看下面的正確答案 💪';
@@ -3132,10 +3426,14 @@ function startSession(title, items, mode, back, key) {
                 }, v.q.replace(/^.* (\(\d+\))$/, '$1') + '：') : null, h('b', {}, v.correct));
               })));
               if (g.total === 1 && /^[a-z ]+$/i.test(wrongs[0].correct)) setTimeout(function () {
-                return say(wrongs[0].correct);
+                if (app.contains(fb)) say(wrongs[0].correct);
               }, 300);
             }
             if (g.got) addStars(g.got);
+            if (g.note) fb.append(h('div', {
+              class: 'zh',
+              style: 'font-size:18px;margin-top:6px;color:var(--purple)'
+            }, g.note));
             if (r.transcript) trans.append(h('div', {
               class: 'trans'
             }, h('b', {}, '📝 聽力原文：'), h('br'), r.transcript));
@@ -3156,9 +3454,11 @@ function startSession(title, items, mode, back, key) {
             show();
           }
         } else {
-          results.push(_objectSpread(_objectSpread({}, r.grade(false)), {}, {
+          var g2 = r.grade(false);
+          results.push(_objectSpread(_objectSpread({}, g2), {}, {
             part: it.part
           }));
+          if (collectHW(g2.review)) save();
           i++;
           show();
         }
@@ -3190,7 +3490,7 @@ function startSession(title, items, mode, back, key) {
     if (timed) run = runScript(timed, statusEl, function () {
       run = null;
       if (app.contains(btn) && !checked && !advanced) btn.click();
-    });else if (r.autoplay && (it.part || '').startsWith('L') || it.type === 'hearpick') setTimeout(function () {
+    });else if (r.autoplay && (it.part || '').startsWith('L') || it.type === 'hearpick' || it.type === 'dictate') setTimeout(function () {
       return say(r.autoplay);
     }, 250);
   }
@@ -3217,7 +3517,7 @@ function startSession(title, items, mode, back, key) {
       secs[s].g += r.got;
       secs[s].t += r.total;
     });
-    var rr = recordResult(key, got, total);
+    var rr = key === 'hw' ? null : recordResult(key, got, total);
     if (rr) save();
     if (mode === 'mock' && prof()) {
       var p = prof();
@@ -3282,6 +3582,20 @@ function startSession(title, items, mode, back, key) {
 }
 
 /* ================== screens ================== */
+function hwLine() {
+  var o = hwObj();
+  if (!o) return null;
+  var today = todayStr();
+  var todo = Object.values(o.todo);
+  var due = todo.filter(function (t) {
+    return !t.days.includes(today);
+  }).length;
+  return h('div', {
+    style: 'margin-top:6px'
+  }, h('span', {
+    class: 'rb' + (due ? ' due' : '')
+  }, (due ? '⏰ 今天要訂正 ' + due + ' 個｜' : '') + '📌 ' + todo.length + '｜🏆 ' + Object.keys(o.done).length));
+}
 function progLine(keys, unit) {
   var n = keys.filter(function (k) {
     return getRec(k);
@@ -3332,6 +3646,14 @@ function home() {
   }, h('div', {
     class: 'ic'
   }, '✏️'), h('h3', {}, 'Reading & Writing'), h('p', {}, '閱讀與寫作 5 種題型'), progLine(['RW1', 'RW2', 'RW3', 'RW4', 'RW5'])), h('button', {
+    class: 'hcard',
+    onclick: function onclick() {
+      return hwScreen();
+    },
+    style: 'border-color:#d9c6ff'
+  }, h('div', {
+    class: 'ic'
+  }, '📝'), h('h3', {}, 'HW 訂正區'), h('p', {}, '答錯的單字在這裡訂正'), hwLine()), h('button', {
     class: 'hcard',
     onclick: startMock,
     style: 'border-color:#ffc9b5'
@@ -3431,7 +3753,7 @@ function kidScreen() {
       class: 'kname'
     }, p.name), h('div', {
       class: 'sub'
-    }, '⭐ ' + (p.stars || 0) + '　✅ ' + Object.keys(p.rec || {}).length + ' 關' + (p.hist && p.hist.length ? '　📝 ' + p.hist.length + ' 次模擬考' : '')), del);
+    }, '⭐ ' + (p.stars || 0) + '　✅ ' + Object.keys(p.rec || {}).length + ' 關' + (p.hw && p.hw.todo && Object.keys(p.hw.todo).length ? '　📌 HW ' + Object.keys(p.hw.todo).length : '') + (p.hist && p.hist.length ? '　📝 ' + p.hist.length + ' 次模擬考' : '')), del);
   })) : null, h('div', {
     class: 'qbox',
     style: 'margin-top:18px;text-align:center'
@@ -3459,10 +3781,10 @@ function showVocab(cat) {
     onclick: home
   }, '← 首頁'), h('h2', {}, '📚 Words 單字卡')), h('div', {
     class: 'chips'
-  }, Object.entries(VOCAB).map(function (_ref33) {
-    var _ref34 = _slicedToArray(_ref33, 2),
-      k = _ref34[0],
-      v = _ref34[1];
+  }, Object.entries(VOCAB).map(function (_ref37) {
+    var _ref38 = _slicedToArray(_ref37, 2),
+      k = _ref38[0],
+      v = _ref38[1];
     return h('button', {
       class: 'chip' + (k === cat ? ' on' : ''),
       onclick: function onclick() {
