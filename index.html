@@ -154,13 +154,64 @@ table.rev tr.x td{background:#fff5f7}
 .note{background:#fff;border-radius:16px;padding:12px 16px;border:2px solid var(--line);font-family:"Noto Sans TC";font-size:15px;color:var(--soft);margin-top:18px;line-height:1.7}
 h2{margin:4px 0 6px;font-size:28px}
 .opts>*,.tf>*,.chips>*,.toolbar>*,.audio>*,.names>*,.bank>*,.tiles>*,.slots>*,.palette>*,.avs>*,.scene>*,.foot>*,.bars>*,.yn>*{margin:3px}
+.hs{display:none}.tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+header{flex-wrap:wrap}
+/* ---------- 手機版 ---------- */
+@media (max-width:640px){
+  body{font-size:16px}
+  header{padding:8px 10px;gap:6px}
+  header h1{font-size:17px;min-width:0;white-space:nowrap}
+  .ht{display:none}.hs{display:inline}
+  .pill{font-size:14px;padding:3px 9px}
+  #kidBtn{max-width:120px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+  main{padding:12px 10px 50px}
+  h2{font-size:22px}
+  .welcome{padding:12px;gap:10px}.welcome .big{font-size:40px}.welcome h2{font-size:20px}
+  .home{grid-template-columns:1fr 1fr;gap:10px}
+  .hcard{padding:12px;border-radius:18px}.hcard .ic{font-size:34px}.hcard h3{font-size:18px}.hcard p{font-size:13px}
+  .pmenu{grid-template-columns:1fr}
+  .pbtn{padding:10px 12px}.pbtn .ic{font-size:30px}.pbtn b{font-size:17px}
+  .vgrid{grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
+  .vcard .e{font-size:40px;height:52px}.vcard .w{font-size:17px}.num{font-size:36px}.sw{width:40px;height:40px}
+  .chip{font-size:15px;padding:5px 10px}
+  .qbox{padding:12px;border-radius:18px}
+  .part{font-size:14px;padding:7px 10px}.part small{font-size:12px}
+  .primary{font-size:18px;padding:10px 18px}
+  .play{font-size:17px;padding:8px 14px}
+  .opts{gap:8px}
+  .tf button{width:90px;height:76px;font-size:36px}
+  .scene span{font-size:36px}
+  .yn .s{font-size:18px;min-width:0;flex-basis:100%}
+  .story{font-size:18px;line-height:2.1;padding:10px}
+  .gap{min-width:76px;font-size:17px}
+  .bank button{min-width:72px;font-size:16px;padding:5px 8px}.bank button .e{font-size:26px}
+  .slot{width:42px;height:50px;font-size:26px}.tile{width:44px;height:48px;font-size:24px}
+  .people{grid-template-columns:repeat(3,1fr);gap:8px}
+  .person{min-height:90px;padding:6px}
+  .name{font-size:17px;padding:5px 9px}
+  .objs{grid-template-columns:repeat(3,1fr);gap:8px}
+  .crayon{font-size:14px;padding:5px 8px}
+  input.ans{font-size:22px;width:100%;max-width:260px}
+  .timer{font-size:16px;padding:8px 10px}
+  .fb{font-size:18px}
+  .answerBox b{font-size:24px}
+  .result .score{font-size:56px}.result .face{font-size:70px}
+  table.rev{font-size:14px}
+  .kids{grid-template-columns:1fr 1fr;gap:10px}.kav{font-size:48px}.kname{font-size:19px}
+  .hwgrid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+  .bars{gap:6px}.bars div{padding:6px 10px;font-size:14px}
+  .vbox{font-size:14px}.vsel{font-size:14px;width:100%}
+  .note{font-size:13px}
+  .toast{font-size:36px;padding:10px 22px}
+}
+@media (max-width:380px){.home{grid-template-columns:1fr}.people,.objs{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:520px){.obj{height:90px}.opt{min-width:92px;min-height:92px;font-size:46px}.bigE{font-size:90px}.sentence{font-size:24px}.qtext{font-size:21px}.person{font-size:40px}.obj{font-size:44px}header h1{font-size:18px}}
 img.emoji{height:1em;width:1em;margin:0 .05em 0 .1em;vertical-align:-0.1em}
 </style>
 </head>
 <body>
 <header>
-  <h1 id="homeBtn">🦁 YLE Starters 英語樂園</h1>
+  <h1 id="homeBtn">🦁 <span class="ht">YLE Starters 英語樂園</span><span class="hs">YLE</span></h1>
   <button class="pill" id="kidBtn" title="切換小孩">👤</button>
   <button class="pill" id="speedBtn" title="語速">🐢 慢速</button>
   <span class="pill" id="stars">⭐ 0</span>
@@ -1400,6 +1451,51 @@ document.getElementById('speedBtn').onclick = function () {
   say(slow ? 'Slow' : 'Normal speed');
 };
 updSpeed();
+
+/* ================== 靜音模式也能出聲（iPhone/iPad） ==================
+   iOS 的靜音鍵會讓網頁語音/音效沒聲音。做法：
+   1) 支援 navigator.audioSession 的 Safari，設成 'playback'
+   2) 第一次點畫面時，用 <audio> 循環播放一段無聲音檔，讓頁面進入「媒體播放」模式 */
+var SILENT_WAV = 'data:audio/wav;base64,UklGRvQHAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YdAHAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgA==';
+var unlockAudio = null;
+function setupAudioUnlock() {
+  try {
+    if (navigator.audioSession) navigator.audioSession.type = 'playback';
+  } catch (e) {}
+  var unlock = function unlock() {
+    try {
+      if (navigator.audioSession) navigator.audioSession.type = 'playback';
+    } catch (e) {}
+    try {
+      if (!unlockAudio) {
+        unlockAudio = document.createElement('audio');
+        unlockAudio.src = SILENT_WAV;
+        unlockAudio.loop = true;
+        unlockAudio.setAttribute('playsinline', '');
+        unlockAudio.setAttribute('x-webkit-airplay', 'deny');
+        unlockAudio.volume = 0.01;
+      }
+      var pr = unlockAudio.play();
+      if (pr && pr.catch) pr.catch(function () {});
+    } catch (e) {}
+    try {
+      actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+      if (actx.state === 'suspended') actx.resume();
+    } catch (e) {}
+  };
+  ['touchend', 'click', 'keydown'].forEach(function (ev) {
+    return document.addEventListener(ev, unlock, {
+      capture: true,
+      passive: true
+    });
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden && unlockAudio && unlockAudio.paused) {
+      var pr = unlockAudio.play();
+      if (pr && pr.catch) pr.catch(function () {});
+    }
+  });
+}
 
 /* ================== sounds & toast ================== */
 var actx = null;
@@ -3570,13 +3666,15 @@ function startSession(title, items, mode, back, key) {
     }, '返回')), h('h3', {
       class: 'zh',
       style: 'text-align:left;margin-top:22px'
-    }, '📋 答題檢討'), h('table', {
+    }, '📋 答題檢討'), h('div', {
+      class: 'tblwrap'
+    }, h('table', {
       class: 'rev'
     }, h('tr', {}, h('th', {}, '題目'), h('th', {}, '你的答案'), h('th', {}, '正確答案'), h('th', {}, '')), rows.map(function (v) {
       return h('tr', {
         class: v.ok ? '' : 'x'
       }, h('td', {}, v.q), h('td', {}, v.your), h('td', {}, v.correct), h('td', {}, v.ok ? '✅' : '❌'));
-    }))));
+    })))));
   }
   show();
 }
@@ -3898,6 +3996,7 @@ function startMock() {
 }
 document.getElementById('homeBtn').onclick = home;
 document.getElementById('kidBtn').onclick = kidScreen;
+setupAudioUnlock();
 applyProfile();
 home();
 initCloud();
